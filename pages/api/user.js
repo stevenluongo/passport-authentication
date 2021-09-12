@@ -15,12 +15,11 @@ export default async (req, res) => {
 const fetchSession = async(req, res) => {
     try {
         const session = await getLoginSession(req)
-        if(!session) {
-            res.status(401).end()
+        const user = session ? await findUserById(session._doc.id) : null;
+        if(!user) {
+            res.status(200).json(null)
             return;
-        }
-        const _id = session._doc.id;
-        const user = session ? await findUserById(_id) : null;
+        } 
         const {id, username} = user
         res.status(200).json({ id, username })
     } catch (error) {
