@@ -1,10 +1,10 @@
-import { createUser } from "../../lib/user";
-import { removeTokenCookie } from "../../lib/auth-cookies";
+import { createUser, findUserById } from "../../lib/user";
+import { getLoginSession } from "../../lib/auth";
 
 export default async (req, res) => {
     switch (req.method) {
         case "GET" :
-            await logout(req, res)
+            await fetchSession(req, res)
             break;
         case "POST": 
             await register(req, res)
@@ -12,9 +12,17 @@ export default async (req, res) => {
     }
 }
 
-const logout = async(req, res) => {
-    removeTokenCookie(res)
-    res.status(200).json({msgBody: "you have successfully logged out", msgError: false})
+const fetchSession = async(req, res) => {
+    try {
+        const session = await getLoginSession(req)
+        const _id = session._doc.id;
+        const user = session ? await findUserById(_id) : null;
+        const {id, username} = user
+        res.status(200).json({ id, username })
+    } catch (error) {
+        console.error(error)
+        res.status(500).end('Authentication token is invalid, please log in')
+    }
 }
 
 const register = async(req, res) => {

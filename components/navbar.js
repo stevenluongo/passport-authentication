@@ -3,7 +3,7 @@ import Link from "next/link";
 
 function Navbar () {
     const handleLogout = async() => {
-        const res = await fetch("/api/user")
+        const res = await fetch("/api/logout")
         const data = await res.json()
         console.log(data)
     }
