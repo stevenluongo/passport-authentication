@@ -52,6 +52,8 @@ export default function Login() {
           <button type="submit">Login</button>
       </form>
       {message && <p>{message.msgBody}</p>}
+      <h1>Sign In With Github</h1>
+      <a href="/api/auth/github">Click Here!</a>
     </>
   )
 }
