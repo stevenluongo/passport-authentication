@@ -15,6 +15,10 @@ export default async (req, res) => {
 const fetchSession = async(req, res) => {
     try {
         const session = await getLoginSession(req)
+        if(!session) {
+            res.status(401).end()
+            return;
+        }
         const _id = session._doc.id;
         const user = session ? await findUserById(_id) : null;
         const {id, username} = user
