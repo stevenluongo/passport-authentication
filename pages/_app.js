@@ -1,8 +1,7 @@
 import Layout from '../components/layout'
 import App from 'next/app';
 import React from 'react';
-import withIdentity from "../lib/withIdentity"
-import '../styles.scss'
+import '../styles.scss';
 
 class MyApp extends App {
   render() {
@@ -15,4 +14,4 @@ class MyApp extends App {
   }
 }
 
-export default withIdentity(MyApp);
+export default MyApp;
