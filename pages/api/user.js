@@ -20,5 +20,5 @@ const logout = async(req, res) => {
 const register = async(req, res) => {
     const {username, password} = req.body;
     const data = await createUser(username, password)
-    res.json({msg: {data}})
+    res.json(data)
 }

@@ -20,10 +20,10 @@ const handler =
         const user = await authenticate(req, res);
         const session = {...user}
         await setLoginSession(res, session);
-        res.status(201).json({msg: "You have been successfully logged in."})
+        res.status(201).json({ msgError: false, msgBody: `Welcome back, ${user.username}!` })
     } catch (err) {
         console.log(err)
-        res.status(401).json({msg: "something went wrong..."})
+        res.status(401).json({ msgError: true, msgBody: "Something went wrong..." })
     }
 });
 
