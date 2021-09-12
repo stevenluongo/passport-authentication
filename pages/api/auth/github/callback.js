@@ -10,8 +10,6 @@ const handler = nextConnect()
     .get(async (req, res) => {
     try {
         passport.authenticate('github')(req, res, (...args) => {
-            console.log("passport authenticated", args)
-            console.log(req.user)
             res.redirect("/")
         })
     } catch (error) {

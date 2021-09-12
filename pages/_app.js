@@ -1,12 +1,18 @@
 import Layout from '../components/layout'
+import App from 'next/app';
+import React from 'react';
+import withIdentity from "../lib/withIdentity"
 import '../styles.scss'
 
-function MyApp({ Component, pageProps }) {
-  return (
-    <Layout>
-      <Component {...pageProps} />
-    </Layout>
-  )
+class MyApp extends App {
+  render() {
+    const {Component, pageProps} = this.props;
+    return (
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    )
+  }
 }
 
-export default MyApp
+export default withIdentity(MyApp);
