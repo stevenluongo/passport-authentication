@@ -1,4 +1,4 @@
-import { getTokenCookie, removeTokenCookie } from "../../lib/auth-cookies"
+import { getTokenCookie, removeTokenCookie } from "../../lib/cookies"
 
 export default async (req, res) => {
     const cookies = getTokenCookie(req);

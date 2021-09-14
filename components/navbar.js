@@ -1,5 +1,7 @@
 import styles from "./navbar.module.scss";
 import Link from "next/link";
+import Image from "next/image";
+import Logo from "../public/images/logo-light.png";
 
 function Navbar () {
     const handleLogout = async() => {
@@ -9,7 +11,7 @@ function Navbar () {
     }
     return (
         <nav className={styles.nav}>
-            <h1 className={styles.brand}>Ecommerce Dev Build</h1>
+            <Image height={30} width={30} className={styles.brand} src={Logo} alt="Website Logo"/>
             <span>
                 <Link href="/">Home</Link>
                 <Link href="/login">Login</Link>
