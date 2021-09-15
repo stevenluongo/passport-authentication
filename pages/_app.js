@@ -1,6 +1,5 @@
 import Layout from '../components/layout'
 import App from 'next/app';
-import React from 'react';
 import '../styles/styles.scss';
 
 class MyApp extends App {

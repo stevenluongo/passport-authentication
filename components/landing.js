@@ -14,7 +14,7 @@ function Landing() {
       <div className={styles.landing}>
           <Particles params={params}/>
           <div className={styles.content}>
-            <h1>{"{ Authentication }"}</h1>
+            <h1>{user ? `Welcome Back, ${user.username}` : "{ Authentication }"}</h1>
             <h3>Implement a secure and swift authentication<br/>system using Next.js and Passport</h3>
             <span className={styles.logos}>
                 <Image width={30} height={30} src={PassportLogo}/>
