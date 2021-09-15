@@ -1,4 +1,4 @@
-import styles from "./navbar.module.scss";
+import styles from "../styles/navbar.module.scss";
 import Link from "next/link";
 import Image from "next/image";
 import Logo from "../public/images/logo-light.png";
