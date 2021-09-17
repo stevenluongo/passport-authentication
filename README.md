@@ -1,37 +1,45 @@
-# Example app with next-sass
+<br />
+<p align="center">
+  <h3 align="center">Next.js & Passport Authentication</h3>
 
-This example demonstrates how to use Next.js' built-in Global Sass/Scss imports and Component-Level Sass/Scss modules support.
+  <p align="center">
+    Authentication system using Next.js / passport-local and passport-github
+    <br/>
+    <br />
+    <div align="center">
+      <img width="100px" src="https://res.cloudinary.com/dxqmbhsis/image/upload/v1631838930/next-logo-1_qscmja.png"/>
+      <img width="60px" height="60px" src="https://res.cloudinary.com/dxqmbhsis/image/upload/v1631840281/passport-white_tb1epr.png"/>
+    </div>
+    <br />
+    <div align="center">
+      <a target="_blank" href="https://test-build.d8ottqgcqlwb0.amplifyapp.com/">
+      <img align="center" src="https://res.cloudinary.com/dxqmbhsis/image/upload/v1631840131/view-project_br3749.png"/>
+      </a>
+    </div>
+  </p>
+</p>
 
-## Preview
+## About The Project
 
-Preview the example live on [StackBlitz](http://stackblitz.com/):
+### Built With
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/vercel/next.js/tree/canary/examples/with-next-sass)
+* []() Next.js
+* []() Passport.js
+* []() Crypto
 
 ## Deploy your own
 
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example):
+Deploy your own using [AWS Amplify](https://aws.amazon.com/amplify/):
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-next-sass&project-name=with-next-sass&repository-name=with-next-sass)
+[![Deploy with Vercel](https://res.cloudinary.com/dxqmbhsis/image/upload/v1631841207/deploy-btn_hbxocz.png)](https://aws.amazon.com/amplify/)
 
-## How to use
+## Setup a local environment
 
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init) or [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) to bootstrap the example:
-
-```bash
-npx create-next-app --example with-next-sass with-next-sass-app
-# or
-yarn create next-app --example with-next-sass with-next-sass-app
-```
-
-Run production build with:
+Clone the reposity and install dependencies with [npm](https://docs.npmjs.com/cli/init) or [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/)
 
 ```bash
-npm run build
-npm run start
-# or
-yarn build
-yarn start
+git clone https://github.com/binolt/next.js-passport-auth.git
+cd next.js-passport-auth
+npm install
+npm run dev
 ```
-
-Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
