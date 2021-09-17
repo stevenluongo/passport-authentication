@@ -18,9 +18,11 @@ const handler =
     .post(async (req, res) => {
     try {
         const user = await authenticate(req, res);
+        console.log(user)
         const session = {...user}
         await setLoginSession(res, session);
-        res.status(201).json({ msgError: false, msgBody: `Welcome back, ${user.username}!` })
+        const {username, _id} = user;
+        res.status(201).json({msg: { msgError: false, msgBody: `Welcome back, ${username}!` }, user: {username, _id}})
     } catch (err) {
         console.log(err)
         res.status(401).json({ msgError: true, msgBody: "Something went wrong..." })

@@ -1,10 +1,11 @@
 import styles from "../styles/navbar.module.scss";
 import Link from "next/link";
 import {useUser} from "../lib/hooks";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Modal from "react-modal"
 import { TextField } from "@material-ui/core";
 import Github from "@material-ui/icons/GitHub"
+import { useAuth } from "../context/AuthContext";
 
 const customStyles = {
     content: {
@@ -25,13 +26,19 @@ const customStyles = {
 
 function Navbar () {
     const user = useUser();
+    const {currentUser, setUser} = useAuth();
     const [modalIsOpen, setIsOpen] = useState(false);
     const usernameRef = useRef(null);
     const passwordRef = useRef(null);
+
+    useEffect(() => {
+        setUser(user);
+    }, [user])
+    
     const handleLogout = async() => {
         const res = await fetch("/api/logout")
         const data = await res.json()
-        console.log(data)
+        if(!data.msg.msgError) setUser(data.user);
     }
 
     const openModal = () => {
@@ -61,19 +68,17 @@ function Navbar () {
         })
       
         const data = await res.json();
-        if(!data.msgError) {
-            setTimeout(() => {
-                closeModal();
-            }, 2000);
+        if(!data.msg.msgError) {
+            closeModal();
+            setUser(data.user);
         }
-        console.log(data);
     }
     return (
         <nav className={styles.nav}>
             <Link href="/">
                 <h3>Auth.</h3>
             </Link>
-            {user ?
+            {currentUser ?
                 <button className={styles.logout} onClick={handleLogout}>Logout</button>
             :
             <span>

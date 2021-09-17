@@ -1,10 +1,13 @@
-import { createContext, useContext } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
 
 const AppContext = createContext();
 
 export function AuthContext({ children }) {
+  const [currentUser, setUser] = useState({});
   const value = {
-      name: "steven"
+      name: "steven",
+      currentUser,
+      setUser
   }
 
   return (
