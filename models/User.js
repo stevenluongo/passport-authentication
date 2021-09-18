@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-import { v4 as uuidv4 } from 'uuid'
 
 const userSchema = new mongoose.Schema({
     username: {
@@ -14,10 +13,6 @@ const userSchema = new mongoose.Schema({
     },
     salt: {
         type: String,
-    },
-    id: {
-        type: String,
-        default: uuidv4()
     },
     createdAt: {
         type: Date,

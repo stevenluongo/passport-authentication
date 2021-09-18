@@ -1,4 +1,4 @@
-import { createUser, findUserById } from "../../lib/user";
+import { createUser, findUser } from "../../lib/user";
 import { getLoginSession } from "../../lib/auth";
 
 export default async (req, res) => {
@@ -15,7 +15,7 @@ export default async (req, res) => {
 const fetchSession = async(req, res) => {
     try {
         const session = await getLoginSession(req)
-        const user = session ? await findUserById(session._doc.id) : null;
+        const user = session ? await findUser({_id: session._doc._id}) : null;
         if(!user) {
             res.status(200).json(null)
             return;

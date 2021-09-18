@@ -1,0 +1,94 @@
+.nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  height: 60px;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  padding: 0 3rem;
+}
+
+.nav h3 {
+  cursor: pointer;
+}
+
+.nav span button {
+  margin-left: 1rem;
+  border: 0;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.nav span :nth-child(1) {
+  background-color: transparent;
+}
+
+.nav span :nth-child(2) {
+  background: #9b3b90;
+  background: linear-gradient(17deg, #9b3b90 0%, #df304b 51%, #fd884b 100%);
+}
+
+.buttonGradient {
+  background: #9b3b90;
+  background: linear-gradient(17deg, #9b3b90 0%, #df304b 51%, #fd884b 100%);
+}
+
+.modal {
+  background-color: #fff;
+  color: black;
+  position: relative;
+  width: 300px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 1rem;
+  border-radius: 5px;
+}
+
+.modal h1 {
+  color: black;
+  background-color: transparent;
+  margin-bottom: 1rem;
+  font-weight: 500;
+  font-size: 2em;
+}
+
+.modal form {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.modal form button {
+  border-radius: 5px;
+  border: 0;
+  color: #fff;
+  padding: 0.75rem;
+  cursor: pointer;
+}
+
+.modal form div {
+  margin-bottom: 0.5rem;
+}
+/*# sourceMappingURL=navbar.module.css.map */

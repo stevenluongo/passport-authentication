@@ -1,0 +1,94 @@
+.landing {
+  position: relative;
+  height: calc(100vh - 60px);
+  overflow: hidden;
+}
+
+.landing .content {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: calc(100% - 60px);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.landing .content h1 {
+  font-size: 3em;
+  margin-bottom: 1rem;
+}
+
+.landing .content h3 {
+  text-align: center;
+  color: #484848;
+}
+
+.landing .content .logos {
+  margin: 1.25rem 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 120px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.landing .content .buttons {
+  margin-top: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.landing .content .buttons button {
+  margin: 0 .5rem;
+  width: 130px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 500;
+  color: #fff;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  height: 40px;
+}
+
+.landing .content .buttons .btn1 {
+  border: none;
+  background: #9b3b90;
+  background: linear-gradient(17deg, #9b3b90 0%, #df304b 51%, #fd884b 100%);
+}
+
+.landing .content .buttons .btn2 {
+  background-color: transparent;
+  border: 1px solid #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.landing .content .buttons .btn2 svg {
+  font-size: 1.4em;
+  margin-left: .25rem;
+}
+/*# sourceMappingURL=landing.module.css.map */

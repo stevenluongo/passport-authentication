@@ -1,5 +1,6 @@
 import React, {useRef, useState} from 'react';
 import {useRouter} from "next/router";
+import { useAuth } from '../context/AuthContext';
 
 export default function Login() {
   const router = useRouter()
@@ -8,6 +9,7 @@ export default function Login() {
   const [message, setMessage] = useState({});
 
   const handleSubmit = async(evt) => {
+    const {setUser} = useAuth();
     evt.preventDefault();
     if(!nameRef.current.value || !passwordRef.current.value) {
       setMessage({msgError: true, msgBody: "Must fill in all blanks!"});
@@ -31,17 +33,15 @@ export default function Login() {
 
     const data = await res.json();
 
-    setMessage(data)
+    console.log(data);
 
-    if(!data.msgError) {
+    setMessage(data.msg)
+    
+    if(!data.msg.msgError) {
+        setUser(data.user);
         nameRef.current.value = ""
         passwordRef.current.value = ""
-        setTimeout(() => {
-            router.push("/")
-        }, 3000);
     }
-
-
   }
   return (
     <>
@@ -52,6 +52,8 @@ export default function Login() {
           <button type="submit">Login</button>
       </form>
       {message && <p>{message.msgBody}</p>}
+      <h1>Sign In With Github</h1>
+      <a href="/api/auth/github">Click Here!</a>
     </>
   )
 }

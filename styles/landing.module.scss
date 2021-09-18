@@ -1,0 +1,60 @@
+.landing {
+    position: relative;
+    height: calc(100vh - 60px);
+    overflow: hidden;
+    .content {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: calc(100% - 60px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        h1 {
+            font-size: 3em;
+            margin-bottom: 1rem;
+        }
+        h3 {
+            text-align: center;
+            color: #484848;
+        }
+        .logos {
+            margin: 1.25rem 0;
+            display: flex;
+            align-items: center;
+            width: 120px;
+            justify-content: space-between;
+        }
+        .buttons {
+            margin-top: 1rem;
+            display: flex;
+            button {
+                margin: 0 .5rem;
+                width: 130px;
+                border-radius: 5px;
+                cursor: pointer;
+                font-weight: 500;
+                color: #fff;
+                box-sizing: border-box;
+                height: 40px;
+            }
+            .btn1 {
+                border: none;
+                background: rgb(155,59,144);
+                background: linear-gradient(17deg, rgba(155,59,144,1) 0%, rgba(223,48,75,1) 51%, rgba(253,136,75,1) 100%);
+            }
+            .btn2 {
+                background-color: transparent;
+                border: 1px solid #fff;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                svg {
+                    font-size: 1.4em;
+                    margin-left: .25rem;
+                }
+            }
+        }
+    }
+}

@@ -1,12 +1,19 @@
 import Layout from '../components/layout'
-import '../styles.scss'
+import App from 'next/app';
+import '../styles/styles.scss';
+import { AuthContext } from '../context/AuthContext';
 
-function MyApp({ Component, pageProps }) {
-  return (
-    <Layout>
-      <Component {...pageProps} />
-    </Layout>
-  )
+class MyApp extends App {
+  render() {
+    const {Component, pageProps} = this.props;
+    return (
+      <AuthContext>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </AuthContext>
+    )
+  }
 }
 
-export default MyApp
+export default MyApp;
