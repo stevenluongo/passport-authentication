@@ -22,7 +22,8 @@ const handler =
         const cookie = await setLoginSession(res, session);
         const {username, _id} = user;
         const payload = {msg: { msgError: false, msgBody: `Welcome back, ${username}!` }, user: {username, _id}}
-        res.setHeader("Set-cookie", cookie).status(201).json(payload)
+        res.setHeader("Set-cookie", cookie)
+        res.status(201).json(payload)
     } catch (err) {
         console.log(err)
         res.status(401).json({err: err, msgError: true, msgBody: "Something went wrong..." })
