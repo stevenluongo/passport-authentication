@@ -23,9 +23,10 @@
 
 ### Built With
 
-* []() Next.js
-* []() Passport.js
-* []() Crypto
+* [Next.js](https://nextjs.org/)
+* [passport-local](https://www.npmjs.com/package/passport-local)
+* [passport-github](https://www.npmjs.com/package/passport-github)
+* [@hapi/iron](https://www.npmjs.com/package/@hapi/iron) (session storage)
 
 ## Deploy your own
 
