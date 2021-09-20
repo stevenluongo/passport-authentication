@@ -22,7 +22,7 @@ const handler = nextConnect()
         const cookie = await setLoginSession(res, session)
         res.setHeader("Set-Cookie", cookie).redirect("/")
     } catch (error) {
-        res.status(500).json({ msgError: true, msgBody: "Something went wrong..." })
+        res.status(500).json({error: error, msgError: true, msgBody: "Something went wrong..." })
     }
 })
 
