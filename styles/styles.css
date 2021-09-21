@@ -2,11 +2,31 @@
 body, h1, h2, h3, h4, h5, h6 {
   font-family: "Inter", sans-serif;
   margin: 0;
-  background-color: #121212;
+  background-color: #070809;
   color: #fff;
 }
 
 button {
   font-family: inherit;
+}
+
+.ReactModal__Overlay {
+  opacity: 0;
+  -webkit-transition: all 300ms ease-in-out;
+  transition: all 300ms ease-in-out;
+  -webkit-transform: translateY(0.25rem);
+          transform: translateY(0.25rem);
+}
+
+.ReactModal__Overlay--after-open {
+  opacity: 1;
+  -webkit-transform: translateY(0rem);
+          transform: translateY(0rem);
+}
+
+.ReactModal__Overlay--before-close {
+  opacity: 0;
+  -webkit-transform: translateY(0.15rem);
+          transform: translateY(0.15rem);
 }
 /*# sourceMappingURL=styles.css.map */

@@ -2,6 +2,9 @@
     position: relative;
     height: calc(100vh - 60px);
     overflow: hidden;
+    a {
+        text-decoration: none;
+    }
     .content {
         position: absolute;
         top: 0;

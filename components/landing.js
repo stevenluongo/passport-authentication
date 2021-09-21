@@ -22,8 +22,12 @@ function Landing() {
                 <Image width={70} height={70} src={NextLogo}/>
             </span>
             <span className={styles.buttons}>
-                <button className={styles.btn1}>Get Started</button>
-                <button className={styles.btn2}>View Code<Code/></button>
+                <a target="_blank" href="https://github.com/binolt/next.js-passport-auth">
+                  <button className={styles.btn1}>Get Started</button>
+                </a>
+                <a target="_blank" href="https://github.com/binolt/next.js-passport-auth">
+                  <button className={styles.btn2}>View Code<Code/></button>
+                </a>
             </span>
           </div>
       </div>

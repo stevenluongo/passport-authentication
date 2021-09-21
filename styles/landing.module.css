@@ -4,6 +4,10 @@
   overflow: hidden;
 }
 
+.landing a {
+  text-decoration: none;
+}
+
 .landing .content {
   position: absolute;
   top: 0;
