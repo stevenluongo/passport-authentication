@@ -29,7 +29,6 @@ const fetchSession = async(req, res) => {
 }
 
 const register = async(req, res) => {
-    const {username, password} = req.body;
-    const data = await createUser(username, password)
+    const data = await createUser(req.body);
     res.json(data)
 }
