@@ -12,7 +12,7 @@
     </div>
     <br />
     <div align="center">
-      <a target="_blank" href="https://test-build.d8ottqgcqlwb0.amplifyapp.com/">
+      <a target="_blank" href="https://main.d8ottqgcqlwb0.amplifyapp.com/">
       <img align="center" src="https://res.cloudinary.com/dxqmbhsis/image/upload/v1631840131/view-project_br3749.png"/>
       </a>
     </div>
