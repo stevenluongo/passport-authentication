@@ -12,9 +12,7 @@
     </div>
     <br />
     <div align="center">
-      <a target="_blank" href="https://main.d8ottqgcqlwb0.amplifyapp.com/">
-      <img align="center" src="https://res.cloudinary.com/dxqmbhsis/image/upload/v1631840131/view-project_br3749.png"/>
-      </a>
+      <a target="_blank" rel="noopener noreferrer" href="https://main.d8ottqgcqlwb0.amplifyapp.com/">Live Demo</a>
     </div>
   </p>
 </p>
@@ -34,15 +32,17 @@
 
 Deploy your own using [AWS Amplify](https://aws.amazon.com/amplify/):
 
-[![Deploy with Vercel](https://res.cloudinary.com/dxqmbhsis/image/upload/v1631841207/deploy-btn_hbxocz.png)](https://aws.amazon.com/amplify/)
+## Local Installation
 
-## Setup a local environment
-
-Clone the reposity and install dependencies with [npm](https://docs.npmjs.com/cli/init) or [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/)
-
-```bash
-git clone https://github.com/binolt/next.js-passport-auth.git
-cd next.js-passport-auth
-npm install
-npm run dev
-```
+1. Clone the repo
+   ```sh
+   git clone https://github.com/binolt/next.js-passport-auth.git
+   ```
+2. Install dependencies
+   ```sh
+   npm install
+   ```
+3. Start the live server
+   ```sh
+   npm run dev
+   ```
