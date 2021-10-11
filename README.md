@@ -26,6 +26,8 @@
 * [Next.js](https://nextjs.org/)
 * [passport-local](https://www.npmjs.com/package/passport-local)
 * [passport-github](https://www.npmjs.com/package/passport-github)
+* [MongoDB](https://www.mongodb.com/) 
+* [AWS Amplify](https://aws.amazon.com/amplify/)
 * [@hapi/iron](https://www.npmjs.com/package/@hapi/iron) (session storage)
 
 ## Deploy your own
