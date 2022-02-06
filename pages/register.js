@@ -44,7 +44,7 @@ export default function Register() {
     return (
       <>
           <p>Register</p>
-          <form onSubmit={handleSubmit}>
+          <form style={{display: 'flex', flexDirection: 'column', width: 250}} onSubmit={handleSubmit}>
               <input type="text" ref={emailRef} placeholder="Email Address"/>
               <input type="text" ref={usernameRef} placeholder="Username"/>
               <input type="password" ref={passwordRef} placeholder="Password"/>

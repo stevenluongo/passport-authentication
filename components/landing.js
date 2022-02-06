@@ -15,16 +15,13 @@ function Landing() {
       <div className={styles.landing}>
           <Particles params={params}/>
           <div className={styles.content}>
-            <h1>{currentUser ? `Welcome Back, ${currentUser.username}` : "{ Authentication }"}</h1>
+            <h1>{currentUser ? `Welcome Back, ${currentUser.username}` : "{ Passport Authentication }"}</h1>
             <h3>Implement a secure and swift authentication<br/>system using Next.js and Passport</h3>
             <span className={styles.logos}>
                 <Image width={30} height={30} src={PassportLogo}/>
                 <Image width={70} height={70} src={NextLogo}/>
             </span>
             <span className={styles.buttons}>
-                <a target="_blank" href="https://github.com/binolt/next.js-passport-auth">
-                  <button className={styles.btn1}>Get Started</button>
-                </a>
                 <a target="_blank" href="https://github.com/binolt/next.js-passport-auth">
                   <button className={styles.btn2}>View Code<Code/></button>
                 </a>
