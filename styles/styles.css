@@ -1,13 +1,197 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800&display=swap");
-body, h1, h2, h3, h4, h5, h6 {
-  font-family: "Inter", sans-serif;
-  margin: 0;
-  background-color: #070809;
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+/**
+*
+* Testing
+*
+**/
+.layout {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.layout_content_wrapper {
+  width: inherit;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.layout_content {
+  width: var(--content-width);
+  height: 100%;
+  margin: 0 auto;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 0 2rem;
+}
+
+.layout_body {
+  width: 100%;
+  height: calc(100% - 70px);
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.nav {
+  height: 70px;
+  width: 100%;
+}
+
+/**
+*
+* Testing
+*
+**/
+.nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-top: 2rem;
+  width: 100%;
+}
+
+.nav_brand {
+  font-size: 1.1em;
+  font-weight: 600;
+}
+
+.nav_center {
+  font-size: .9em;
+  color: #868686;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 2rem;
+}
+
+@media (max-width: 768px) {
+  .nav_center {
+    display: none;
+  }
+}
+
+.nav_end {
+  font-size: .9em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 1rem;
+}
+
+.nav_end .nav_menu_icon {
+  display: none;
   color: #fff;
 }
 
-button {
+@media (max-width: 768px) {
+  .nav_end .nav_menu_icon {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+}
+
+.nav_end p {
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+@media (max-width: 768px) {
+  .nav_end p {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav_end .nav_signup {
+    display: none;
+  }
+}
+
+:root, body[data-theme="default"] {
+  --content-width: 1366px;
+  --primary-text-color: #160747;
+  --secondary-text-color: #928d9e;
+  --primary-text-accent: #6d43ff;
+  --background-color: #121212;
+  --background-accent: #ebebeb;
+  --nav-color: #fff;
+  --color-gradient-primary: linear-gradient(90deg, rgba(40,132,246,1) 0%, rgba(123,44,255,1) 100%);
+}
+
+@media (max-width: 1366px) {
+  :root, body[data-theme="default"] {
+    --content-width: 100%;
+  }
+}
+
+html, body, div, span, object, iframe, figure, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, code, em, img, small, strike, strong, sub, sup, tt, b, u, i, ol, ul, li, fieldset, form, label, table, caption, tbody, tfoot, thead, tr, th, td, main, canvas, embed, footer, header, nav, section, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: none;
+     -moz-text-size-adjust: none;
+      -ms-text-size-adjust: none;
+          text-size-adjust: none;
   font-family: inherit;
+}
+
+body {
+  line-height: 1;
+  font-family: "Inter", sans-serif;
+  margin: 0;
+  color: #fff;
+  background-color: var(--background-color);
+}
+
+footer, header, nav, section, main {
+  display: block;
+}
+
+*, *:before, *:after {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after, q:before, q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
 }
 
 .ReactModal__Overlay {

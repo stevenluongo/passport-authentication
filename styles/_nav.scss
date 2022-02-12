@@ -1,0 +1,51 @@
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 2rem;
+    width: 100%;
+    @include media('<=tablet') {
+    }
+}
+
+.nav_brand {
+    font-size: 1.1em;
+    font-weight: 600;
+}
+
+.nav_center {
+    font-size: .9em;
+    color: #868686;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    @include media('<=tablet') {
+        display: none;
+    }
+}
+
+.nav_end {
+    font-size: .9em;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    .nav_menu_icon {
+        display: none;
+        color: #fff;
+        @include media('<=tablet') {
+            display: flex;
+        }
+    }
+    p {
+        cursor: pointer;
+        user-select: none;
+        @include media('<=tablet') {
+            display: none;
+        }
+    }
+    .nav_signup {
+        @include media('<=tablet') {
+            display: none;
+        }
+    }
+}

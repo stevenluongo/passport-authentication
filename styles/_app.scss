@@ -1,0 +1,35 @@
+@import "./_breakpoints.scss";
+
+.layout {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+.layout_content_wrapper {
+    width: inherit;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.layout_content {
+    width: var(--content-width);
+    height: 100%;
+    margin: 0 auto;
+    box-sizing: border-box;
+    padding: 0 2rem;
+}
+
+.layout_body {
+    width: 100%;
+    height: calc(100% - 70px);
+    box-sizing: border-box;
+}
+
+.nav {
+    height: 70px;
+    width: 100%;
+}
