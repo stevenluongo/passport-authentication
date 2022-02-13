@@ -3,7 +3,8 @@ import { useAuth } from '../context/AuthContext';
 import { styled } from '@mui/material/styles';
 import Button from '@mui/material/Button';
 import Fade from "react-reveal/Fade";
-
+import LaunchIcon from '@mui/icons-material/Launch';
+import GitHubIcon from '@mui/icons-material/GitHub';
 function Landing() {
     const {currentUser} = useAuth();
 
@@ -11,13 +12,13 @@ function Landing() {
       <div className='app_wrapper'>
         <Fade duration={1000} top distance="20px">
         <div className='app_content'>
-          <h1>The authentication flow <br/> built for your needs.</h1>
+          <h1>Next.js Authentication flow <br/> built with Passport.</h1>
           <p>Implement a secure authentication system for Next.js built with<br/>Passport that supports custom credentials and third party logins.</p>
           <span>
             <ColorButton>
-              Log in
+              Try it !
             </ColorButton>
-            <SecondaryButton>
+            <SecondaryButton endIcon={<GitHubIcon/>}>
               View Repository
             </SecondaryButton>
           </span>

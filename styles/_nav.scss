@@ -52,3 +52,58 @@
         }
     }
 }
+
+
+
+.modal {
+    background-color: #181717;
+    color: #fff;
+    position: relative;
+    width: 340px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    border-radius: 5px;
+    padding: 2rem;
+    h1 {
+      margin: 0;
+      background: none;
+      font-size: 1.8em;
+      font-weight: 600;
+    }
+
+    .login_subhead {
+        color: #868686;
+        font-size: .9em;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .login_footer {
+        font-size: .9em;
+        color: #868686;
+        margin-top: 2rem;
+        span {
+            cursor: pointer;
+            color: rgb(177, 177, 177);
+        }
+    }
+    .loader {
+      background-color:rgba(black, 0.5);
+      width: inherit;
+      height: inherit;
+      position: absolute;
+      top: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .a_c_d_summary_item_button {
+        color: #fff;
+        svg {
+            color: #fff;
+        }
+    }
+  }
+  
