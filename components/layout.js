@@ -3,6 +3,7 @@ import {useState, useEffect} from "react";
 import {useUser} from "../lib/hooks";
 import Particles from "react-tsparticles";
 import { options } from "../lib/data";
+import Login from "./login";
 
 function Layout ({children}) {
     const user = useUser();
@@ -25,6 +26,7 @@ function Layout ({children}) {
             <div className="layout_content_wrapper">
                 <div className="layout_content">
                     <Navbar/>
+                    <Login/>
                     <div className="layout_body">
                         {children}
                     </div>

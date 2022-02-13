@@ -4,10 +4,16 @@ const AppContext = createContext();
 
 export function AuthContext({ children }) {
   const [currentUser, setUser] = useState({});
+  const [modalIsOpen, setModalOpen] = useState(false);
+  const [isProcessing, setIsProcessing] = useState(false);
+
   const value = {
-      name: "steven",
       currentUser,
-      setUser
+      setUser,
+      modalIsOpen,
+      setModalOpen,
+      isProcessing,
+      setIsProcessing
   }
 
   return (
