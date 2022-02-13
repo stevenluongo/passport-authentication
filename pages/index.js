@@ -1,18 +1,54 @@
-import React, { useEffect } from 'react';
-import Image from "next/image";
-import PassportLogo from "../public/images/passport.png";
-import NextLogo from "../public/images/next-logo.png";
-import Code from "@material-ui/icons/Code";
-import { params } from "../lib/data";
+import React, { useEffect, useState } from 'react';
 import { useAuth } from '../context/AuthContext';
+import { styled } from '@mui/material/styles';
+import Button from '@mui/material/Button';
+import Fade from "react-reveal/Fade";
 
 function Landing() {
     const {currentUser} = useAuth();
 
     return (
       <div className='app_wrapper'>
+        <Fade duration={1000} top distance="20px">
+        <div className='app_content'>
+          <h1>The authentication flow <br/> built for your needs.</h1>
+          <p>Implement a secure authentication system for Next.js built with<br/>Passport that supports custom credentials and third party logins.</p>
+          <span>
+            <ColorButton>
+              Log in
+            </ColorButton>
+            <SecondaryButton>
+              View Repository
+            </SecondaryButton>
+          </span>
+        </div>
+        </Fade>
       </div>
     )
 }
 
 export default Landing;
+
+const ColorButton = styled(Button)(({ theme }) => ({
+  color: '#fff',
+  background: 'linear-gradient(56deg, #7650ff 0%, #7650ff 100%)',
+  fontSize: '0.9em',
+  textTransform: 'initial',
+  fontFamily: 'Inter, sans-serif',
+  width: 200,
+  padding: 12,
+}));
+const SecondaryButton = styled(Button)(({ theme }) => ({
+  color: '#fff',
+  background: '#222222',
+  fontSize: '0.9em',
+  textTransform: 'initial',
+  fontFamily: 'Inter, sans-serif',
+  width: 200,
+  padding: 12,
+  '&:hover': {
+    backgroundColor: '#7650ff',
+    borderColor: '#0062cc',
+    boxShadow: 'none',
+  },
+}));
