@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import { useAuth } from '../context/AuthContext';
-import { styled } from '@mui/material/styles';
-import Button from '@mui/material/Button';
+import React from 'react';
 import Fade from "react-reveal/Fade";
+import { useAuth } from '../context/AuthContext';
 import GitHubIcon from '@mui/icons-material/GitHub';
+import { PrimaryButton, SecondaryButton } from "../components/index";
 
 function Landing() {
     const {currentUser, setUser, setModalOpen} = useAuth();
@@ -22,13 +21,13 @@ function Landing() {
           <p>Implement a secure authentication system for Next.js built with<br/>Passport that supports custom credentials and third party logins.</p>
           <span>
             {currentUser ? (
-            <ColorButton onClick={handleLogout}>
+            <PrimaryButton onClick={handleLogout}>
               Log out
-            </ColorButton>
+            </PrimaryButton>
             ) : (
-            <ColorButton onClick={() => setModalOpen(true)}>
+            <PrimaryButton onClick={() => setModalOpen(true)}>
               Try it !
-            </ColorButton>
+            </PrimaryButton>
             )}
             <SecondaryButton href="https://github.com/binolt/next.js-passport-auth" target="_blank" rel="noreferrer" endIcon={<GitHubIcon/>}>
               View Repository
@@ -41,27 +40,3 @@ function Landing() {
 }
 
 export default Landing;
-
-const ColorButton = styled(Button)(({ theme }) => ({
-  color: '#fff',
-  background: 'linear-gradient(56deg, #7650ff 0%, #7650ff 100%)',
-  fontSize: '0.9em',
-  textTransform: 'initial',
-  fontFamily: 'Inter, sans-serif',
-  width: 200,
-  padding: 12,
-}));
-const SecondaryButton = styled(Button)(({ theme }) => ({
-  color: '#fff',
-  background: '#222222',
-  fontSize: '0.9em',
-  textTransform: 'initial',
-  fontFamily: 'Inter, sans-serif',
-  width: 200,
-  padding: 12,
-  '&:hover': {
-    backgroundColor: '#7650ff',
-    borderColor: '#0062cc',
-    boxShadow: 'none',
-  },
-}));

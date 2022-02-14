@@ -21,12 +21,6 @@ const userSchema = new mongoose.Schema({
         type: Date,
         default: Date.now()
     },
-    resetHash: {
-        type: String,
-    },
-    resetSalt: {
-        type: String,
-    }
 });
 
 let Dataset = mongoose.models.user || mongoose.model("user", userSchema);

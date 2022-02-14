@@ -108,3 +108,28 @@ export const LoadingBtn = styled(LoadingButton)({
   },
 
 })
+
+export const PrimaryButton = styled(Button)(({ theme }) => ({
+  color: '#fff',
+  background: 'linear-gradient(56deg, #7650ff 0%, #7650ff 100%)',
+  fontSize: '0.9em',
+  textTransform: 'initial',
+  fontFamily: 'Inter, sans-serif',
+  width: 200,
+  padding: 12,
+}));
+
+export const SecondaryButton = styled(Button)(({ theme }) => ({
+  color: '#fff',
+  background: '#222222',
+  fontSize: '0.9em',
+  textTransform: 'initial',
+  fontFamily: 'Inter, sans-serif',
+  width: 200,
+  padding: 12,
+  '&:hover': {
+    backgroundColor: '#7650ff',
+    borderColor: '#0062cc',
+    boxShadow: 'none',
+  },
+}));
