@@ -1,6 +1,6 @@
 import React, {useRef, useState} from 'react';
 import {useRouter} from "next/router";
-import { CssTextField, GithubButton } from '../components';
+import { CssTextField, GithubButton, GithubLoadingButton } from '../components';
 import { useAuth } from '../context/AuthContext';
 import { LoadingBtn } from '../components';
 import ArrowLeftIcon from '@mui/icons-material/ArrowLeft';
@@ -13,7 +13,7 @@ export default function Register() {
     const passwordRef = useRef(null);
     const emailRef = useRef(null);
     const [message, setMessage] = useState({});
-    const {isProcessing, setIsProcessing} = useAuth();
+    const {isProcessing, setIsProcessing, isGithubProcessing, setIsGithubProcessing} = useAuth();
     
     const handleSubmit = async(evt) => {
         evt.preventDefault();
@@ -64,30 +64,33 @@ export default function Register() {
                 <h1 className='a_r_head'>Create your account<span>.</span></h1>
             </Fade>
             <div className='a_r_c_body'>
-
+                <a style={{textDecoration: 'none'}} onClick={() => setIsGithubProcessing(true)} href="/api/auth/github">
+                    <Fade duration={1000} top distance="25px">
+                            <GithubLoadingButton  loading={isGithubProcessing} startIcon={<GitHub/>} sx={{width: "100%", p: '0.85rem'}}>Sign up with Github</GithubLoadingButton>
+                    </Fade>
+                </a>
                 <Fade duration={1000} top distance="30px">
-                <GithubButton startIcon={<GitHub/>} sx={{width: "100%", p: '1rem'}}>Sign up with Github</GithubButton>
-                <span className='a_r_c_b_break'>
-                    <hr/>
-                    <p>Or Sign Up with Email</p>
-                    <hr/>
-                </span>
-                <form style={{display: 'flex', flexDirection: 'column', width: '100%'}} onSubmit={handleSubmit}>
-                <CssTextField ref={usernameRef} sx={{width: '100%', m: '1rem 0'}} label="Username" id="custom-css-outlined-input-username" name="email_address" />
-                <CssTextField ref={emailRef} sx={{width: '100%', mb: '1rem'}} label="Email Address" id="custom-css-outlined-input-email" name="email_address" />
-                <CssTextField ref={passwordRef} type="password" sx={{width: '100%', mb: '1rem'}} label="Password" id="custom-css-outlined-input-password" name="email_address" />
-                <LoadingBtn
-                    className='a_c_d_summary_item_button'
-                    loading={isProcessing}
-                    variant="contained"
-                    style={{width: "100%", padding: '.65rem'}}
-                    type="submit"
-                    >
-                Create Account
-                </LoadingBtn>
-                </form>
-                {message && <p>{message.msgBody}</p>}
-                        </Fade>
+                    <span className='a_r_c_b_break'>
+                        <hr/>
+                        <p>Or Sign Up with Email</p>
+                        <hr/>
+                    </span>
+                    <form style={{display: 'flex', flexDirection: 'column', width: '100%'}} onSubmit={handleSubmit}>
+                    <CssTextField ref={usernameRef} sx={{width: '100%', m: '1rem 0'}} label="Username" id="custom-css-outlined-input-username" name="email_address" />
+                    <CssTextField ref={emailRef} sx={{width: '100%', mb: '1rem'}} label="Email Address" id="custom-css-outlined-input-email" name="email_address" />
+                    <CssTextField ref={passwordRef} type="password" sx={{width: '100%', mb: '1rem'}} label="Password" id="custom-css-outlined-input-password" name="email_address" />
+                    <LoadingBtn
+                        className='a_c_d_summary_item_button'
+                        loading={isProcessing}
+                        variant="contained"
+                        style={{width: "100%", padding: '.65rem'}}
+                        type="submit"
+                        >
+                    Create Account
+                    </LoadingBtn>
+                    </form>
+                    {message && <p>{message.msgBody}</p>}
+                </Fade>
             </div>
         </div>
       </div>

@@ -3,22 +3,34 @@ import { useAuth } from '../context/AuthContext';
 import { styled } from '@mui/material/styles';
 import Button from '@mui/material/Button';
 import Fade from "react-reveal/Fade";
-import LaunchIcon from '@mui/icons-material/Launch';
 import GitHubIcon from '@mui/icons-material/GitHub';
+
 function Landing() {
-    const {currentUser} = useAuth();
+    const {currentUser, setUser, setModalOpen} = useAuth();
+
+    const handleLogout = async() => {
+      const res = await fetch("/api/logout")
+      const data = await res.json()
+      if(!data.msg.msgError) setUser(data.user);
+    }
 
     return (
       <div className='app_wrapper'>
         <Fade duration={1000} top distance="20px">
         <div className='app_content'>
-          <h1>Next.js Authentication flow <br/> built with Passport.</h1>
+          {currentUser ? <h1>Welcome back, {currentUser.username} !</h1> : <h1>Next.js Authentication flow <br/> built with Passport.</h1>}
           <p>Implement a secure authentication system for Next.js built with<br/>Passport that supports custom credentials and third party logins.</p>
           <span>
-            <ColorButton>
+            {currentUser ? (
+            <ColorButton onClick={handleLogout}>
+              Log out
+            </ColorButton>
+            ) : (
+            <ColorButton onClick={() => setModalOpen(true)}>
               Try it !
             </ColorButton>
-            <SecondaryButton endIcon={<GitHubIcon/>}>
+            )}
+            <SecondaryButton href="https://github.com/binolt/next.js-passport-auth" target="_blank" rel="noreferrer" endIcon={<GitHubIcon/>}>
               View Repository
             </SecondaryButton>
           </span>

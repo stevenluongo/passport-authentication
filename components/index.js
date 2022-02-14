@@ -23,6 +23,19 @@ export const GithubButton = styled(Button)(({ theme }) => ({
   }
 }));
 
+export const GithubLoadingButton = styled(LoadingButton)({
+  color: "#fff",
+  background: '#424242',
+  fontSize: '14px',
+  textTransform: 'initial',
+  fontFamily: 'Inter, sans-serif',
+  borderRadius: 5,
+  "&:hover" : {
+      background: '#525252'
+  }
+
+})
+
 export const StyledMenu = styled((props) => (
   <Menu
     elevation={2}

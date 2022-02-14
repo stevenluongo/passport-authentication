@@ -1,8 +1,10 @@
 import { useAuth } from "../context/AuthContext";
 import Modal from "react-modal";
-import { CssTextField, GithubButton, LoadingBtn } from ".";
+import { CssTextField, GithubLoadingButton, LoadingBtn } from ".";
 import GitHub from "@mui/icons-material/GitHub";
 import { useRef } from "react";
+import Fade from "react-reveal/Fade";
+import { useRouter } from "next/router";
 
 const customStyles = {
   content: {
@@ -23,9 +25,10 @@ const customStyles = {
 Modal.setAppElement('#__next');
 
 export default function Login() {
-  const {modalIsOpen, setModalOpen, isProcessing, setIsProcessing} = useAuth();
+  const {modalIsOpen, setModalOpen, isProcessing, setIsProcessing, isGithubProcessing, setIsGithubProcessing} = useAuth();
   const usernameRef = useRef(null);
   const passwordRef = useRef(null);
+  const router = useRouter()
 
   const handleSubmit = async(evt) => {
     evt.preventDefault();
@@ -80,7 +83,9 @@ const handleGithub = () => {
     <>
         <h1>Login</h1>
         <p className="login_subhead">Login to manage your account</p>
-        <GithubButton className="login_github" startIcon={<GitHub/>} style={{width: "100%", padding: '.65rem'}}> Sign in with GitHub</GithubButton>
+        <a style={{textDecoration: 'none', width: '100%'}} onClick={() => setIsGithubProcessing(true)} href="/api/auth/github">
+          <GithubLoadingButton  loading={isGithubProcessing} startIcon={<GitHub/>} sx={{width: "100%", p: '0.65rem'}}>Sign up with Github</GithubLoadingButton>
+        </a>
         <span className="login_break">
           <hr/>
           <p>or Sign in with Email</p>
@@ -99,7 +104,7 @@ const handleGithub = () => {
             Login
             </LoadingBtn>
         </form>
-        <p className="login_footer">Don't have an account ? <span>Sign Up</span></p>
+        <p className="login_footer">Don't have an account ? <span onClick={() => { setModalOpen(false); router.push("/register")}} style={{textDecoration: 'underline'}}>Sign Up</span></p>
     </>
 </Modal>
   );

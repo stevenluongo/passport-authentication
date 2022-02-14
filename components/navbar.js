@@ -32,6 +32,7 @@ function Navbar () {
         const res = await fetch("/api/logout")
         const data = await res.json()
         if(!data.msg.msgError) setUser(data.user);
+        router.push("/")
     }
 
     const openModal = () => {
@@ -46,8 +47,14 @@ function Navbar () {
                 <IconButton className="nav_menu_icon" aria-label="delete" onClick={handleClick}>
                     <MenuIcon/>
                 </IconButton>
-                <p onClick={openModal}>Log in</p>
-                <ColorButton onClick={() => router.push("/register")} className="nav_signup" variant="contained" >Sign up</ColorButton>
+                {currentUser ? (
+                  <ColorButton onClick={handleLogout} className="nav_signup" variant="contained" >Log out</ColorButton>
+                ) : (
+                  <>
+                    <p onClick={openModal}>Log in</p>
+                    <ColorButton onClick={() => router.push("/register")} className="nav_signup" variant="contained" >Sign up</ColorButton>
+                  </>
+                )}
                 <StyledMenu
                     id="basic-menu"
                     anchorEl={anchorEl}

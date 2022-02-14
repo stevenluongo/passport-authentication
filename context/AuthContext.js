@@ -6,6 +6,7 @@ export function AuthContext({ children }) {
   const [currentUser, setUser] = useState({});
   const [modalIsOpen, setModalOpen] = useState(false);
   const [isProcessing, setIsProcessing] = useState(false);
+  const [isGithubProcessing, setIsGithubProcessing] = useState(false);
 
   const value = {
       currentUser,
@@ -13,7 +14,9 @@ export function AuthContext({ children }) {
       modalIsOpen,
       setModalOpen,
       isProcessing,
-      setIsProcessing
+      setIsProcessing,
+      isGithubProcessing,
+      setIsGithubProcessing
   }
 
   return (
