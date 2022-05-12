@@ -1,18 +1,10 @@
 import { createUser, findUser } from "../../lib/user";
 import { getLoginSession } from "../../lib/auth";
+import nextConnect from "next-connect";
 
-export default async (req, res) => {
-    switch (req.method) {
-        case "GET" :
-            await fetchSession(req, res)
-            break;
-        case "POST": 
-            await register(req, res)
-            break;
-    }
-}
+const handler = nextConnect();
 
-const fetchSession = async(req, res) => {
+handler.get(async(req, res) => {
     try {
         const session = await getLoginSession(req)
         const user = session ? await findUser({_id: session._doc._id}) : null;
@@ -26,9 +18,12 @@ const fetchSession = async(req, res) => {
         console.error(error)
         res.status(500).end('Authentication token is invalid, please log in')
     }
-}
+});
 
-const register = async(req, res) => {
+
+handler.post(async(req, res) => {
     const data = await createUser(req.body);
     res.json(data)
-}
+})
+
+export default handler;

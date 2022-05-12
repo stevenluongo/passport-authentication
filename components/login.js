@@ -3,7 +3,6 @@ import Modal from "react-modal";
 import { CssTextField, GithubLoadingButton, LoadingBtn } from ".";
 import GitHub from "@mui/icons-material/GitHub";
 import { useRef } from "react";
-import Fade from "react-reveal/Fade";
 import { useRouter } from "next/router";
 
 const customStyles = {
@@ -32,7 +31,6 @@ export default function Login() {
 
   const handleSubmit = async(evt) => {
     evt.preventDefault();
-    console.log("HELLO")
     setIsProcessing(true)
     const username = usernameRef.current.childNodes[1].childNodes[0].value;
     const password = passwordRef.current.childNodes[1].childNodes[0].value
@@ -41,7 +39,6 @@ export default function Login() {
         return;
     }
     const user = {username, password}
-    console.log(user)
     const res = await fetch("/api/login", {
         method: "POST",
         mode: "cors",
@@ -55,7 +52,6 @@ export default function Login() {
   
     const data = await res.json();
 
-    console.log(data);
     setIsProcessing(false)
     if(!data.msg.msgError) {
         setTimeout(() => {
@@ -64,11 +60,6 @@ export default function Login() {
             setUser(data.user);
         }, 500);
     }
-}
-
-const handleGithub = () => {
-    console.log("LOADING")
-    setIsProcessing(true)
 }
 
   return (
