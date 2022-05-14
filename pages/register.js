@@ -18,17 +18,17 @@ export default function Register() {
     const handleSubmit = async(evt) => {
         evt.preventDefault();
         const username = usernameRef.current.childNodes[1].childNodes[0].value;
-        const email = emailRef.current.childNodes[1].childNodes[0].value;
+        const email_address = emailRef.current.childNodes[1].childNodes[0].value;
         const password = passwordRef.current.childNodes[1].childNodes[0].value
 
         setIsProcessing(true)
 
-        if(!username || !email) {
+        if(!username || !email_address) {
             setMessage({msgBody: "Cannot Leave Blank", msgError: true});
             setIsProcessing(false)
             return;
         }
-        const user = {email, username, password}
+        const user = { email_address, username, password }
 
         const res = await fetch("/api/user", {
             method: "POST",
@@ -43,9 +43,10 @@ export default function Register() {
 
         const data = await res.json();
 
-        setMessage(data);
+        setMessage({body: data.message, error: data.success});
+        
         setIsProcessing(false)
-        if(!data.msgError) {
+        if(data.success) {
             //on success 
             router.push('/');
             usernameRef.current.value = ""
@@ -89,7 +90,7 @@ export default function Register() {
                     Create Account
                     </LoadingBtn>
                     </form>
-                    {message && <p>{message.msgBody}</p>}
+                    {message && <p>{message.body}</p>}
                 </Fade>
             </div>
         </div>

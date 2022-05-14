@@ -1,4 +1,4 @@
-import { createUser, findUser } from "../../lib/user";
+import { createLocalUser, fetchUserById } from "../../lib/user";
 import { getLoginSession } from "../../lib/auth";
 import nextConnect from "next-connect";
 
@@ -7,7 +7,7 @@ const handler = nextConnect();
 handler.get(async(req, res) => {
     try {
         const session = await getLoginSession(req)
-        const user = session ? await findUser({_id: session._doc._id}) : null;
+        const user = session ? await fetchUserById(session._id) : null;
         if(!user) {
             res.status(200).json(null)
             return;
@@ -20,10 +20,13 @@ handler.get(async(req, res) => {
     }
 });
 
-
 handler.post(async(req, res) => {
-    const data = await createUser(req.body);
-    res.json(data)
+    try {
+        const response = await createLocalUser(req.body);
+        res.status(201).json({success: true, ...response});
+    } catch (err) {
+        res.status(500).json({success: false, message: err.message});
+    }
 })
 
 export default handler;

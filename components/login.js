@@ -24,7 +24,7 @@ const customStyles = {
 Modal.setAppElement('#__next');
 
 export default function Login() {
-  const {modalIsOpen, setModalOpen, isProcessing, setIsProcessing, isGithubProcessing, setIsGithubProcessing} = useAuth();
+  const { modalIsOpen, setModalOpen, isProcessing, setIsProcessing, isGithubProcessing, setIsGithubProcessing, setUser } = useAuth();
   const usernameRef = useRef(null);
   const passwordRef = useRef(null);
   const router = useRouter()
@@ -38,7 +38,7 @@ export default function Login() {
         setIsProcessing(false);
         return;
     }
-    const user = {username, password}
+    const user = { username, password }
     const res = await fetch("/api/login", {
         method: "POST",
         mode: "cors",
@@ -53,10 +53,9 @@ export default function Login() {
     const data = await res.json();
 
     setIsProcessing(false)
-    if(!data.msg.msgError) {
+    if(data.success) {
         setTimeout(() => {
-            setIsProcessing(false)
-            closeModal();
+            setModalOpen(false);
             setUser(data.user);
         }, 500);
     }
