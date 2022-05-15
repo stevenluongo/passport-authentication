@@ -9,11 +9,9 @@ const handler = nextConnect()
     .use(passport.initialize())
     .get(async (req, res) => {
     try {
-        passport.authenticate('github')(req, res, (...args) => {
-            console.log("passport authenticated", args)
-        })
-    } catch (error) {
-        res.status(500).json({ msgError: true, msgBody: "Something went wrong..." })
+        passport.authenticate('github')(req, res, (...args) => {})
+    } catch (err) {
+        res.status(500).json({ success: false, message: err.message });
     }
 })
 

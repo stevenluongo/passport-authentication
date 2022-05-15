@@ -3,6 +3,7 @@
 @import "./app";
 @import "./_breakpoints.scss";
 @import "./nav";
+@import "../components/Register/index";
 
 :root, body[data-theme="default"] {
     --content-width: 1366px;

@@ -1,5 +1,5 @@
 import '../styles/styles.scss'; //stylesheet
-import Layout from '../components/layout'
+import Layout from '../components/Layout'
 import { useState, useEffect } from "react";
 import { AppContext } from "../context/AuthContext";
 import auth_service from '../services/auth_service';

@@ -1,12 +1,12 @@
 import { useState } from "react";
-import { useAuth } from "../context/AuthContext";
+import Fade from "react-reveal/Fade"
+import {useRouter} from "next/router";
+import MenuItem from '@mui/material/MenuItem';
 import MenuIcon from '@mui/icons-material/Menu';
 import IconButton from '@mui/material/IconButton';
-import MenuItem from '@mui/material/MenuItem';
-import {useRouter} from "next/router";
-import Fade from "react-reveal/Fade"
-import { ColorButton, StyledMenu } from ".";
-import auth_service from "../services/auth_service";
+import { ColorButton, StyledMenu } from "../index";
+import { useAuth } from "../../context/AuthContext";
+import auth_service from "../../services/auth_service";
 
 function Navbar () {
     const { user, setUser, setModalOpen } = useAuth();
@@ -17,15 +17,20 @@ function Navbar () {
     
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
+    
       };
-      const handleClose = () => {
+    const handleClose = () => {
         setAnchorEl(null);
-      };
+    };
 
     const handleLogout = async() => {
+      try {
         const data = await auth_service.logout();
-        if(!data.msg.msgError) setUser(data.user);
-        router.push("/")
+        if(data.success) setUser(data.user);
+        else throw new Error("Something went wrong...");
+      } catch (err) {
+        console.error(err);
+      }
     }
 
     const openModal = () => {

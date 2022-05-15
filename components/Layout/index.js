@@ -1,7 +1,7 @@
-import Navbar from "./navbar";
+import Navbar from "../Navbar";
+import { options } from "./data";
 import Particles from "react-tsparticles";
-import { options } from "../lib/data";
-import Login from "./login";
+import AuthModal from "../AuthModal";
 
 function Layout ({children}) {
     return (
@@ -15,7 +15,7 @@ function Layout ({children}) {
             <div className="layout_content_wrapper">
                 <div className="layout_content">
                     <Navbar/>
-                    <Login/>
+                    <AuthModal/>
                     <div className="layout_body">
                         {children}
                     </div>

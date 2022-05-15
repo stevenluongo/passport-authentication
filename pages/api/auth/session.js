@@ -11,8 +11,7 @@ export default async(req, res) => {
         }
         const { _id, username } = user
         res.status(200).json({ user: { username, _id }})
-    } catch (error) {
-        console.error(error)
+    } catch (err) {
         res.status(500).end('Authentication token is invalid, please log in')
     }
 }
