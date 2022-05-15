@@ -1,8 +1,10 @@
 import { createLocalUser } from "../../../../lib/user";
+import csrf from "../../../../utils/csrf";
 
 //create new user
 export default async (req, res) => {
     try {
+        await csrf(req, res);
         const response = await createLocalUser(req.body);
         res.status(201).json({success: true, ...response});
     } catch (err) {

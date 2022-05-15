@@ -8,7 +8,7 @@ import ArrowLeftIcon from '@mui/icons-material/ArrowLeft';
 import { CssTextField, GithubLoadingButton, LoadingBtn } from '../index';
 import { validateEmail } from "../../lib/helpers";
 
-export default function Register() {
+export default function Register({ csrf_token }) {
   const [message, setMessage] = useState(null);
 
   //hooks
@@ -44,7 +44,7 @@ export default function Register() {
 
         const { username, email_address, password } = fetchInputValues();
 
-        const data = isValid && await auth_service.register({ username, email_address, password }); //register user
+        const data = isValid && await auth_service.register(csrf_token, { username, email_address, password }); //register user
 
         if(data.success) {
           setIsProcessing(false); //disable loading state
@@ -112,3 +112,4 @@ export default function Register() {
     </div>
   )
 }
+

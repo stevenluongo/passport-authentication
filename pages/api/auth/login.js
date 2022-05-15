@@ -17,10 +17,12 @@ const handler =
     .use(passport.initialize())
     .post(async (req, res) => {
     try {
+        if(!req.body.username) throw new Error("You must provide a username...");
+        if(!req.body.password) throw new Error("You must provide a password...");
         const user = await authenticate(req, res);
         const session = {...user}
         const cookie = await setLoginSession(res, session);
-        const {username} = user;
+        const { username } = user;
         res.setHeader("Set-cookie", cookie)
         res.status(201).json({success: true, message: `Welcome back, ${username}`, user})
     } catch (err) {

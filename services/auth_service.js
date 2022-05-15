@@ -8,20 +8,21 @@ const auth_service = {
       credentials: "same-origin",
       headers: {
           "Content-Type": "application/json",
-          'Accept': 'application/json'
+          'Accept': 'application/json',
       },
       body: JSON.stringify(payload),
     });
     return await res.json();
   },
-  register: async(payload) => {
+  register: async(csrf_token, payload) => {
     const res = await fetch(`${base_url}/api/auth/user`, {
       method: "POST",
       mode: "cors",
       credentials: "same-origin",
       headers: {
           "Content-Type": "application/json",
-          'Accept': 'application/json'
+          'Accept': 'application/json',
+          'CSRF-Token': csrf_token,
       },
       body: JSON.stringify(payload),
     });
