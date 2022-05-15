@@ -1,30 +1,6 @@
-import { createContext, useContext, useEffect, useState } from 'react';
+import { createContext, useContext } from 'react';
 
-const AppContext = createContext();
-
-export function AuthContext({ children }) {
-  const [currentUser, setUser] = useState({});
-  const [modalIsOpen, setModalOpen] = useState(false);
-  const [isProcessing, setIsProcessing] = useState(false);
-  const [isGithubProcessing, setIsGithubProcessing] = useState(false);
-
-  const value = {
-      currentUser,
-      setUser,
-      modalIsOpen,
-      setModalOpen,
-      isProcessing,
-      setIsProcessing,
-      isGithubProcessing,
-      setIsGithubProcessing
-  }
-
-  return (
-    <AppContext.Provider value={value}>
-      {children}
-    </AppContext.Provider>
-  );
-}
+export const AppContext = createContext();
 
 export function useAuth() {
   return useContext(AppContext);

@@ -13,7 +13,7 @@ export default function Register() {
     const passwordRef = useRef(null);
     const emailRef = useRef(null);
     const [message, setMessage] = useState({});
-    const {isProcessing, setIsProcessing, isGithubProcessing, setIsGithubProcessing} = useAuth();
+    const { isProcessing, setIsProcessing, isGithubProcessing, setIsGithubProcessing } = useAuth();
     
     const handleSubmit = async(evt) => {
         evt.preventDefault();

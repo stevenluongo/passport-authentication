@@ -1,5 +1,4 @@
-import {useUser} from "../lib/hooks";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useAuth } from "../context/AuthContext";
 import MenuIcon from '@mui/icons-material/Menu';
 import IconButton from '@mui/material/IconButton';
@@ -9,13 +8,12 @@ import Fade from "react-reveal/Fade"
 import { ColorButton, StyledMenu } from ".";
 
 function Navbar () {
-    const user = useUser();
-    const {currentUser, setUser, setModalOpen} = useAuth();
+    const { user, setUser, setModalOpen } = useAuth();
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
 
-
     const router = useRouter()
+    
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
       };
@@ -23,11 +21,6 @@ function Navbar () {
         setAnchorEl(null);
       };
 
-
-    useEffect(() => {
-        setUser(user);
-    }, [user])
-    
     const handleLogout = async() => {
         const res = await fetch("/api/logout")
         const data = await res.json()
@@ -47,7 +40,7 @@ function Navbar () {
                 <IconButton className="nav_menu_icon" aria-label="delete" onClick={handleClick}>
                     <MenuIcon/>
                 </IconButton>
-                {currentUser ? (
+                {user ? (
                   <ColorButton onClick={handleLogout} className="nav_signup" variant="contained" >Log out</ColorButton>
                 ) : (
                   <>

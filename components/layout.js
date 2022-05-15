@@ -1,21 +1,10 @@
 import Navbar from "./navbar";
-import {useState, useEffect} from "react";
-import {useUser} from "../lib/hooks";
 import Particles from "react-tsparticles";
 import { options } from "../lib/data";
 import Login from "./login";
 
 function Layout ({children}) {
-    const user = useUser();
-    const [loaded, setLoaded] = useState(false);
-
-    useEffect(() => {
-        if(user !== undefined) {
-            setLoaded(true)
-        }
-    }, [user]);
-
-    return loaded && (
+    return (
         <div className="layout">
             <Particles
                 options={options}
