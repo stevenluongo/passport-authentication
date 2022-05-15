@@ -1,4 +1,4 @@
-import { getTokenCookie, removeTokenCookie } from "../../lib/cookies"
+import { getTokenCookie, removeTokenCookie } from "../../../lib/cookies"
 
 const TOKEN_NAME = 'passport-session'
 

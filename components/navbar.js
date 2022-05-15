@@ -6,6 +6,7 @@ import MenuItem from '@mui/material/MenuItem';
 import {useRouter} from "next/router";
 import Fade from "react-reveal/Fade"
 import { ColorButton, StyledMenu } from ".";
+import auth_service from "../services/auth_service";
 
 function Navbar () {
     const { user, setUser, setModalOpen } = useAuth();
@@ -22,8 +23,7 @@ function Navbar () {
       };
 
     const handleLogout = async() => {
-        const res = await fetch("/api/logout")
-        const data = await res.json()
+        const data = await auth_service.logout();
         if(!data.msg.msgError) setUser(data.user);
         router.push("/")
     }

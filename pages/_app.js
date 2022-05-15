@@ -2,6 +2,7 @@ import '../styles/styles.scss'; //stylesheet
 import Layout from '../components/layout'
 import { useState, useEffect } from "react";
 import { AppContext } from "../context/AuthContext";
+import auth_service from '../services/auth_service';
 
 function MyApp({ Component, pageProps }) {
   const [user, setUser] = useState(null);
@@ -15,8 +16,7 @@ function MyApp({ Component, pageProps }) {
   }, [])
 
   const load_app = async() => {
-    const res = await fetch("/api/user")
-    const data = await res.json()
+    const data = await auth_service.fetchSession();
     setUser(data.user)
     setLoaded(true)
   }

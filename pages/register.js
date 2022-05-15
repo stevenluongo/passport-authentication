@@ -6,6 +6,7 @@ import { LoadingBtn } from '../components';
 import ArrowLeftIcon from '@mui/icons-material/ArrowLeft';
 import GitHub from '@mui/icons-material/GitHub';
 import Fade from "react-reveal/Fade";
+import auth_service from '../services/auth_service';
 
 export default function Register() {
     const router = useRouter()
@@ -30,18 +31,7 @@ export default function Register() {
         }
         const user = { email_address, username, password }
 
-        const res = await fetch("/api/user", {
-            method: "POST",
-            mode: "cors",
-            credentials: "same-origin",
-            headers: {
-                "Content-Type": "application/json",
-                'Accept': 'application/json'
-            },
-            body: JSON.stringify(user),
-        })
-
-        const data = await res.json();
+        const data = await auth_service.register(user);
 
         setMessage({body: data.message, error: data.success});
         

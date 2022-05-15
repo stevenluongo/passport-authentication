@@ -4,6 +4,7 @@ import { CssTextField, GithubLoadingButton, LoadingBtn } from ".";
 import GitHub from "@mui/icons-material/GitHub";
 import { useRef } from "react";
 import { useRouter } from "next/router";
+import auth_service from "../services/auth_service";
 
 const customStyles = {
   content: {
@@ -39,18 +40,7 @@ export default function Login() {
         return;
     }
     const user = { username, password }
-    const res = await fetch("/api/login", {
-        method: "POST",
-        mode: "cors",
-        credentials: "same-origin",
-        headers: {
-            "Content-Type": "application/json",
-            'Accept': 'application/json'
-        },
-        body: JSON.stringify(user),
-    })
-  
-    const data = await res.json();
+    const data = await auth_service.login(user);
 
     setIsProcessing(false)
     if(data.success) {

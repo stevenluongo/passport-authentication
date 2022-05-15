@@ -1,7 +1,7 @@
 import passport from "passport";
 import nextConnect from "next-connect";
-import { localStrategy } from "../../lib/strategies";
-import { setLoginSession } from "../../lib/auth";
+import { localStrategy } from "../../../lib/strategies";
+import { setLoginSession } from "../../../lib/auth";
 
 const authenticate = (req, res) => new Promise((resolve, reject) => {
     passport.authenticate('local', {session: false}, (error, token) => {

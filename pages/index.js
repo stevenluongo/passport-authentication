@@ -3,13 +3,13 @@ import Fade from "react-reveal/Fade";
 import { useAuth } from '../context/AuthContext';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import { PrimaryButton, SecondaryButton } from "../components/index";
+import auth_service from '../services/auth_service';
 
 function Landing() {
     const {user, setUser, setModalOpen} = useAuth();
 
     const handleLogout = async() => {
-      const res = await fetch("/api/logout")
-      const data = await res.json()
+      const data = await auth_service.logout();
       if(!data.msg.msgError) setUser(data.user);
     }
 
