@@ -17,7 +17,7 @@ function MyApp({ Component, pageProps }) {
 
   const load_app = async() => {
     const data = await auth_service.fetchSession();
-    setUser(data.user)
+    if(data.user) setUser(data.user);
     setLoaded(true)
   }
   
