@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Fade from "react-reveal/Fade";
 import { useAuth } from '../../context/AuthContext';
 import GitHubIcon from '@mui/icons-material/GitHub';
@@ -7,6 +7,13 @@ import { PrimaryButton, SecondaryButton } from "../index";
 
 function Landing() {
     const { user, setUser, setModalOpen } = useAuth();
+
+    useEffect(async() => {
+      console.log('hello');
+      const res = await fetch('/api/hello');
+      const data = await res.json();
+      console.log(data)
+    }, [])
 
     const handleLogout = async() => {
       try {

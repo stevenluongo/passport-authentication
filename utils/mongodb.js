@@ -13,16 +13,20 @@ if (!MONGODB_DB) {
     throw new Error('Define the MONGODB_DB environmental variable');
 }
 
-let cachedClient = null;
-let cachedDb = null;
+
+let cached = global.mongoose;
+
+if (!cached) {
+    cached = global.mongoose = { client: null, db: null }
+}
 
 export async function connectToDatabase() {
-    // check the cached.
-    if (cachedClient && cachedDb) {
+    // check cache
+    if (cached.client && cached.db) {
         // load from cache
         return {
-            client: cachedClient,
-            db: cachedDb,
+            client: cached.client,
+            db: cached.db,
         };
     }
 
@@ -38,13 +42,12 @@ export async function connectToDatabase() {
     let db = client.db(MONGODB_DB);
 
     // set cache
-    cachedClient = client;
-    cachedDb = db;
-
+    cached.client = client;
+    cached.db = db;
 
     return {
-        client: cachedClient,
-        db: cachedDb,
+        client,
+        db,
     };
 }
 

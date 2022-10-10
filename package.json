@@ -16,7 +16,10 @@
     "@mui/lab": "^5.0.0-alpha.68",
     "@mui/material": "^5.4.1",
     "@sendgrid/mail": "^7.4.7",
+    "@types/node": "^18.8.3",
+    "@types/react": "^17.0.0",
     "cookie": "^0.4.1",
+    "create-next-app": "^12.3.1",
     "crypto": "^1.0.1",
     "csurf": "^1.11.0",
     "emotion": "^11.0.0",
@@ -35,7 +38,8 @@
     "react-spinners": "^0.11.0",
     "react-tsparticles": "^1.41.0",
     "sass": "1.26.3",
-    "swr": "^1.0.1"
+    "swr": "^1.0.1",
+    "typescript": "^4.8.4"
   },
   "devDependencies": {
     "@babel/preset-react": "^7.16.7"
