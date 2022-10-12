@@ -4,7 +4,7 @@ import Menu from '@mui/material/Menu';
 import TextField from '@mui/material/TextField';
 import LoadingButton from '@mui/lab/LoadingButton';
 
-export const ColorButton = styled(Button)(({ theme }) => ({
+export const ColorButton = styled(Button)(() => ({
   background:
     'linear-gradient(56deg, rgba(89,110,213,1) 0%, rgba(80,49,177,1) 100%)',
   fontSize: '14px',
@@ -12,7 +12,7 @@ export const ColorButton = styled(Button)(({ theme }) => ({
   fontFamily: 'Inter, sans-serif',
 }));
 
-export const GithubButton = styled(Button)(({ theme }) => ({
+export const GithubButton = styled(Button)(() => ({
   color: '#fff',
   background: '#424242',
   fontSize: '14px',
@@ -99,7 +99,6 @@ export const CssTextField = styled(TextField)({
 });
 
 export const LoadingBtn = styled(LoadingButton)({
-  color: '#cfc4ff',
   backgroundColor: 'var(--primary-text-accent)',
   color: '#fff',
   '&:hover': {
@@ -107,7 +106,7 @@ export const LoadingBtn = styled(LoadingButton)({
   },
 });
 
-export const PrimaryButton = styled(Button)(({ theme }) => ({
+export const PrimaryButton = styled(Button)(() => ({
   color: '#fff',
   background: 'linear-gradient(56deg, #7650ff 0%, #7650ff 100%)',
   fontSize: '0.9em',
@@ -117,7 +116,7 @@ export const PrimaryButton = styled(Button)(({ theme }) => ({
   padding: 12,
 }));
 
-export const SecondaryButton = styled(Button)(({ theme }) => ({
+export const SecondaryButton = styled(Button)(() => ({
   color: '#fff',
   background: '#222222',
   fontSize: '0.9em',

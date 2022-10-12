@@ -1,7 +1,7 @@
 import { fetchUserById } from '../../../lib/user';
 import { getLoginSession } from '../../../lib/auth';
 
-export default async (req, res) => {
+const handler = async (req, res) => {
   try {
     const session = await getLoginSession(req);
     const user = session ? await fetchUserById(session._id) : null;
@@ -15,3 +15,5 @@ export default async (req, res) => {
     res.status(500).end('Authentication token is invalid, please log in');
   }
 };
+
+export default handler;

@@ -8,12 +8,15 @@ import { PrimaryButton, SecondaryButton } from '../index';
 function Landing() {
   const { user, setUser, setModalOpen } = useAuth();
 
-  useEffect(async () => {
-    console.log('hello');
+  useEffect(() => {
+    loadRoute();
+  }, []);
+
+  const loadRoute = async() => {
     const res = await fetch('/api/hello');
     const data = await res.json();
     console.log(data);
-  }, []);
+  };
 
   const handleLogout = async () => {
     try {

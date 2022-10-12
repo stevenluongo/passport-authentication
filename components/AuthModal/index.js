@@ -6,6 +6,7 @@ import GitHub from '@mui/icons-material/GitHub';
 import { useAuth } from '../../context/AuthContext';
 import auth_service from '../../services/auth_service';
 import { CssTextField, GithubLoadingButton, LoadingBtn } from '../index';
+import Link from 'next/link';
 
 Modal.setAppElement('#__next'); //set default app element to bind modal in dom
 
@@ -74,7 +75,7 @@ export default function AuthModal() {
       <>
         <h1>Login</h1>
         <p className="login_subhead">Login to manage your account</p>
-        <a
+        <Link
           style={{ textDecoration: 'none', width: '100%' }}
           onClick={() => setIsGithubProcessing(true)}
           href="/api/auth/github"
@@ -83,10 +84,10 @@ export default function AuthModal() {
             loading={isGithubProcessing}
             startIcon={<GitHub />}
             sx={{ width: '100%', p: '0.65rem' }}
-          >
+            >
             Sign up with Github
           </GithubLoadingButton>
-        </a>
+        </Link>
         <span className="login_break">
           <hr />
           <p>or Sign in with Credentials</p>
@@ -118,8 +119,8 @@ export default function AuthModal() {
           </LoadingBtn>
           {message && <p>{message.content}</p>}
         </form>
-        <p className="login_footer">
-          Don't have an account ?{' '}
+        {/* <p className="login_footer">
+          Don't have an account ?
           <span
             onClick={() => {
               setModalOpen(false);
@@ -129,7 +130,7 @@ export default function AuthModal() {
           >
             Sign Up
           </span>
-        </p>
+        </p> */}
       </>
     </Modal>
   );

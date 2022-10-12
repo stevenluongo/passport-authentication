@@ -2,7 +2,7 @@ import { createLocalUser } from '../../../../lib/user';
 import csrf from '../../../../utils/csrf';
 
 //create new user
-export default async (req, res) => {
+const handler = async (req, res) => {
   try {
     await csrf(req, res);
     const response = await createLocalUser(req.body);
@@ -11,3 +11,6 @@ export default async (req, res) => {
     res.status(500).json({ success: false, message: err.message });
   }
 };
+
+
+export default handler;

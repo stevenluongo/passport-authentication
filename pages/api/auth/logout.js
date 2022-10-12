@@ -1,6 +1,6 @@
 import { getTokenCookie, removeTokenCookie } from '../../../lib/cookies';
 
-export default async (req, res) => {
+const handler = async (req, res) => {
   try {
     const cookies = getTokenCookie(req);
     if (cookies['passport-session']) removeTokenCookie(res, 'passport-session');
@@ -11,3 +11,6 @@ export default async (req, res) => {
     res.status(500).json({ success: false, message: err.message });
   }
 };
+
+
+export default handler;

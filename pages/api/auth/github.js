@@ -9,7 +9,7 @@ const handler = nextConnect()
   .use(passport.initialize())
   .get(async (req, res) => {
     try {
-      passport.authenticate('github')(req, res, (...args) => {});
+      passport.authenticate('github')(req, res, (..._args) => {});
     } catch (err) {
       res.status(500).json({ success: false, message: err.message });
     }

@@ -1,4 +1,3 @@
-import Fade from 'react-reveal/Fade';
 import { useRouter } from 'next/router';
 import { useRef, useState } from 'react';
 import GitHub from '@mui/icons-material/GitHub';
@@ -7,6 +6,7 @@ import auth_service from '../../services/auth_service';
 import ArrowLeftIcon from '@mui/icons-material/ArrowLeft';
 import { CssTextField, GithubLoadingButton, LoadingBtn } from '../index';
 import { validateEmail } from '../../lib/helpers';
+import Link from 'next/link';
 
 export default function Register({ csrf_token }) {
   const [message, setMessage] = useState(null);
@@ -80,83 +80,73 @@ export default function Register({ csrf_token }) {
   return (
     <div className="app_register">
       <div className="a_r_content">
-        <Fade duration={1000} top distance="10px">
-          <span onClick={() => router.push('/')} className="a_r_subhead">
-            <ArrowLeftIcon />
-            <h3>START FOR FREE</h3>
-          </span>
-        </Fade>
-        <Fade duration={1000} top distance="20px">
-          <h1 className="a_r_head">
-            Create your account<span>.</span>
-          </h1>
-        </Fade>
+        <span onClick={() => router.push('/')} className="a_r_subhead">
+          <ArrowLeftIcon />
+          <h3>START FOR FREE</h3>
+        </span>
+        <h1 className="a_r_head">
+          Create your account<span>.</span>
+        </h1>
         <div className="a_r_c_body">
-          <a
+          <Link
             style={{ textDecoration: 'none' }}
             onClick={() => setIsGithubProcessing(true)}
             href="/api/auth/github"
           >
-            <Fade duration={1000} top distance="25px">
-              <GithubLoadingButton
-                loading={isGithubProcessing}
-                startIcon={<GitHub />}
-                sx={{ width: '100%', p: '0.85rem' }}
+            <GithubLoadingButton
+              loading={isGithubProcessing}
+              startIcon={<GitHub />}
+              sx={{ width: '100%', p: '0.85rem' }}
               >
-                Sign up with Github
-              </GithubLoadingButton>
-            </Fade>
-          </a>
-          <Fade duration={1000} top distance="30px">
-            <>
-              <span className="a_r_c_b_break">
-                <hr />
-                <p>Or Sign Up with Email</p>
-                <hr />
-              </span>
-              <form
-                style={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  width: '100%',
-                }}
-                onSubmit={handleSubmit}
-              >
-                <CssTextField
-                  ref={usernameRef}
-                  sx={{ width: '100%', m: '1rem 0' }}
-                  label="Username"
-                  id="custom-css-outlined-input-username"
-                  name="email_address"
-                />
-                <CssTextField
-                  ref={emailRef}
-                  sx={{ width: '100%', mb: '1rem' }}
-                  label="Email Address"
-                  id="custom-css-outlined-input-email"
-                  name="email_address"
-                />
-                <CssTextField
-                  ref={passwordRef}
-                  type="password"
-                  sx={{ width: '100%', mb: '1rem' }}
-                  label="Password"
-                  id="custom-css-outlined-input-password"
-                  name="email_address"
-                />
-                <LoadingBtn
-                  className="a_c_d_summary_item_button"
-                  loading={isProcessing}
-                  variant="contained"
-                  style={{ width: '100%', padding: '.65rem' }}
-                  type="submit"
-                >
-                  Create Account
-                </LoadingBtn>
-              </form>
-              {message && <p>{message.content}</p>}
-            </>
-          </Fade>
+              Sign up with Github
+            </GithubLoadingButton>
+          </Link>
+          <span className="a_r_c_b_break">
+            <hr />
+            <p>Or Sign Up with Email</p>
+            <hr />
+          </span>
+          <form
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              width: '100%',
+            }}
+            onSubmit={handleSubmit}
+          >
+            <CssTextField
+              ref={usernameRef}
+              sx={{ width: '100%', m: '1rem 0' }}
+              label="Username"
+              id="custom-css-outlined-input-username"
+              name="email_address"
+            />
+            <CssTextField
+              ref={emailRef}
+              sx={{ width: '100%', mb: '1rem' }}
+              label="Email Address"
+              id="custom-css-outlined-input-email"
+              name="email_address"
+            />
+            <CssTextField
+              ref={passwordRef}
+              type="password"
+              sx={{ width: '100%', mb: '1rem' }}
+              label="Password"
+              id="custom-css-outlined-input-password"
+              name="email_address"
+            />
+            <LoadingBtn
+              className="a_c_d_summary_item_button"
+              loading={isProcessing}
+              variant="contained"
+              style={{ width: '100%', padding: '.65rem' }}
+              type="submit"
+            >
+              Create Account
+            </LoadingBtn>
+          </form>
+          {message && <p>{message.content}</p>}
         </div>
       </div>
     </div>

@@ -4,7 +4,9 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "prettier": "prettier --write ."
+    "prettier": "prettier --write .",
+    "prepare": "husky install",
+    "lint": "next lint"
   },
   "dependencies": {
     "@emotion/babel-plugin": "^11.3.0",
@@ -17,15 +19,12 @@
     "@mui/lab": "^5.0.0-alpha.68",
     "@mui/material": "^5.4.1",
     "@sendgrid/mail": "^7.4.7",
-    "@types/node": "^18.8.3",
-    "@types/react": "^17.0.0",
     "cookie": "^0.4.1",
-    "create-next-app": "^12.3.1",
     "crypto": "^1.0.1",
     "csurf": "^1.11.0",
     "emotion": "^11.0.0",
     "micro-redirect": "^1.0.2",
-    "mongoose": "^6.0.10",
+    "mongodb": "^4.10.0",
     "next": "^11.1.4",
     "next-connect": "^0.10.2",
     "next-cookies": "^2.0.3",
@@ -35,15 +34,17 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-modal": "^3.14.3",
-    "react-reveal": "^1.2.2",
-    "react-spinners": "^0.11.0",
-    "react-tsparticles": "^1.41.0",
     "sass": "1.26.3",
-    "swr": "^1.0.1",
-    "typescript": "^4.8.4"
+    "swr": "^1.0.1"
   },
   "devDependencies": {
     "@babel/preset-react": "^7.16.7",
-    "prettier": "^2.7.1"
+    "@types/node": "^18.8.4",
+    "@types/react": "^17.0.0",
+    "eslint": "^7.32.0",
+    "eslint-config-next": "^12.3.1",
+    "husky": "^8.0.1",
+    "prettier": "^2.7.1",
+    "typescript": "^4.8.4"
   }
 }
