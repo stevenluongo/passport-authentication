@@ -48,3 +48,7 @@
 //       paginate
 //     });
 //   }
+
+export default async function dataAccess() {
+    console.log('yay');
+}
