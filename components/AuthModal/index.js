@@ -84,7 +84,7 @@ export default function AuthModal() {
             loading={isGithubProcessing}
             startIcon={<GitHub />}
             sx={{ width: '100%', p: '0.65rem' }}
-            >
+          >
             Sign up with Github
           </GithubLoadingButton>
         </Link>

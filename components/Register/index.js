@@ -97,7 +97,7 @@ export default function Register({ csrf_token }) {
               loading={isGithubProcessing}
               startIcon={<GitHub />}
               sx={{ width: '100%', p: '0.85rem' }}
-              >
+            >
               Sign up with Github
             </GithubLoadingButton>
           </Link>

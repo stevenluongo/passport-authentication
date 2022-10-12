@@ -3,7 +3,7 @@
 @import './app';
 @import './_breakpoints.scss';
 @import './nav';
-@import '../components/Register/index';
+@import './register';
 
 :root,
 body[data-theme='default'] {

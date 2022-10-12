@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import Fade from 'react-reveal/Fade';
 import { useAuth } from '../../context/AuthContext';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import auth_service from '../../services/auth_service';
@@ -12,7 +11,7 @@ function Landing() {
     loadRoute();
   }, []);
 
-  const loadRoute = async() => {
+  const loadRoute = async () => {
     const res = await fetch('/api/hello');
     const data = await res.json();
     console.log(data);
@@ -30,39 +29,37 @@ function Landing() {
 
   return (
     <div className="app_wrapper">
-      <Fade duration={1000} top distance="20px">
-        <div className="app_content">
+      <div className="app_content">
+        {user ? (
+          <h1>Welcome back, {user.username} !</h1>
+        ) : (
+          <h1>
+            Next.js Authentication flow <br /> built with Passport.
+          </h1>
+        )}
+        <p>
+          Implement a secure authentication system for Next.js built with
+          <br />
+          Passport that supports custom credentials and third party logins.
+        </p>
+        <span>
           {user ? (
-            <h1>Welcome back, {user.username} !</h1>
+            <PrimaryButton onClick={handleLogout}>Log out</PrimaryButton>
           ) : (
-            <h1>
-              Next.js Authentication flow <br /> built with Passport.
-            </h1>
+            <PrimaryButton onClick={() => setModalOpen(true)}>
+              Try it !
+            </PrimaryButton>
           )}
-          <p>
-            Implement a secure authentication system for Next.js built with
-            <br />
-            Passport that supports custom credentials and third party logins.
-          </p>
-          <span>
-            {user ? (
-              <PrimaryButton onClick={handleLogout}>Log out</PrimaryButton>
-            ) : (
-              <PrimaryButton onClick={() => setModalOpen(true)}>
-                Try it !
-              </PrimaryButton>
-            )}
-            <SecondaryButton
-              href="https://github.com/binolt/next.js-passport-auth"
-              target="_blank"
-              rel="noreferrer"
-              endIcon={<GitHubIcon />}
-            >
-              View Repository
-            </SecondaryButton>
-          </span>
-        </div>
-      </Fade>
+          <SecondaryButton
+            href="https://github.com/binolt/next.js-passport-auth"
+            target="_blank"
+            rel="noreferrer"
+            endIcon={<GitHubIcon />}
+          >
+            View Repository
+          </SecondaryButton>
+        </span>
+      </div>
     </div>
   );
 }
