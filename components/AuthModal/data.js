@@ -10,6 +10,6 @@ export const customStyles = {
     outline: 0,
   },
   overlay: {
-      background: '#000000b6',
-  }
+    background: '#000000b6',
+  },
 };

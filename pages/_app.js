@@ -1,7 +1,7 @@
 import '../styles/styles.scss'; //stylesheet
-import Layout from '../components/Layout'
-import { useState, useEffect } from "react";
-import { AppContext } from "../context/AuthContext";
+import Layout from '../components/Layout';
+import { useState, useEffect } from 'react';
+import { AppContext } from '../context/AuthContext';
 import auth_service from '../services/auth_service';
 
 function MyApp({ Component, pageProps }) {
@@ -13,21 +13,34 @@ function MyApp({ Component, pageProps }) {
 
   useEffect(() => {
     load_app();
-  }, [])
+  }, []);
 
-  const load_app = async() => {
+  const load_app = async () => {
     const data = await auth_service.fetchSession();
-    if(data.user) setUser(data.user);
-    setLoaded(true)
-  }
-  
-  return loaded && (
-    <AppContext.Provider value={{user, setUser, modalIsOpen, setModalOpen, isProcessing, setIsProcessing, isGithubProcessing, setIsGithubProcessing}}>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
-    </AppContext.Provider>
-  )
+    if (data.user) setUser(data.user);
+    setLoaded(true);
+  };
+
+  return (
+    loaded && (
+      <AppContext.Provider
+        value={{
+          user,
+          setUser,
+          modalIsOpen,
+          setModalOpen,
+          isProcessing,
+          setIsProcessing,
+          isGithubProcessing,
+          setIsGithubProcessing,
+        }}
+      >
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </AppContext.Provider>
+    )
+  );
 }
 
-export default MyApp
+export default MyApp;
