@@ -1,21 +1,11 @@
-import React, { useEffect } from 'react';
-import { useAuth } from '../../context/AuthContext';
 import GitHubIcon from '@mui/icons-material/GitHub';
+import React from 'react';
+import { useAuth } from '../../context/AuthContext';
 import auth_service from '../../services/auth_service';
 import { PrimaryButton, SecondaryButton } from '../index';
 
 function Landing() {
   const { user, setUser, setModalOpen } = useAuth();
-
-  useEffect(() => {
-    loadRoute();
-  }, []);
-
-  const loadRoute = async () => {
-    const res = await fetch('/api/hello');
-    const data = await res.json();
-    console.log(data);
-  };
 
   const handleLogout = async () => {
     try {
