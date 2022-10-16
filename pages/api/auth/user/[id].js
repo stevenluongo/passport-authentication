@@ -1,5 +1,5 @@
 import nextConnect from 'next-connect';
-import { updateUser, removeUser, fetchUserById } from '../../../../lib/user';
+import { fetchUserById, removeUser, updateUser } from '../../../../lib/user';
 
 const handler = nextConnect();
 
