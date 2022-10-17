@@ -1,7 +1,8 @@
-import { HttpRequest } from '../../interfaces/http/httpRequest';
-import { HttpResponse } from '../../interfaces/http/httpResponse';
-import { Validation } from '../../interfaces/http/validation';
 import { badRequest, serverError } from '../http/responseCodes';
+
+import { HttpRequest } from '../interfaces/httpRequest';
+import { HttpResponse } from '../interfaces/httpResponse';
+import { Validation } from '../interfaces/validation';
 
 export abstract class BaseController {
   constructor(private readonly validation?: Validation) {}

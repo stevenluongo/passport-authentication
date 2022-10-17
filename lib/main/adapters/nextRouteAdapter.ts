@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { BaseController } from '../infra/controllers/baseController';
-import { HttpRequest } from '../interfaces/http/httpRequest';
+import { BaseController } from '../../infra/controllers/baseController';
+import { HttpRequest } from '../../infra/interfaces/httpRequest';
 
 export const nextRouteAdapter =
   (controller: BaseController) =>

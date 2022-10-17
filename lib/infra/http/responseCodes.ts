@@ -1,4 +1,4 @@
-import { HttpResponse } from '../../interfaces/http/httpResponse';
+import { HttpResponse } from '../interfaces/httpResponse';
 import { ServerError } from './errors/serverError';
 
 export const ok = <T = any>(body: T): HttpResponse<T> => ({
