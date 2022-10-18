@@ -4,6 +4,6 @@ import { makeCreatePostsController } from '../../../lib/main/factories/controlle
 
 const handler = nextConnect();
 
-handler.get(nextRouteAdapter(makeCreatePostsController()));
+handler.post(nextRouteAdapter(makeCreatePostsController()));
 
 export default handler;

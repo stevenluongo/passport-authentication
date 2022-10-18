@@ -1,6 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { BaseController } from '../../infra/controllers/baseController';
-import { HttpRequest } from '../../infra/interfaces/httpRequest';
+import { connectToDatabase } from '../../infra/db/mongodb/helpers/database.service';
+import { HttpRequest } from '../../infra/http/interfaces/httpRequest';
 
 export const nextRouteAdapter =
   (controller: BaseController) =>
@@ -11,6 +12,9 @@ export const nextRouteAdapter =
       params: req.query,
       headers: req.headers,
     };
+
+    //ensure db connection
+    await connectToDatabase();
 
     //handle the http request
     const httpResponse = await controller.handle(httpRequest);

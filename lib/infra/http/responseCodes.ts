@@ -1,5 +1,5 @@
-import { HttpResponse } from '../interfaces/httpResponse';
 import { ServerError } from './errors/serverError';
+import { HttpResponse } from './interfaces/httpResponse';
 
 export const ok = <T = any>(body: T): HttpResponse<T> => ({
   statusCode: 200,

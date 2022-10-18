@@ -7,7 +7,6 @@ export function validateEmail(email) {
 }
 
 export const generateHash = (password: string) => {
-  console.log(password);
   const salt = crypto.randomBytes(16).toString('hex');
   const hash = crypto
     .pbkdf2Sync(password, salt, 1000, 64, 'sha512')
