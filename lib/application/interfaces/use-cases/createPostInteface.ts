@@ -1,17 +1,17 @@
 import { UserProps } from '../../../domain/entities/user';
 import { UseCase } from './useCase';
 
-export interface CreatePostInterface
+export interface CreateUserInterface
   extends UseCase<
-    CreatePostInterfaceNamespace.Request,
-    CreatePostInterfaceNamespace.Response
+    CreateUserInterfaceNamespace.Request,
+    CreateUserInterfaceNamespace.Response
   > {
   execute(
-    postData: CreatePostInterfaceNamespace.Request
-  ): Promise<CreatePostInterfaceNamespace.Response>;
+    postData: CreateUserInterfaceNamespace.Request
+  ): Promise<CreateUserInterfaceNamespace.Response>;
 }
 
-export namespace CreatePostInterfaceNamespace {
+export namespace CreateUserInterfaceNamespace {
   export type Request = Omit<UserProps, 'id' | 'createdAt'>;
   export type Response = string;
 }

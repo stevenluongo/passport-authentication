@@ -1,16 +1,16 @@
 import { generateHash } from '../../helpers';
-import { CreatePostRepository } from '../interfaces/repositories/createPostRepository';
+import { CreateUserRepository } from '../interfaces/repositories/createPostRepository';
 import {
-  CreatePostInterface,
-  CreatePostInterfaceNamespace,
+  CreateUserInterface,
+  CreateUserInterfaceNamespace
 } from '../interfaces/use-cases/createPostInteface';
 
-export class CreatePost implements CreatePostInterface {
-  constructor(private readonly createPostRepository: CreatePostRepository) {}
+export class CreatePost implements CreateUserInterface {
+  constructor(private readonly createUserRepository: CreateUserRepository) {}
 
   async execute(
-    userData: CreatePostInterfaceNamespace.Request
-  ): Promise<CreatePostInterfaceNamespace.Response> {
+    userData: CreateUserInterfaceNamespace.Request
+  ): Promise<CreateUserInterfaceNamespace.Response> {
     //our logic here to create a new user
     const { password, ...userBody } = userData;
 
@@ -24,7 +24,7 @@ export class CreatePost implements CreatePostInterface {
       hash,
     };
 
-    return this.createPostRepository.createPost({
+    return this.createUserRepository.createPost({
       ...userPayload,
     });
   }

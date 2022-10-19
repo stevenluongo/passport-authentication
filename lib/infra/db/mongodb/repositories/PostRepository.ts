@@ -1,20 +1,20 @@
 import { Collection } from 'mongodb';
 import {
-  CreatePostRepository,
-  CreatePostRepositoryNamespace,
+  CreateUserRepository,
+  CreateUserRepositoryNamespace
 } from '../../../../application/interfaces/repositories/createPostRepository';
 import { collections } from '../helpers/database.service';
 import { objectIdToString } from '../helpers/mapper';
 
-export class PostRepository implements CreatePostRepository {
+export class UserRepository implements CreateUserRepository {
   static async getCollection(): Promise<Collection> {
     return collections.users;
   }
 
   async createPost(
-    postData: CreatePostRepositoryNamespace.Request
-  ): Promise<CreatePostRepositoryNamespace.Response> {
-    const collection = await PostRepository.getCollection();
+    postData: CreateUserRepositoryNamespace.Request
+  ): Promise<CreateUserRepositoryNamespace.Response> {
+    const collection = await UserRepository.getCollection();
     const { insertedId } = await collection.insertOne({
       ...postData,
       createdAt: new Date(),
