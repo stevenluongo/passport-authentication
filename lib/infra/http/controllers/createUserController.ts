@@ -7,8 +7,8 @@ import { ok } from '../responseCodes';
 
 export class CreateUserController extends BaseController {
   constructor(
-    private readonly createPostValidation: Validation,
-    private readonly createUser: CreateUserInterface
+    private readonly createUser: CreateUserInterface,
+    private readonly createPostValidation?: Validation,
   ) {
     super(createPostValidation);
   }
@@ -24,7 +24,7 @@ export class CreateUserController extends BaseController {
       salt,
       hash,
     });
-    return ok({ statusCode: 200, id });
+    return ok({ statusCode: 200, id, success: true });
   }
 }
 

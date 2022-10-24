@@ -3,8 +3,9 @@ import { CreateUserController } from '../../../infra/http/controllers/createUser
 import { makeCreateUser } from '../use-cases/makeCreateUser';
 import { makeCreateUserValidation } from './makeCreateUserValidation';
 
-export const makeCreateUserController = (): BaseController => {
+export const makeCreateUserController = (): BaseController => { 
+  
   const validation = makeCreateUserValidation();
   const useCase = makeCreateUser();
-  return new CreateUserController(validation, useCase);
+  return new CreateUserController(useCase, validation);
 };

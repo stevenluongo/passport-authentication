@@ -1,8 +1,8 @@
-import passport from 'passport';
-import { githubStrategy } from '../../../../lib/strategies';
 import nextConnect from 'next-connect';
-import withPassport from '../../../../lib/withPassport';
+import passport from 'passport';
 import { setLoginSession } from '../../../../lib/auth';
+import { githubStrategy } from '../../../../lib/strategies/github';
+import withPassport from '../../../../lib/withPassport';
 
 passport.use(githubStrategy);
 

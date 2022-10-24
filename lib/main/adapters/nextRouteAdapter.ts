@@ -3,14 +3,26 @@ import { BaseController } from '../../infra/controllers/baseController';
 import { connectToDatabase } from '../../infra/db/mongodb/helpers/database.service';
 import { HttpRequest } from '../../infra/http/interfaces/httpRequest';
 
+type user = {
+  _id?: string,
+  emailAddress?: string,
+  username?: string,
+  createdAt?: Date
+}
+
+type NextRouteApiRequest = NextApiRequest & {
+  user?: user
+}
+
 export const nextRouteAdapter =
   (controller: BaseController) =>
-  async (req: NextApiRequest, res: NextApiResponse) => {
+  async (req: NextRouteApiRequest, res: NextApiResponse) => {
     //format httpRequest payload
     const httpRequest: HttpRequest = {
       body: req.body,
       params: req.query,
       headers: req.headers,
+      user: req.user
     };
 
     //ensure db connection

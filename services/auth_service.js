@@ -15,7 +15,7 @@ const auth_service = {
     return await res.json();
   },
   register: async (csrf_token, payload) => {
-    const res = await fetch(`${base_url}/api/auth/user`, {
+    const res = await fetch(`${base_url}/api/posts`, {
       method: 'POST',
       mode: 'cors',
       credentials: 'same-origin',

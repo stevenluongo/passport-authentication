@@ -1,12 +1,13 @@
+import ArrowLeftIcon from '@mui/icons-material/ArrowLeft';
+import GitHub from '@mui/icons-material/GitHub';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useRef, useState } from 'react';
-import GitHub from '@mui/icons-material/GitHub';
 import { useAuth } from '../../context/AuthContext';
-import auth_service from '../../services/auth_service';
-import ArrowLeftIcon from '@mui/icons-material/ArrowLeft';
-import { CssTextField, GithubLoadingButton, LoadingBtn } from '../index';
 import { validateEmail } from '../../lib/helpers';
-import Link from 'next/link';
+import auth_service from '../../services/auth_service';
+import userService from '../../services/userService';
+import { CssTextField, GithubLoadingButton, LoadingBtn } from '../index';
 
 export default function Register({ csrf_token }) {
   const [message, setMessage] = useState(null);
@@ -49,15 +50,11 @@ export default function Register({ csrf_token }) {
     try {
       const isValid = validateInputValues(fetchInputValues());
 
-      const { username, email_address, password } = fetchInputValues();
+      const { username, email_address: emailAddress, password } = fetchInputValues();
 
-      const data =
-        isValid &&
-        (await auth_service.register(csrf_token, {
-          username,
-          email_address,
-          password,
-        })); //register user
+      const data = await userService.create(csrf_token, username, emailAddress, password);
+
+      console.log(data);
 
       if (data.success) {
         setIsProcessing(false); //disable loading state

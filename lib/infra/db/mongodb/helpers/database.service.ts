@@ -26,8 +26,4 @@ export async function connectToDatabase() {
   collections.users = gamesCollection;
 
   cached.collections = collections;
-
-  console.log(
-    `Successfully connected to database: ${db.databaseName} and collection: ${gamesCollection.collectionName}`
-  );
 }

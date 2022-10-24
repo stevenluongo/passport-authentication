@@ -1,16 +1,9 @@
 import nextConnect from 'next-connect';
+import { nextRouteAdapter } from "../../../../lib/main/adapters/nextRouteAdapter";
+import { makeCreateUserController } from "../../../../lib/main/factories/controllers/makeCreateUserController";
 
 const handler = nextConnect();
 
-handler.post(async (req, res) => {
-  try {
-    // await csrf(req, res);
-    // const response = await createLocalUser(req.body);
-    // res.status(201).json({ success: true, ...response });
-    res.status(201).json({ msg: 'hi' });
-  } catch (err) {
-    res.status(500).json({ success: false, message: err.message });
-  }
-});
+handler.post(nextRouteAdapter(makeCreateUserController()));
 
 export default handler;
