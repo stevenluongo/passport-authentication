@@ -1,16 +1,16 @@
-import { MongoClient } from 'mongodb';
+import { MongoClient } from "mongodb";
 
 const MONGODB_URI = process.env.MONGODB_URI;
 const MONGODB_DB = process.env.DB_NAME;
 
 // check the MongoDB URI
 if (!MONGODB_URI) {
-  throw new Error('Define the MONGODB_URI environmental variable');
+  throw new Error("Define the MONGODB_URI environmental variable");
 }
 
 // check the MongoDB DB
 if (!MONGODB_DB) {
-  throw new Error('Define the MONGODB_DB environmental variable');
+  throw new Error("Define the MONGODB_DB environmental variable");
 }
 
 let cached = global.mongoose;
@@ -55,34 +55,34 @@ export const createDefaultCollection = async (db, identifier) => {
     await db.createCollection(identifier, {
       validator: {
         $jsonSchema: {
-          bsonType: 'object',
-          required: ['username'],
+          bsonType: "object",
+          required: ["username"],
           additionalProperties: false,
           properties: {
             _id: {},
             username: {
-              bsonType: 'string',
+              bsonType: "string",
               description: "'username' is required and is a string.",
             },
             email_address: {
-              bsonType: 'string',
+              bsonType: "string",
               description: "'email address' is required and is a string.",
             },
             github_id: {
-              bsonType: 'string',
+              bsonType: "string",
               description:
                 "'github id' is optional but, if used, must be a string.",
             },
             hash: {
-              bsonType: 'string',
+              bsonType: "string",
               description: "'hash' is optional but, if used, must be a string.",
             },
             salt: {
-              bsonType: 'string',
+              bsonType: "string",
               description: "'salt' is optional but, if used, must be a string.",
             },
             created_at: {
-              bsonType: 'date',
+              bsonType: "date",
               description:
                 "'created at' is optional but, if used, must be a date.",
             },

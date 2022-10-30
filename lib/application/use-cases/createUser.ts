@@ -1,11 +1,11 @@
-import { generateHash } from '../../helpers';
-import { CreateUserRepository } from '../interfaces/repositories/createPostRepository';
+import { generateHash } from "../../helpers";
+import { CreateUserRepository } from "../interfaces/repositories/createUserRepository";
 import {
   CreateUserInterface,
-  CreateUserInterfaceNamespace
-} from '../interfaces/use-cases/createPostInteface';
+  CreateUserInterfaceNamespace,
+} from "../interfaces/use-cases/createUserInterface";
 
-export class CreatePost implements CreateUserInterface {
+export class CreateUser implements CreateUserInterface {
   constructor(private readonly createUserRepository: CreateUserRepository) {}
 
   async execute(
@@ -24,7 +24,7 @@ export class CreatePost implements CreateUserInterface {
       hash,
     };
 
-    return this.createUserRepository.createPost({
+    return this.createUserRepository.createUser({
       ...userPayload,
     });
   }

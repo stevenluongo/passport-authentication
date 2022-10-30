@@ -1,5 +1,5 @@
-import Register from '../components/Register';
-import csrf from '../utils/csrf';
+import Register from "../components/Register";
+import csrf from "../utils/csrf";
 
 export default function RegisterWrapper(props) {
   return <Register {...props} />;

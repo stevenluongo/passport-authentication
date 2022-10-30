@@ -1,5 +1,5 @@
-import { fetchUserById } from '../../../lib/user';
-import { getLoginSession } from '../../../lib/auth';
+import { fetchUserById } from "../../../lib/user";
+import { getLoginSession } from "../../../lib/auth";
 
 const handler = async (req, res) => {
   try {
@@ -12,7 +12,7 @@ const handler = async (req, res) => {
     const { _id, username } = user;
     res.status(200).json({ user: { username, _id } });
   } catch (err) {
-    res.status(500).end('Authentication token is invalid, please log in');
+    res.status(500).end("Authentication token is invalid, please log in");
   }
 };
 

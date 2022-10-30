@@ -3,7 +3,7 @@
  * https://jestjs.io/docs/configuration
  */
 
-const { defaults: tsjPreset } = require('ts-jest/presets');
+const { defaults: tsjPreset } = require("ts-jest/presets");
 
 export default {
   // All imported modules in your tests should be mocked automatically
@@ -22,10 +22,10 @@ export default {
   collectCoverage: false,
 
   // An array of glob patterns indicating a set of files for which coverage information should be collected
-  collectCoverageFrom: ['<rootDir>/src/**/*.ts', '!<rootDir>/src/main/**'],
+  collectCoverageFrom: ["<rootDir>/src/**/*.ts", "!<rootDir>/src/main/**"],
 
   // The directory where Jest should output its coverage files
-  coverageDirectory: 'coverage',
+  coverageDirectory: "coverage",
 
   // An array of regexp pattern strings used to skip coverage collection
   // coveragePathIgnorePatterns: [
@@ -33,7 +33,7 @@ export default {
   // ],
 
   // Indicates which provider should be used to instrument code for coverage
-  coverageProvider: 'v8',
+  coverageProvider: "v8",
 
   // A list of reporter names that Jest uses when writing coverage reports
   // coverageReporters: [
@@ -56,7 +56,7 @@ export default {
   // forceCoverageMatch: [],
 
   // A path to a module which exports an async function that is triggered once before all test suites
-  // globalSetup: undefined,
+  globalSetup: "<rootDir>/tests/infra/envConfig.ts",
 
   // A path to a module which exports an async function that is triggered once after all test suites
   // globalTeardown: undefined,
@@ -84,11 +84,11 @@ export default {
 
   // A map from regular expressions to module names or to arrays of module names that allow to stub out resources with a single module
   moduleNameMapper: {
-    '@domain/(.*)': '<rootDir>/src/domain/$1',
-    '@application/(.*)': '<rootDir>/src/application/$1',
-    '@infra/(.*)': '<rootDir>/src/infra/$1',
-    '@main/(.*)': '<rootDir>/src/main/$1',
-    '@tests/(.*)': '<rootDir>/tests/$1',
+    "@domain/(.*)": "<rootDir>/src/domain/$1",
+    "@application/(.*)": "<rootDir>/src/application/$1",
+    "@infra/(.*)": "<rootDir>/src/infra/$1",
+    "@main/(.*)": "<rootDir>/src/main/$1",
+    "@tests/(.*)": "<rootDir>/tests/$1",
   },
 
   // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader
@@ -103,6 +103,8 @@ export default {
   // A preset that is used as a base for Jest's configuration
 
   // preset: "@shelf/jest-mongodb",
+
+  preset: "ts-jest",
 
   // Run tests from one or more projects
   // projects: undefined,
@@ -126,13 +128,13 @@ export default {
   // rootDir: undefined,
 
   // A list of paths to directories that Jest should use to search for files in
-  roots: ['<rootDir>/tests/'],
+  roots: ["<rootDir>/tests/"],
 
   // Allows you to use a custom runner instead of Jest's default test runner
   // runner: "jest-runner",
 
   // The paths to modules that run some code to configure or set up the testing environment before each test
-  // setupFiles: [],
+  // setupFiles: ['<rootDir>/tests/infra/setEnvVars.js'],
 
   // A list of paths to modules that run some code to configure or set up the testing framework before each test
   // setupFilesAfterEnv: [],
@@ -153,7 +155,7 @@ export default {
   // testLocationInResults: false,
 
   // The glob patterns Jest uses to detect test files
-  testMatch: ['**/*.spec.ts', '**/*.test.ts'],
+  testMatch: ["**/*.spec.ts", "**/*.test.ts"],
 
   // An array of regexp pattern strings that are matched against all test paths, matched tests are skipped
   // testPathIgnorePatterns: [
@@ -177,6 +179,8 @@ export default {
 
   // A map from regular expressions to paths to transformers
   transform: {
+    "^.+\\.(ts|tsx)?$": "ts-jest",
+    "^.+\\.(js|jsx)$": "babel-jest",
     ...tsjPreset.transform,
   },
 

@@ -2,10 +2,10 @@ export const options = {
   fpsLimit: 60,
   particles: {
     color: {
-      value: '#ffffff',
+      value: "#ffffff",
     },
     move: {
-      direction: 'none',
+      direction: "none",
       enable: true,
       random: false,
       speed: 1,
@@ -18,7 +18,7 @@ export const options = {
       value: 0.1,
     },
     shape: {
-      type: 'circle',
+      type: "circle",
     },
     size: {
       random: true,

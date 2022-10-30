@@ -7,7 +7,7 @@ import withTest from "../../lib/withTest";
 const handler = nextConnect();
 
 handler
-    .use(passport.initialize())
-    .post(nextRouteAdapter(makeLoginSessionController()));
+  .use(passport.initialize())
+  .post(nextRouteAdapter(makeLoginSessionController()));
 
 export default withTest(handler);

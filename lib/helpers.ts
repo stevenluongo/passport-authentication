@@ -1,4 +1,4 @@
-import crypto from 'crypto';
+import crypto from "crypto";
 
 export function validateEmail(email) {
   const re =
@@ -7,10 +7,10 @@ export function validateEmail(email) {
 }
 
 export const generateHash = (password: string) => {
-  const salt = crypto.randomBytes(16).toString('hex');
+  const salt = crypto.randomBytes(16).toString("hex");
   const hash = crypto
-    .pbkdf2Sync(password, salt, 1000, 64, 'sha512')
-    .toString('hex');
+    .pbkdf2Sync(password, salt, 1000, 64, "sha512")
+    .toString("hex");
   return { salt, hash };
 };
 
@@ -24,8 +24,8 @@ export const toArray = (iterator) =>
 
 export function validatePassword(user, inputPassword) {
   const inputHash = crypto
-    .pbkdf2Sync(inputPassword, user.salt, 1000, 64, 'sha512')
-    .toString('hex');
+    .pbkdf2Sync(inputPassword, user.salt, 1000, 64, "sha512")
+    .toString("hex");
   const passwordsMatch = user.hash === inputHash;
   return passwordsMatch;
 }

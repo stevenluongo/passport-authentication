@@ -1,12 +1,12 @@
-import { UserProps } from '../../../domain/entities/user';
+import { UserProps } from "../../../domain/entities/user";
 
 export interface CreateUserRepository {
-  createPost(
+  createUser(
     postData: CreateUserRepositoryNamespace.Request
   ): Promise<CreateUserRepositoryNamespace.Response>;
 }
 
 export namespace CreateUserRepositoryNamespace {
-  export type Request = Omit<UserProps, 'password' | 'id' | 'createdAt'>;
+  export type Request = Omit<UserProps, "password" | "id" | "createdAt">;
   export type Response = string;
 }

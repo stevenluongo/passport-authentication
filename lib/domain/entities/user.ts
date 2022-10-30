@@ -1,8 +1,8 @@
 export type UserProps = {
-  id: string;
-  emailAddress: string;
-  username: string;
-  createdAt: Date;
+  id?: string;
+  emailAddress?: string;
+  username?: string;
+  createdAt?: Date;
   password: string;
   salt: string;
   hash: string;

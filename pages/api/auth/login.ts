@@ -1,11 +1,7 @@
 import nc from "next-connect";
-import passport from 'passport';
-import { nextRouteAdapter } from "../../../lib/main/adapters/nextRouteAdapter";
 import { makeLoginSessionController } from "../../../lib/main/factories/controllers/auth/makeLoginSessionController";
-import authenticate from "../../../lib/main/middleware/authenticate";
+import { localMiddleware } from "../../../lib/main/middleware/passportLocal";
 
-const handler = nc()
-  .use(passport.initialize())
-  .post(nextRouteAdapter(makeLoginSessionController()));
+const handler = nc().use(localMiddleware).post(makeLoginSessionController);
 
-export default authenticate(handler);
+export default handler;

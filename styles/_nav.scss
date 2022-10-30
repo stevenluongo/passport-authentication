@@ -4,7 +4,7 @@
   align-items: center;
   padding-top: 2rem;
   width: 100%;
-  @include media('<=tablet') {
+  @include media("<=tablet") {
   }
 }
 
@@ -22,19 +22,19 @@
   .nav_menu_icon {
     display: none;
     color: #fff;
-    @include media('<=tablet') {
+    @include media("<=tablet") {
       display: flex;
     }
   }
   p {
     cursor: pointer;
     user-select: none;
-    @include media('<=tablet') {
+    @include media("<=tablet") {
       display: none;
     }
   }
   .nav_signup {
-    @include media('<=tablet') {
+    @include media("<=tablet") {
       display: none;
     }
   }

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
 /**
 *
 * Testing
@@ -80,7 +80,7 @@
 }
 
 .app_content h1::after {
-  content: '|';
+  content: "|";
   -webkit-animation: blink 1.5s infinite step-start;
   animation: blink 1.5s infinite step-start;
 }
@@ -274,7 +274,7 @@
 }
 
 :root,
-body[data-theme='default'] {
+body[data-theme="default"] {
   --content-width: 1366px;
   --primary-text-color: #160747;
   --secondary-text-color: #928d9e;
@@ -291,7 +291,7 @@ body[data-theme='default'] {
 
 @media (max-width: 1366px) {
   :root,
-  body[data-theme='default'] {
+  body[data-theme="default"] {
     --content-width: 100%;
   }
 }
@@ -364,7 +364,7 @@ video {
 
 body {
   line-height: 1;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   margin: 0;
   color: #fff;
   background-color: var(--background-color);
@@ -399,7 +399,7 @@ blockquote:before,
 blockquote:after,
 q:before,
 q:after {
-  content: '';
+  content: "";
   content: none;
 }
 

@@ -1,8 +1,8 @@
-import GitHubIcon from '@mui/icons-material/GitHub';
-import React from 'react';
-import { useAuth } from '../../context/AuthContext';
-import auth_service from '../../services/auth_service';
-import { PrimaryButton, SecondaryButton } from '../index';
+import GitHubIcon from "@mui/icons-material/GitHub";
+import React from "react";
+import { useAuth } from "../../context/AuthContext";
+import auth_service from "../../services/auth_service";
+import { PrimaryButton, SecondaryButton } from "../index";
 
 function Landing() {
   const { user, setUser, setModalOpen } = useAuth();
@@ -11,7 +11,7 @@ function Landing() {
     try {
       const data = await auth_service.logout();
       if (data.success) setUser(data.user);
-      else throw new Error('Something went wrong...');
+      else throw new Error("Something went wrong...");
     } catch (err) {
       console.error(err);
     }

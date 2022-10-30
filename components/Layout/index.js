@@ -1,5 +1,5 @@
-import Navbar from '../Navbar';
-import AuthModal from '../AuthModal';
+import Navbar from "../Navbar";
+import AuthModal from "../AuthModal";
 
 function Layout({ children }) {
   return (

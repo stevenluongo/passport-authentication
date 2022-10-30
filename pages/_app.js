@@ -1,8 +1,9 @@
-import '../styles/styles.scss'; //stylesheet
-import Layout from '../components/Layout';
-import { useState, useEffect } from 'react';
-import { AppContext } from '../context/AuthContext';
-import auth_service from '../services/auth_service';
+import { useEffect, useState } from "react";
+import "regenerator-runtime/runtime.js"; //ensures our babel configuration runs without throwing an error
+import Layout from "../components/Layout";
+import { AppContext } from "../context/AuthContext";
+import auth_service from "../services/auth_service";
+import "../styles/styles.scss"; //stylesheet
 
 function MyApp({ Component, pageProps }) {
   const [user, setUser] = useState(null);
