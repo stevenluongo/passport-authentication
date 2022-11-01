@@ -2,10 +2,11 @@ import { Collection, ObjectId } from "mongodb";
 import {
   CreateUserRepository,
   CreateUserRepositoryNamespace,
-} from "../../../../application/interfaces/repositories/createUserRepository";
+} from "../../../../application/interfaces/repositories/user/createUserRepository";
 import { collections } from "../helpers/database.service";
 import { objectIdToString } from "../helpers/mapper";
 import { FetchUserByIdRepositoryNamespace } from "../../../../application/interfaces/repositories/user/fetchUserByIdRepository";
+import {UpdateUserRepositoryNamespace} from "../../../../application/interfaces/repositories/user/updateUserRepository";
 
 export class UserRepository implements CreateUserRepository {
   static async getCollection(): Promise<Collection> {
@@ -29,6 +30,16 @@ export class UserRepository implements CreateUserRepository {
     const collection = await UserRepository.getCollection();
 
     const query = { _id: new ObjectId(data.id) };
+    console.log(query);
     return await collection.findOne(query);
+  }
+
+  public async updateUser(
+      data: UpdateUserRepositoryNamespace.Request
+  ): Promise<UpdateUserRepositoryNamespace.Response> {
+    const collection = await UserRepository.getCollection();
+    const { id, ...body} = data;
+    const query = { _id: new ObjectId(id) };
+    return await collection.updateOne(query, { $set: { ...body }});
   }
 }

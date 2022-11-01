@@ -1,9 +1,9 @@
-import { generateHash } from "../../helpers";
-import { CreateUserRepository } from "../interfaces/repositories/createUserRepository";
+import { generateHash } from "../../../helpers";
+import { CreateUserRepository } from "../../interfaces/repositories/user/createUserRepository";
 import {
   CreateUserInterface,
   CreateUserInterfaceNamespace,
-} from "../interfaces/use-cases/createUserInterface";
+} from "../../interfaces/use-cases/user/createUserInterface";
 
 export class CreateUser implements CreateUserInterface {
   constructor(private readonly createUserRepository: CreateUserRepository) {}

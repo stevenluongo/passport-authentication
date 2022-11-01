@@ -1,4 +1,4 @@
-import { UserProps } from "../../../domain/entities/user";
+import { UserProps } from "../../../../domain/entities/user";
 
 export interface CreateUserRepository {
   createUser(

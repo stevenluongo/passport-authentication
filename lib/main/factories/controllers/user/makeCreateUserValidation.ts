@@ -1,5 +1,5 @@
-import { RequiredFieldValidation } from "../../../infra/http/validations/requiredFieldValidation";
-import { ValidationComposite } from "../../../infra/http/validations/validationComposite";
+import { RequiredFieldValidation } from "../../../../infra/http/validations/requiredFieldValidation";
+import { ValidationComposite } from "../../../../infra/http/validations/validationComposite";
 
 export const makeCreateUserValidation = (): ValidationComposite =>
   new ValidationComposite(

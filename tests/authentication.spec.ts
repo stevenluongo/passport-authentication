@@ -1,5 +1,5 @@
 import passport from "passport";
-import { disconnectFromDatabase } from "../lib/infra/db/mongodb/helpers/database.service";
+import {connectToDatabase, disconnectFromDatabase} from "../lib/infra/db/mongodb/helpers/database.service";
 import { localStrategy } from "../lib/strategies/local";
 import loginHandler from "../pages/api/auth/login";
 import getUserIdHandler from "../pages/api/auth/user/[id]";
@@ -9,7 +9,7 @@ const request = testClient(loginHandler);
 const request2 = testClient(getUserIdHandler);
 
 describe("Test Authentication API", () => {
-  beforeAll(async () => {
+  beforeEach(async () => {
     passport.initialize();
     passport.use(localStrategy);
   });
@@ -19,6 +19,7 @@ describe("Test Authentication API", () => {
     done();
   });
 
+
   it("should fetch /api/auth/login and return a 200 status code", async () => {
     const res = await request
       .post("/api/auth/login")
@@ -27,10 +28,17 @@ describe("Test Authentication API", () => {
     expect(res.status).toEqual(200);
   });
 
-  it("should fetch /api/auth/user/id and return a 200 status code", async () => {
+  it("should fetch GET /api/auth/user/id and return a 200 status code", async () => {
     const res = await request2
       .get("/api/auth/user/id")
       .send({ id: "62810c5b6418cb3a93bc141f" });
+    expect(res.status).toEqual(200);
+  });
+
+  it("should fetch PUT /api/auth/user/id and return a 200 status code", async () => {
+    const res = await request2
+        .put("/api/auth/user/id")
+        .send({ id: "62810c5b6418cb3a93bc141f", username: "toor" });
     expect(res.status).toEqual(200);
   });
 });
