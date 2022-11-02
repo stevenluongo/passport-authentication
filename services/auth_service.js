@@ -36,8 +36,17 @@ const auth_service = {
     const res = await fetch(`${base_url}/api/auth/session`);
     return await res.json();
   },
-  fetchUserById: async (_id) => {
-    const res = await fetch(`${base_url}/api/auth/user/${_id}`);
+  fetchUserById: async (payload) => {
+    const res = await fetch(`${base_url}/api/auth/user/id`, {
+      method: "POST",
+      mode: "cors",
+      credentials: "same-origin",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify(payload),
+    });
     return await res.json();
   },
   updateUser: async (_id, payload) => {
@@ -53,11 +62,16 @@ const auth_service = {
     });
     return await res.json();
   },
-  deleteUser: async (_id) => {
-    const res = await fetch(`${base_url}/api/auth/user/${_id}`, {
+  deleteUser: async (payload) => {
+    const res = await fetch(`${base_url}/api/auth/user/id`, {
       method: "DELETE",
       mode: "cors",
       credentials: "same-origin",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify(payload),
     });
     return await res.json();
   },

@@ -6,7 +6,7 @@ import { PrimaryButton, SecondaryButton } from "../index";
 
 function Landing() {
   const { user, setUser, setModalOpen } = useAuth();
-
+  
   const handleLogout = async () => {
     try {
       const data = await auth_service.logout();

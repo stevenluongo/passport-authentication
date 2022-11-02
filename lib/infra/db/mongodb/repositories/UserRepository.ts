@@ -1,12 +1,13 @@
 import { Collection, ObjectId } from "mongodb";
 import {
   CreateUserRepository,
-  CreateUserRepositoryNamespace,
+  CreateUserRepositoryNamespace
 } from "../../../../application/interfaces/repositories/user/createUserRepository";
+import { DeleteUserRepositoryNamespace } from "../../../../application/interfaces/repositories/user/deleteUserRepository";
+import { FetchUserByIdRepositoryNamespace } from "../../../../application/interfaces/repositories/user/fetchUserByIdRepository";
+import { UpdateUserRepositoryNamespace } from "../../../../application/interfaces/repositories/user/updateUserRepository";
 import { collections } from "../helpers/database.service";
 import { objectIdToString } from "../helpers/mapper";
-import { FetchUserByIdRepositoryNamespace } from "../../../../application/interfaces/repositories/user/fetchUserByIdRepository";
-import {UpdateUserRepositoryNamespace} from "../../../../application/interfaces/repositories/user/updateUserRepository";
 
 export class UserRepository implements CreateUserRepository {
   static async getCollection(): Promise<Collection> {
@@ -28,9 +29,7 @@ export class UserRepository implements CreateUserRepository {
     data: FetchUserByIdRepositoryNamespace.Request
   ): Promise<FetchUserByIdRepositoryNamespace.Response> {
     const collection = await UserRepository.getCollection();
-
     const query = { _id: new ObjectId(data.id) };
-    console.log(query);
     return await collection.findOne(query);
   }
 
@@ -41,5 +40,11 @@ export class UserRepository implements CreateUserRepository {
     const { id, ...body} = data;
     const query = { _id: new ObjectId(id) };
     return await collection.updateOne(query, { $set: { ...body }});
+  }
+
+  public async deleteUser(data : DeleteUserRepositoryNamespace.Request) : Promise<DeleteUserRepositoryNamespace.Response> {
+    const collection = await UserRepository.getCollection();
+    const query = { _id: new ObjectId(data.id) };
+    return await collection.deleteOne(query);
   }
 }

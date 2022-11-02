@@ -1,5 +1,5 @@
 import passport from "passport";
-import {connectToDatabase, disconnectFromDatabase} from "../lib/infra/db/mongodb/helpers/database.service";
+import { disconnectFromDatabase } from "../lib/infra/db/mongodb/helpers/database.service";
 import { localStrategy } from "../lib/strategies/local";
 import loginHandler from "../pages/api/auth/login";
 import getUserIdHandler from "../pages/api/auth/user/[id]";
@@ -30,15 +30,22 @@ describe("Test Authentication API", () => {
 
   it("should fetch GET /api/auth/user/id and return a 200 status code", async () => {
     const res = await request2
-      .get("/api/auth/user/id")
-      .send({ id: "62810c5b6418cb3a93bc141f" });
+      .post("/api/auth/user/id")
+      .send({ id: "63505fb0090934ce102a46db" });
     expect(res.status).toEqual(200);
   });
 
   it("should fetch PUT /api/auth/user/id and return a 200 status code", async () => {
     const res = await request2
         .put("/api/auth/user/id")
-        .send({ id: "62810c5b6418cb3a93bc141f", username: "toor" });
+        .send({ id: "63505fb0090934ce102a46db", username: "phteven" });
     expect(res.status).toEqual(200);
+  });
+
+  it("should fetch DELETE /api/auth/user/id and return a 202 status code", async () => {
+    const res = await request2
+        .delete("/api/auth/user/id")
+        .send({ id: "63505fb0090934ce102a46db" });
+    expect(res.status).toEqual(202);
   });
 });
