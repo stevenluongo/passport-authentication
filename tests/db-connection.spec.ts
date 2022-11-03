@@ -2,9 +2,9 @@ import {
   collections,
   connectToDatabase,
   disconnectFromDatabase,
-} from "../lib/infra/db/mongodb/helpers/database.service";
+} from '../lib/infra/db/mongodb/helpers/database.service';
 
-describe("Database Connection", () => {
+describe('Database Connection', () => {
   beforeAll(async () => {
     await connectToDatabase();
   });
@@ -14,12 +14,12 @@ describe("Database Connection", () => {
     done();
   });
 
-  it("Should successfully connect to MongoDB", async () => {
+  it('Should successfully connect to MongoDB', async () => {
     const { users } = collections;
     expect(users).toBeTruthy();
   });
 
-  it("Should successfully disconnect from MongoDB", async () => {
+  it('Should successfully disconnect from MongoDB', async () => {
     await disconnectFromDatabase();
     const { users } = collections;
     expect(users).toBeFalsy();

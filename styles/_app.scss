@@ -1,4 +1,4 @@
-@import "./_breakpoints.scss";
+@import './_breakpoints.scss';
 
 .layout {
   width: 100vw;
@@ -54,7 +54,7 @@
     text-align: center;
     line-height: 3.5rem;
     &::after {
-      content: "|";
+      content: '|';
       animation: blink 1.5s infinite step-start;
     }
   }
@@ -68,7 +68,7 @@
   span {
     display: flex;
     gap: 10px;
-    @include media("<=cart") {
+    @include media('<=cart') {
       flex-direction: column;
     }
   }

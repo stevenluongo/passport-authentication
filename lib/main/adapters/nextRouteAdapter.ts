@@ -1,7 +1,7 @@
-import { NextApiRequest, NextApiResponse } from "next";
-import { BaseController } from "../../infra/controllers/baseController";
-import { connectToDatabase } from "../../infra/db/mongodb/helpers/database.service";
-import { HttpRequest } from "../../infra/http/interfaces/httpRequest";
+import { NextApiRequest, NextApiResponse } from 'next';
+import { BaseController } from '../../infra/controllers/baseController';
+import { connectToDatabase } from '../../infra/db/mongodb/helpers/database.service';
+import { HttpRequest } from '../../infra/http/interfaces/httpRequest';
 
 export const nextRouteAdapter =
   (controller: BaseController) =>
@@ -22,6 +22,16 @@ export const nextRouteAdapter =
     //return successful responses
     if (httpResponse.statusCode >= 200 && httpResponse.statusCode <= 299) {
       res.status(httpResponse.statusCode).json(httpResponse.body);
+    }
+
+    //304 (Not Modified) response code returns no body
+    else if (httpResponse.statusCode === 304) {
+      res.status(304).end();
+    }
+
+    //204 (No Content) response code returns no body
+    else if (httpResponse.statusCode === 204) {
+      res.status(204).end();
     }
 
     //return errors

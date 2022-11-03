@@ -1,5 +1,5 @@
-import { Strategy as GithubStrategy } from "passport-github";
-import { createGithubUser, fetchUserByQuery } from "../user";
+import { Strategy as GithubStrategy } from 'passport-github';
+import { createGithubUser, fetchUserByQuery } from '../user';
 
 export const githubStrategy = new GithubStrategy(
   {

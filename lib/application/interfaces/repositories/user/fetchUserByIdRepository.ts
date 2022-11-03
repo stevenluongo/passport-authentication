@@ -1,3 +1,5 @@
+import { UserProps } from '../../../../domain/entities/user';
+
 export interface FetchUserByIdRepository {
   fetchUserById(
     data: FetchUserByIdRepositoryNamespace.Request

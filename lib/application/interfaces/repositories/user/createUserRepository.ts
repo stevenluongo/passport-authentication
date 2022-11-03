@@ -1,4 +1,4 @@
-import { UserProps } from "../../../../domain/entities/user";
+import { UserProps } from '../../../../domain/entities/user';
 
 export interface CreateUserRepository {
   createUser(
@@ -7,6 +7,6 @@ export interface CreateUserRepository {
 }
 
 export namespace CreateUserRepositoryNamespace {
-  export type Request = Omit<UserProps, "password" | "id" | "createdAt">;
-  export type Response = string;
+  export type Request = Omit<UserProps, 'password' | 'id' | 'createdAt'>;
+  export type Response = Omit<UserProps, 'password' | 'salt' | 'hash'>;
 }

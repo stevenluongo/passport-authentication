@@ -1,4 +1,4 @@
-import { Document, ObjectId, WithId } from "mongodb";
+import { Document, ObjectId, WithId } from 'mongodb';
 
 export default interface Game extends WithId<Document> {
   username: string;

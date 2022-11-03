@@ -1,16 +1,16 @@
-import { UseCase } from "../useCase";
+import { UseCase } from '../useCase';
 
 export interface DeleteUserInterface
-    extends UseCase<
-        DeleteUserInterfaceNamespace.Request,
-        DeleteUserInterfaceNamespace.Response
-        > {
-    execute(
-        data: DeleteUserInterfaceNamespace.Request
-    ): Promise<DeleteUserInterfaceNamespace.Response>;
+  extends UseCase<
+    DeleteUserInterfaceNamespace.Request,
+    DeleteUserInterfaceNamespace.Response
+  > {
+  execute(
+    data: DeleteUserInterfaceNamespace.Request
+  ): Promise<DeleteUserInterfaceNamespace.Response>;
 }
 
 export namespace DeleteUserInterfaceNamespace {
-    export type Request = any;
-    export type Response = any;
+  export type Request = any;
+  export type Response = any;
 }

@@ -1,6 +1,6 @@
-import { CreateUserInterfaceNamespace } from "../../interfaces/use-cases/user/createUserInterface";
-import { FetchUserByIdRepository } from "../../interfaces/repositories/user/fetchUserByIdRepository";
-import { FetchUserByIdInterface } from "../../interfaces/use-cases/user/fetchUserByIdInterface";
+import { CreateUserInterfaceNamespace } from '../../interfaces/use-cases/user/createUserInterface';
+import { FetchUserByIdRepository } from '../../interfaces/repositories/user/fetchUserByIdRepository';
+import { FetchUserByIdInterface } from '../../interfaces/use-cases/user/fetchUserByIdInterface';
 
 export class FetchUserById implements FetchUserByIdInterface {
   constructor(

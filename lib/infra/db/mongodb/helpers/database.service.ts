@@ -1,4 +1,4 @@
-import * as mongoDB from "mongodb";
+import * as mongoDB from 'mongodb';
 
 let cached = global.mongoose;
 
@@ -28,7 +28,7 @@ export async function connectToDatabase() {
 
   const db: mongoDB.Db = client.db(process.env.DB_NAME);
 
-  const gamesCollection: mongoDB.Collection = db.collection("users");
+  const gamesCollection: mongoDB.Collection = db.collection('users');
 
   collections.users = gamesCollection;
 

@@ -1,5 +1,5 @@
-import { UserProps } from "../../../../domain/entities/user";
-import { UseCase } from "../useCase";
+import { UserProps } from '../../../../domain/entities/user';
+import { UseCase } from '../useCase';
 
 export interface FetchUserByIdInterface
   extends UseCase<

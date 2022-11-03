@@ -1,5 +1,5 @@
-import { UserProps } from "../../../../domain/entities/user";
-import { UseCase } from "../useCase";
+import { UserProps } from '../../../../domain/entities/user';
+import { UseCase } from '../useCase';
 
 export interface CreateUserInterface
   extends UseCase<
@@ -12,6 +12,6 @@ export interface CreateUserInterface
 }
 
 export namespace CreateUserInterfaceNamespace {
-  export type Request = Omit<UserProps, "id" | "createdAt">;
-  export type Response = string;
+  export type Request = Omit<UserProps, 'id' | 'createdAt'>;
+  export type Response = Omit<UserProps, 'password' | 'salt' | 'hash'>;
 }

@@ -1,9 +1,9 @@
-import { BaseController } from "../../../controllers/baseController";
-import { HttpRequest } from "../../interfaces/httpRequest";
-import { HttpResponse } from "../../interfaces/httpResponse";
-import { Validation } from "../../interfaces/validation";
-import { ok } from "../../responseCodes";
-import { FetchUserByIdInterface } from "../../../../application/interfaces/use-cases/user/fetchUserByIdInterface";
+import { BaseController } from '../../../controllers/baseController';
+import { HttpRequest } from '../../interfaces/httpRequest';
+import { HttpResponse } from '../../interfaces/httpResponse';
+import { Validation } from '../../interfaces/validation';
+import { ok } from '../../responseCodes';
+import { FetchUserByIdInterface } from '../../../../application/interfaces/use-cases/user/fetchUserByIdInterface';
 
 export class FetchUserByIdController extends BaseController {
   constructor(

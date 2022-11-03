@@ -1,6 +1,6 @@
-import { NextApiRequest, NextApiResponse } from "next";
-import { setLoginSession } from "../../../../auth";
-import { authenticate } from "../../../../strategies/local";
+import { NextApiRequest, NextApiResponse } from 'next';
+import { setLoginSession } from '../../../../auth';
+import { authenticate } from '../../../../strategies/local';
 
 export const makeLoginSessionController = async (
   req: NextApiRequest,
@@ -13,7 +13,7 @@ export const makeLoginSessionController = async (
 
     const cookie = await setLoginSession(session);
 
-    res.setHeader("Set-cookie", cookie);
+    res.setHeader('Set-cookie', cookie);
 
     return res.status(200).json({ success: true, user });
   } catch (e) {

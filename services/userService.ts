@@ -1,14 +1,14 @@
-import { base_url } from "../lib/url";
+import { base_url } from '../lib/url';
 
 async function createPostRequest(url: string, payload?, csrf_token?: string) {
   const res = await fetch(url, {
-    method: "POST",
-    mode: "cors",
-    credentials: "same-origin",
+    method: 'POST',
+    mode: 'cors',
+    credentials: 'same-origin',
     headers: {
-      "Content-Type": "application/json",
-      Accept: "application/json",
-      "CSRF-Token": csrf_token,
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+      'CSRF-Token': csrf_token,
     },
     body: JSON.stringify(payload),
   });
@@ -28,16 +28,16 @@ const userService = {
     emailAddress: string,
     password: string
   ) => {
-    console.log("here");
+    console.log('here');
     // return await createPostRequest(`${base_url}/api/auth/user`, { username, emailAddress, password }, csrf_token);
     const res = await fetch(`${base_url}/api/auth/user`, {
-      method: "POST",
-      mode: "cors",
-      credentials: "same-origin",
+      method: 'POST',
+      mode: 'cors',
+      credentials: 'same-origin',
       headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-        "CSRF-Token": csrf_token,
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+        'CSRF-Token': csrf_token,
       },
       body: JSON.stringify({ username, emailAddress, password }),
     });

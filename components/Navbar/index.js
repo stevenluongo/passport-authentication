@@ -1,11 +1,11 @@
-import { useState } from "react";
-import { useRouter } from "next/router";
-import MenuItem from "@mui/material/MenuItem";
-import MenuIcon from "@mui/icons-material/Menu";
-import IconButton from "@mui/material/IconButton";
-import { ColorButton, StyledMenu } from "../index";
-import { useAuth } from "../../context/AuthContext";
-import auth_service from "../../services/auth_service";
+import { useState } from 'react';
+import { useRouter } from 'next/router';
+import MenuItem from '@mui/material/MenuItem';
+import MenuIcon from '@mui/icons-material/Menu';
+import IconButton from '@mui/material/IconButton';
+import { ColorButton, StyledMenu } from '../index';
+import { useAuth } from '../../context/AuthContext';
+import auth_service from '../../services/auth_service';
 
 function Navbar() {
   const { user, setUser, setModalOpen } = useAuth();
@@ -25,7 +25,7 @@ function Navbar() {
     try {
       const data = await auth_service.logout();
       if (data.success) setUser(data.user);
-      else throw new Error("Something went wrong...");
+      else throw new Error('Something went wrong...');
     } catch (err) {
       console.error(err);
     }
@@ -37,7 +37,7 @@ function Navbar() {
 
   return (
     <nav className="nav">
-      <h3 onClick={() => router.push("/")} className="nav_brand" href="/">
+      <h3 onClick={() => router.push('/')} className="nav_brand" href="/">
         Auth
       </h3>
       <span className="nav_end">
@@ -60,7 +60,7 @@ function Navbar() {
           <>
             <p onClick={openModal}>Log in</p>
             <ColorButton
-              onClick={() => router.push("/register")}
+              onClick={() => router.push('/register')}
               className="nav_signup"
               variant="contained"
             >
@@ -74,7 +74,7 @@ function Navbar() {
           open={open}
           onClose={handleClose}
           MenuListProps={{
-            "aria-labelledby": "basic-button",
+            'aria-labelledby': 'basic-button',
           }}
         >
           <MenuItem

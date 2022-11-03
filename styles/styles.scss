@@ -1,12 +1,12 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
-@import "./app";
-@import "./_breakpoints.scss";
-@import "./nav";
-@import "./register";
+@import './app';
+@import './_breakpoints.scss';
+@import './nav';
+@import './register';
 
 :root,
-body[data-theme="default"] {
+body[data-theme='default'] {
   --content-width: 1366px;
   --primary-text-color: #160747;
   --secondary-text-color: #928d9e;
@@ -19,7 +19,7 @@ body[data-theme="default"] {
     rgba(40, 132, 246, 1) 0%,
     rgba(123, 44, 255, 1) 100%
   );
-  @include media("<=desktop") {
+  @include media('<=desktop') {
     --content-width: 100%;
   }
 }
@@ -89,7 +89,7 @@ video {
 
 body {
   line-height: 1;
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
   margin: 0;
   color: #fff;
   background-color: var(--background-color);
@@ -123,7 +123,7 @@ blockquote:before,
 blockquote:after,
 q:before,
 q:after {
-  content: "";
+  content: '';
   content: none;
 }
 

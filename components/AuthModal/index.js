@@ -1,14 +1,14 @@
-import GitHub from "@mui/icons-material/GitHub";
-import Link from "next/link";
-import { useRouter } from "next/router";
-import { useRef, useState } from "react";
-import Modal from "react-modal";
-import { useAuth } from "../../context/AuthContext";
-import auth_service from "../../services/auth_service";
-import { CssTextField, GithubLoadingButton, LoadingBtn } from "../index";
-import { customStyles } from "./data";
+import GitHub from '@mui/icons-material/GitHub';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { useRef, useState } from 'react';
+import Modal from 'react-modal';
+import { useAuth } from '../../context/AuthContext';
+import auth_service from '../../services/auth_service';
+import { CssTextField, GithubLoadingButton, LoadingBtn } from '../index';
+import { customStyles } from './data';
 
-Modal.setAppElement("#__next"); //set default app element to bind modal in dom
+Modal.setAppElement('#__next'); //set default app element to bind modal in dom
 
 export default function AuthModal() {
   const {
@@ -33,8 +33,8 @@ export default function AuthModal() {
   };
 
   const validateInputValues = ({ username, password }) => {
-    if (!username) throw new Error("Please provide a username...");
-    if (!password) throw new Error("Please provide a password...");
+    if (!username) throw new Error('Please provide a username...');
+    if (!password) throw new Error('Please provide a password...');
 
     return true;
   };
@@ -57,7 +57,7 @@ export default function AuthModal() {
         setIsProcessing(false); //disable loading state
         setModalOpen(false); //close modal
         setUser(data.user); //update user state
-        router.push("/"); //redirect user to homepage
+        router.push('/'); //redirect user to homepage
       } else throw new Error(data.message); //handle server_side errors
     } catch (err) {
       setMessage({ error: true, content: err.message }); //display error message
@@ -78,14 +78,14 @@ export default function AuthModal() {
         <h1>Login</h1>
         <p className="login_subhead">Login to manage your account</p>
         <Link
-          style={{ textDecoration: "none", width: "100%" }}
+          style={{ textDecoration: 'none', width: '100%' }}
           onClick={() => setIsGithubProcessing(true)}
           href="/api/auth/github"
         >
           <GithubLoadingButton
             loading={isGithubProcessing}
             startIcon={<GitHub />}
-            sx={{ width: "100%", p: "0.65rem" }}
+            sx={{ width: '100%', p: '0.65rem' }}
           >
             Sign up with Github
           </GithubLoadingButton>
@@ -99,14 +99,14 @@ export default function AuthModal() {
           <CssTextField
             autoComplete="false"
             ref={usernameRef}
-            sx={{ width: "100%" }}
+            sx={{ width: '100%' }}
             label="Username"
             id="custom-css-outlined-input-email"
           />
           <CssTextField
             ref={passwordRef}
             type="password"
-            sx={{ width: "100%", m: "1rem 0" }}
+            sx={{ width: '100%', m: '1rem 0' }}
             label="Password"
             id="custom-css-outlined-input-password"
           />
@@ -114,7 +114,7 @@ export default function AuthModal() {
             className="a_c_d_summary_item_button"
             loading={isProcessing}
             variant="contained"
-            style={{ width: "100%", padding: ".65rem" }}
+            style={{ width: '100%', padding: '.65rem' }}
             type="submit"
           >
             Login
