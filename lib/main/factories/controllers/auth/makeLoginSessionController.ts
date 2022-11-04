@@ -1,12 +1,15 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { setLoginSession } from '../../../../auth';
 import { authenticate } from '../../../../strategies/local';
+import {connectToDatabase} from "../../../../infra/db/mongodb/helpers/database.service";
 
 export const makeLoginSessionController = async (
   req: NextApiRequest,
   res: NextApiResponse
 ) => {
   try {
+    await connectToDatabase();
+
     const user: Object = await authenticate(req, res);
 
     const session = { ...user };

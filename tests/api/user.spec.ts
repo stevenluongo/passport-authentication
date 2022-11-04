@@ -32,6 +32,17 @@ describe('Test User API', () => {
     user = res._body.user;
   });
 
+  //fetch user by query
+  it('should POST /api/auth/user/id and return a 200 status code', async () => {
+    const res = await handler1
+        .put('/api/auth/user/id')
+        .send({ username: user.username });
+    expect(res._body.users[0].emailAddress).toEqual(user.emailAddress);
+    expect(res._body.users[0].username).toEqual(user.username);
+    expect(res.status).toEqual(200);
+  });
+
+
   //fetch user by id
   it('should POST /api/auth/user/id and return a 200 status code', async () => {
     const res = await handler

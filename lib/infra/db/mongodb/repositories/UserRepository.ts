@@ -7,6 +7,9 @@ import { DeleteUserRepositoryNamespace } from '../../../../application/interface
 import { FetchUserByIdRepositoryNamespace } from '../../../../application/interfaces/repositories/user/fetchUserByIdRepository';
 import { UpdateUserRepositoryNamespace } from '../../../../application/interfaces/repositories/user/updateUserRepository';
 import { collections } from '../helpers/database.service';
+import {
+  FetchUserByQueryRepositoryNamespace
+} from "../../../../application/interfaces/repositories/user/fetchUserByQueryRepository";
 
 export class UserRepository implements CreateUserRepository {
   static async getCollection(): Promise<Collection> {
@@ -33,6 +36,23 @@ export class UserRepository implements CreateUserRepository {
       projection: { salt: 0, hash: 0 },
     });
   }
+
+  async fetchUserByQuery(
+      query: FetchUserByQueryRepositoryNamespace.Request
+  ): Promise<FetchUserByQueryRepositoryNamespace.Response> {
+    const collection = await UserRepository.getCollection();
+    return await collection.find(query, {
+      projection: { salt: 0, hash: 0 },
+    }).toArray();
+  }
+
+  async fetchLoginUser(
+      query: FetchUserByQueryRepositoryNamespace.Request
+  ): Promise<FetchUserByQueryRepositoryNamespace.Response> {
+    const collection = await UserRepository.getCollection();
+    return await collection.find(query).toArray();
+  }
+
 
   public async updateUser(
     data: UpdateUserRepositoryNamespace.Request
