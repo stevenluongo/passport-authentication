@@ -1,8 +1,8 @@
+import crypto from "crypto";
 import { NextApiRequest, NextApiResponse } from 'next';
 import passport from 'passport';
 import { Strategy as LocalStrategy } from 'passport-local';
-import crypto from "crypto";
-import {UserRepository} from "../infra/db/mongodb/repositories/UserRepository";
+import { UserRepository } from "../../infra/db/mongodb/repositories/UserRepository";
 
 export const localStrategy = new LocalStrategy(async function (
   username,

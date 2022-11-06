@@ -1,7 +1,9 @@
 import nc from 'next-connect';
-import { makeLoginSessionController } from '../../../lib/main/factories/controllers/auth/makeLoginSessionController';
+import { makeLoginController } from '../../../lib/main/factories/controllers/auth/makeLoginController';
 import { localMiddleware } from '../../../lib/main/middleware/passportLocal';
 
-const handler = nc().use(localMiddleware).post(makeLoginSessionController);
+const handler = nc();
+
+handler.use(localMiddleware).post(makeLoginController);
 
 export default handler;

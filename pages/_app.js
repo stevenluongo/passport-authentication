@@ -2,8 +2,10 @@ import { useEffect, useState } from 'react';
 import 'regenerator-runtime/runtime.js'; //ensures our babel configuration runs without throwing an error
 import Layout from '../components/Layout';
 import { AppContext } from '../context/AuthContext';
-import auth_service from '../services/auth_service';
+import { AuthService } from '../services/authService';
 import '../styles/styles.scss'; //stylesheet
+
+const authService = new AuthService();
 
 function MyApp({ Component, pageProps }) {
   const [user, setUser] = useState(null);
@@ -17,7 +19,7 @@ function MyApp({ Component, pageProps }) {
   }, []);
 
   const load_app = async () => {
-    const data = await auth_service.fetchSession();
+    const data = await authService.fetchSession();
     if (data.user) setUser(data.user);
     setLoaded(true);
   };

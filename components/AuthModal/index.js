@@ -4,9 +4,10 @@ import { useRouter } from 'next/router';
 import { useRef, useState } from 'react';
 import Modal from 'react-modal';
 import { useAuth } from '../../context/AuthContext';
-import auth_service from '../../services/auth_service';
+import { AuthService } from '../../services/authService';
 import { CssTextField, GithubLoadingButton, LoadingBtn } from '../index';
 import { customStyles } from './data';
+const authService = new AuthService();
 
 Modal.setAppElement('#__next'); //set default app element to bind modal in dom
 
@@ -49,7 +50,7 @@ export default function AuthModal() {
       const { username, password } = fetchInputValues();
 
       const data =
-        isValid && (await auth_service.login({ username, password })); //login user
+        isValid && (await authService.login({ username, password })); //login user
 
       console.log(data);
 

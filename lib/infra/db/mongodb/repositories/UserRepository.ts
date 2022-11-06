@@ -1,15 +1,15 @@
 import { Collection, ObjectId } from 'mongodb';
 import {
   CreateUserRepository,
-  CreateUserRepositoryNamespace,
+  CreateUserRepositoryNamespace
 } from '../../../../application/interfaces/repositories/user/createUserRepository';
 import { DeleteUserRepositoryNamespace } from '../../../../application/interfaces/repositories/user/deleteUserRepository';
 import { FetchUserByIdRepositoryNamespace } from '../../../../application/interfaces/repositories/user/fetchUserByIdRepository';
-import { UpdateUserRepositoryNamespace } from '../../../../application/interfaces/repositories/user/updateUserRepository';
-import { collections } from '../helpers/database.service';
 import {
   FetchUserByQueryRepositoryNamespace
 } from "../../../../application/interfaces/repositories/user/fetchUserByQueryRepository";
+import { UpdateUserRepositoryNamespace } from '../../../../application/interfaces/repositories/user/updateUserRepository';
+import { collections } from '../helpers/database.service';
 
 export class UserRepository implements CreateUserRepository {
   static async getCollection(): Promise<Collection> {

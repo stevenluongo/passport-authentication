@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { getTokenCookie, removeTokenCookie } from '../../../../cookies';
+import { getTokenCookie, removeTokenCookie } from '../../../helpers/cookies';
 
 export const makeLogoutController = (
   req: NextApiRequest,

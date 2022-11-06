@@ -1,8 +1,8 @@
 import passport from 'passport';
 import { disconnectFromDatabase } from '../../lib/infra/db/mongodb/helpers/database.service';
-import { localStrategy } from '../../lib/strategies/local';
-import getUserIdHandler from '../../pages/api/auth/user/[id]';
+import { localStrategy } from '../../lib/main/strategies/local';
 import userHandler from "../../pages/api/auth/user";
+import getUserIdHandler from '../../pages/api/auth/user/[id]';
 import { testClient } from '../mocks/testClient';
 
 const handler1 = testClient(userHandler)

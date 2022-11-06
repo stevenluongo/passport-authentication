@@ -1,9 +1,7 @@
 import redirect from 'micro-redirect';
+import { NextApiRequest, NextApiResponse } from 'next';
 import passport from 'passport';
-import { githubStrategy } from './strategies/github';
-import { fetchUserById } from './user';
-
-passport.use(githubStrategy);
+import { UserRepository } from '../../infra/db/mongodb/repositories/UserRepository';
 
 passport.serializeUser((user, done) => {
   const { id } = user;
@@ -11,12 +9,13 @@ passport.serializeUser((user, done) => {
 });
 
 passport.deserializeUser(async (id, done) => {
-  const user = await fetchUserById(id);
-  done(null, user);
+    const userRepo = new UserRepository();
+    const user = await userRepo.fetchUserById(id);
+    done(null, user);
 });
 
 // export middleware to wrap api/auth handlers
-const handler = (fn) => (req, res) => {
+const handler = (fn) => (req: NextApiRequest, res: NextApiResponse) => {
   if (!res.redirect) {
     // passport.js needs res.redirect:
     // https://github.com/jaredhanson/passport/blob/1c8ede/lib/middleware/authenticate.js#L261

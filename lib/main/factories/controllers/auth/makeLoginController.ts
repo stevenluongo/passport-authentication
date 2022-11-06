@@ -1,9 +1,9 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { setLoginSession } from '../../../../auth';
-import { authenticate } from '../../../../strategies/local';
-import {connectToDatabase} from "../../../../infra/db/mongodb/helpers/database.service";
+import { connectToDatabase } from "../../../../infra/db/mongodb/helpers/database.service";
+import { setLoginSession } from '../../../helpers/session';
+import { authenticate } from '../../../strategies/local';
 
-export const makeLoginSessionController = async (
+export const makeLoginController = async (
   req: NextApiRequest,
   res: NextApiResponse
 ) => {

@@ -1,15 +1,17 @@
 import GitHubIcon from '@mui/icons-material/GitHub';
 import React from 'react';
 import { useAuth } from '../../context/AuthContext';
-import auth_service from '../../services/auth_service';
+import { AuthService } from "../../services/authService";
 import { PrimaryButton, SecondaryButton } from '../index';
+
+const authService = new AuthService();
 
 function Landing() {
   const { user, setUser, setModalOpen } = useAuth();
 
   const handleLogout = async () => {
     try {
-      const data = await auth_service.logout();
+      const data = await authService.logout();
       if (data.success) setUser(data.user);
       else throw new Error('Something went wrong...');
     } catch (err) {

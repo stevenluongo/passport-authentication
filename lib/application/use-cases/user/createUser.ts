@@ -1,8 +1,8 @@
-import { generateHash } from '../../../helpers';
+import { generateHash } from "../../../main/helpers/generateHash";
 import { CreateUserRepository } from '../../interfaces/repositories/user/createUserRepository';
 import {
   CreateUserInterface,
-  CreateUserInterfaceNamespace,
+  CreateUserInterfaceNamespace
 } from '../../interfaces/use-cases/user/createUserInterface';
 
 export class CreateUser implements CreateUserInterface {
