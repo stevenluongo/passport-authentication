@@ -4,9 +4,8 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useRef, useState } from 'react';
 import { useAuth } from '../../context/AuthContext';
-import { validateEmail } from '../../lib/helpers';
+import { validateEmail } from "../../lib/main/helpers/validateEmail";
 import auth_service from '../../services/auth_service';
-import userService from '../../services/userService';
 import { CssTextField, GithubLoadingButton, LoadingBtn } from '../index';
 
 export default function Register({ csrf_token }) {
@@ -56,7 +55,7 @@ export default function Register({ csrf_token }) {
         password,
       } = fetchInputValues();
 
-      const data = await userService.create(
+      const data = await auth_service.register(
         csrf_token,
         username,
         emailAddress,
