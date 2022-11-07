@@ -5,15 +5,15 @@ export class AuthService extends Service {
     private url: string = `${this.base}/auth`;
 
     public async login(payload: { username: string, password: string }): Promise<HttpResponse> {
-        return await this.post(`${this.url}/login`, payload);
+        return await this.postRequest(`${this.url}/login`, payload);
     }
 
     public async logout(): Promise<HttpResponse> {
-        return await this.get(`${this.url}/logout`);
+        return await this.getRequest(`${this.url}/logout`);
     }
 
     public async fetchSession(): Promise<HttpResponse> {
-        return await this.get(`${this.url}/session`);
+        return await this.getRequest(`${this.url}/session`);
     }
 }
 

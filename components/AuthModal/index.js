@@ -1,13 +1,10 @@
 import GitHub from '@mui/icons-material/GitHub';
-import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useRef, useState } from 'react';
 import Modal from 'react-modal';
 import { useAuth } from '../../context/AuthContext';
-import { AuthService } from '../../services/authService';
 import { CssTextField, GithubLoadingButton, LoadingBtn } from '../index';
 import { customStyles } from './data';
-const authService = new AuthService();
 
 Modal.setAppElement('#__next'); //set default app element to bind modal in dom
 
@@ -20,6 +17,7 @@ export default function AuthModal() {
     isGithubProcessing,
     setIsGithubProcessing,
     setUser,
+    authService
   } = useAuth();
   const usernameRef = useRef(null);
   const passwordRef = useRef(null);
@@ -78,7 +76,8 @@ export default function AuthModal() {
       <>
         <h1>Login</h1>
         <p className="login_subhead">Login to manage your account</p>
-        <Link
+        {/* eslint-disable-next-line */}
+        <a
           style={{ textDecoration: 'none', width: '100%' }}
           onClick={() => setIsGithubProcessing(true)}
           href="/api/auth/github"
@@ -90,7 +89,7 @@ export default function AuthModal() {
           >
             Sign up with Github
           </GithubLoadingButton>
-        </Link>
+        </a>
         <span className="login_break">
           <hr />
           <p>or Sign in with Credentials</p>
@@ -122,18 +121,6 @@ export default function AuthModal() {
           </LoadingBtn>
           {message && <p>{message.content}</p>}
         </form>
-        {/* <p className="login_footer">
-          Don't have an account ?
-          <span
-            onClick={() => {
-              setModalOpen(false);
-              router.push('/register');
-            }}
-            style={{ textDecoration: 'underline' }}
-          >
-            Sign Up
-          </span>
-        </p> */}
       </>
     </Modal>
   );

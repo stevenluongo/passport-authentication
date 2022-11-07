@@ -1,12 +1,10 @@
+import { NextApiRequest, NextApiResponse } from 'next';
 import nextConnect from 'next-connect';
 import passport from 'passport';
 import { setLoginSession } from '../../../../lib/main/helpers/session';
-import withPassport from '../../../../lib/main/middleware/withPassport';
-import { githubStrategy } from '../../../../lib/main/strategies/github';
+import { githubMiddleware } from '../../../../lib/main/middleware/passportGithub';
 
-passport.use(githubStrategy);
-
-const authenticate = (req, res) =>
+const authenticate = (req: NextApiRequest, res: NextApiResponse) =>
   new Promise((resolve, reject) => {
     passport.authenticate('github', { session: false }, (error, token) => {
       if (error) reject(error);
@@ -15,12 +13,12 @@ const authenticate = (req, res) =>
   });
 
 const handler = nextConnect()
-  .use(passport.initialize())
-  .get(async (req, res) => {
+  .use(githubMiddleware)
+  .get(async (req: NextApiRequest, res: NextApiResponse) => {
     try {
-      const user = await authenticate(req, res);
+      const user: Object = await authenticate(req, res);
       const session = { ...user };
-      const cookie = await setLoginSession(res, session);
+      const cookie = await setLoginSession(session);
       res.setHeader('Set-Cookie', cookie);
       res.redirect('/');
     } catch (err) {
@@ -28,4 +26,4 @@ const handler = nextConnect()
     }
   });
 
-export default withPassport(handler);
+export default handler;

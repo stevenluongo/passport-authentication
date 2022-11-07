@@ -1,22 +1,14 @@
 import GitHubIcon from '@mui/icons-material/GitHub';
-import React from 'react';
-import { useAuth } from '../../context/AuthContext';
-import { AuthService } from "../../services/authService";
-import { PrimaryButton, SecondaryButton } from '../index';
-
-const authService = new AuthService();
+import { PrimaryButton, SecondaryButton } from "../components/index";
+import { useAuth } from "../context/AuthContext";
 
 function Landing() {
-  const { user, setUser, setModalOpen } = useAuth();
+  const { user, setUser, setModalOpen, authService } = useAuth();
 
-  const handleLogout = async () => {
-    try {
-      const data = await authService.logout();
-      if (data.success) setUser(data.user);
-      else throw new Error('Something went wrong...');
-    } catch (err) {
-      console.error(err);
-    }
+  const logoutHandler = async () => {
+    const { success, user, message } = await authService.logout();
+    if(!success) console.error(message);
+    setUser(user);
   };
 
   return (
@@ -36,16 +28,14 @@ function Landing() {
         </p>
         <span>
           {user ? (
-            <PrimaryButton onClick={handleLogout}>Log out</PrimaryButton>
+            <PrimaryButton onClick={logoutHandler}>Log out</PrimaryButton>
           ) : (
             <PrimaryButton onClick={() => setModalOpen(true)}>
               Try it !
             </PrimaryButton>
           )}
           <SecondaryButton
-            href="https://github.com/binolt/next.js-passport-auth"
-            target="_blank"
-            rel="noreferrer"
+            href="https://github.com/stevenluongo/next.js-passport-auth"
             endIcon={<GitHubIcon />}
           >
             View Repository

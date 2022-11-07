@@ -1,12 +1,26 @@
 import ArrowLeftIcon from '@mui/icons-material/ArrowLeft';
 import GitHub from '@mui/icons-material/GitHub';
-import Link from 'next/link';
+import NextLink, { LinkProps } from 'next/link';
 import { useRouter } from 'next/router';
-import { useRef, useState } from 'react';
-import { useAuth } from '../../context/AuthContext';
-import { validateEmail } from "../../lib/main/helpers/validateEmail";
-import auth_service from '../../services/auth_service';
-import { CssTextField, GithubLoadingButton, LoadingBtn } from '../index';
+import { FC, HTMLProps, useRef, useState } from 'react';
+import { CssTextField, GithubLoadingButton, LoadingBtn } from "../components/index";
+import { useAuth } from '../context/AuthContext';
+import { validateEmail } from "../lib/main/helpers/validateEmail";
+import csrf from '../utils/csrf';
+
+
+const LinkButton: FC<LinkProps & HTMLProps<HTMLAnchorElement>> = ({
+  as, children, href, ...rest
+}) => (
+  <NextLink
+    as={as}
+    href={href}
+  >
+    <a {...rest}>
+      {children}
+    </a>
+  </NextLink>
+);
 
 export default function Register({ csrf_token }) {
   const [message, setMessage] = useState(null);
@@ -18,6 +32,8 @@ export default function Register({ csrf_token }) {
     isGithubProcessing,
     setIsGithubProcessing,
     setUser,
+    userService,
+    authService
   } = useAuth();
   const router = useRouter();
   const usernameRef = useRef(null);
@@ -55,12 +71,7 @@ export default function Register({ csrf_token }) {
         password,
       } = fetchInputValues();
 
-      const data = await auth_service.register(
-        csrf_token,
-        username,
-        emailAddress,
-        password
-      );
+      const data = await userService.create({ username, emailAddress, password }, csrf_token);
 
       console.log(data);
 
@@ -70,7 +81,7 @@ export default function Register({ csrf_token }) {
         setMessage({ success: true, content: data.message }); //display success message
 
         setTimeout(async () => {
-          const data = await auth_service.login({ username, password }); //login user
+          const data = await authService.login({ username, password }); //login user
           setUser(data.user); //update user state
 
           router.push('/'); //redirect user to homepage
@@ -93,19 +104,19 @@ export default function Register({ csrf_token }) {
           Create your account<span>.</span>
         </h1>
         <div className="a_r_c_body">
-          <Link
+          <LinkButton
             style={{ textDecoration: 'none' }}
             onClick={() => setIsGithubProcessing(true)}
             href="/api/auth/github"
           >
             <GithubLoadingButton
-              loading={isGithubProcessing}
-              startIcon={<GitHub />}
-              sx={{ width: '100%', p: '0.85rem' }}
-            >
-              Sign up with Github
+                loading={isGithubProcessing}
+                startIcon={<GitHub />}
+                sx={{ width: '100%', p: '0.85rem' }}
+              >
+                Sign up with Github
             </GithubLoadingButton>
-          </Link>
+          </LinkButton>
           <span className="a_r_c_b_break">
             <hr />
             <p>Or Sign Up with Email</p>
@@ -156,4 +167,12 @@ export default function Register({ csrf_token }) {
       </div>
     </div>
   );
+}
+
+export async function getServerSideProps(context) {
+  const { req, res } = context;
+  await csrf(req, res);
+  return {
+    props: { csrf_token: req.csrfToken() },
+  };
 }

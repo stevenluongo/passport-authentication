@@ -20,6 +20,6 @@
     "**/*.tsx",
     "tests/infra/setEnvVars.js",
     "babel.config.js"
-  ],
+, "lib/main/middleware/withPassport.js", "pages/api/auth/github.ts"  ],
   "exclude": ["node_modules"]
 }

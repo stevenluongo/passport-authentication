@@ -1,9 +1,5 @@
+import { HttpResponse } from "../lib/infra/http/interfaces/httpResponse";
 import { Service } from "./service";
-
-type loginInterface = {
-    username: string;
-    password: string;
-}
 
 type userInterface = {
     username?: string;
@@ -14,23 +10,23 @@ type userInterface = {
 export class UserService extends Service {
     private url: string = `${this.base}/auth/user`;
     
-    public async create(payload: loginInterface, csrfToken: string) {
-        return this.post(this.url, payload, csrfToken)
+    public async create(payload: object, csrfToken: string) {
+        return this.postRequest(this.url, payload, csrfToken)
     }
 
-    public async fetchByQuery(payload: userInterface) {
-        return this.put(this.url, payload)
+    public async fetchByQuery(payload: userInterface): Promise<HttpResponse> {
+        return this.putRequest(this.url, payload)
     }
 
-    public async fetchById(id: string) {
-        return this.post(`${this.url}/${id}`, { id });
+    public async fetchById(id: string): Promise<HttpResponse> {
+        return this.postRequest(`${this.url}/${id}`, { id });
     }
 
-    public async update(id: string, payload: userInterface) {
-        return this.put(`${this.url}/${id}`, payload);
+    public async update(id: string, payload: userInterface): Promise<HttpResponse> {
+        return this.putRequest(`${this.url}/${id}`, payload);
     }
 
-    public async delete(id: string, payload: userInterface) {
-        return this.delete(`${this.url}/${id}`, payload);
+    public async delete(id: string, payload: userInterface): Promise<HttpResponse> {
+        return this.deleteRequest(`${this.url}/${id}`, payload);
     }
 }

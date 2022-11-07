@@ -1,14 +1,13 @@
-import { useState } from 'react';
-import { useRouter } from 'next/router';
-import MenuItem from '@mui/material/MenuItem';
 import MenuIcon from '@mui/icons-material/Menu';
 import IconButton from '@mui/material/IconButton';
-import { ColorButton, StyledMenu } from '../index';
+import MenuItem from '@mui/material/MenuItem';
+import { useRouter } from 'next/router';
+import { useState } from 'react';
 import { useAuth } from '../../context/AuthContext';
-import auth_service from '../../services/auth_service';
+import { ColorButton, StyledMenu } from '../index';
 
 function Navbar() {
-  const { user, setUser, setModalOpen } = useAuth();
+  const { user, setUser, setModalOpen, authService } = useAuth();
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
 
@@ -23,7 +22,7 @@ function Navbar() {
 
   const handleLogout = async () => {
     try {
-      const data = await auth_service.logout();
+      const data = await authService.logout();
       if (data.success) setUser(data.user);
       else throw new Error('Something went wrong...');
     } catch (err) {

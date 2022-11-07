@@ -1,4 +1,6 @@
 import { Strategy as GithubStrategy } from 'passport-github';
+import { connectToDatabase } from '../../infra/db/mongodb/helpers/database.service';
+import { UserRepository } from '../../infra/db/mongodb/repositories/UserRepository';
 
 export const githubStrategy = new GithubStrategy(
   {
@@ -7,19 +9,14 @@ export const githubStrategy = new GithubStrategy(
     callbackURL: process.env.GITHUB_CALLBACK_URL,
   },
   async (accessToken, refreshToken, profile, cb) => {
-    // //look for existing user
-    // const userRepo = new UserRepository();
-    // const existingUser = await userRepo.fetchUserByQuery({ github_id: profile.id });
-    // if (existingUser) return cb(null, existingUser);
+    // return cb(null, profile);
+    await connectToDatabase();
+    const userRepo = new UserRepository();
 
-    // //create new user
-    // const { username, id } = profile;
-    // const { success } = await userRepo.createUser({ github_id: id, username });
-    // if (success) {
-    //   //fetch newly created user
-    //   const user = await userRepo.fetchUserByQuery({ github_id: id });
-    //   const { _id, username, github_id } = user;
-    //   cb(null, { _id, username, github_id });
-    // }
+    const { username, id: githubId } = profile;
+    const existingUser = await userRepo.fetchUserByQuery({ githubId });
+    if(existingUser[0]) return cb(null, existingUser[0]);
+    const user = await userRepo.createUser({ username, githubId });
+    cb(null, user);
   }
 );
