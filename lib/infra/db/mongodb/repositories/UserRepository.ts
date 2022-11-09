@@ -1,13 +1,11 @@
 import { Collection, ObjectId } from 'mongodb';
 import {
   CreateUserRepository,
-  CreateUserRepositoryNamespace
+  CreateUserRepositoryNamespace,
 } from '../../../../application/interfaces/repositories/user/createUserRepository';
 import { DeleteUserRepositoryNamespace } from '../../../../application/interfaces/repositories/user/deleteUserRepository';
 import { FetchUserByIdRepositoryNamespace } from '../../../../application/interfaces/repositories/user/fetchUserByIdRepository';
-import {
-  FetchUserByQueryRepositoryNamespace
-} from "../../../../application/interfaces/repositories/user/fetchUserByQueryRepository";
+import { FetchUserByQueryRepositoryNamespace } from '../../../../application/interfaces/repositories/user/fetchUserByQueryRepository';
 import { UpdateUserRepositoryNamespace } from '../../../../application/interfaces/repositories/user/updateUserRepository';
 import { collections } from '../helpers/database.service';
 
@@ -38,21 +36,22 @@ export class UserRepository implements CreateUserRepository {
   }
 
   async fetchUserByQuery(
-      query: FetchUserByQueryRepositoryNamespace.Request
+    query: FetchUserByQueryRepositoryNamespace.Request
   ): Promise<FetchUserByQueryRepositoryNamespace.Response> {
     const collection = await UserRepository.getCollection();
-    return await collection.find(query, {
-      projection: { salt: 0, hash: 0 },
-    }).toArray();
+    return await collection
+      .find(query, {
+        projection: { salt: 0, hash: 0 },
+      })
+      .toArray();
   }
 
   async fetchLoginUser(
-      query: FetchUserByQueryRepositoryNamespace.Request
+    query: FetchUserByQueryRepositoryNamespace.Request
   ): Promise<FetchUserByQueryRepositoryNamespace.Response> {
     const collection = await UserRepository.getCollection();
     return await collection.find(query).toArray();
   }
-
 
   public async updateUser(
     data: UpdateUserRepositoryNamespace.Request

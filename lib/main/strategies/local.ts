@@ -1,8 +1,8 @@
-import crypto from "crypto";
+import crypto from 'crypto';
 import { NextApiRequest, NextApiResponse } from 'next';
 import passport from 'passport';
 import { Strategy as LocalStrategy } from 'passport-local';
-import { UserRepository } from "../../infra/db/mongodb/repositories/UserRepository";
+import { UserRepository } from '../../infra/db/mongodb/repositories/UserRepository';
 
 export const localStrategy = new LocalStrategy(async function (
   username,
@@ -25,7 +25,6 @@ export const authenticate = (req: NextApiRequest, res: NextApiResponse) =>
   new Promise((resolve, reject) => {
     passport.authenticate('local', { session: false }, (error, token) => {
       if (error) {
-        console.log(error);
         reject(error);
       } else resolve(token);
     })(req, res);
@@ -33,7 +32,7 @@ export const authenticate = (req: NextApiRequest, res: NextApiResponse) =>
 
 export function validatePassword(user, inputPassword) {
   const inputHash = crypto
-      .pbkdf2Sync(inputPassword, user.salt, 1000, 64, 'sha512')
-      .toString('hex');
+    .pbkdf2Sync(inputPassword, user.salt, 1000, 64, 'sha512')
+    .toString('hex');
   return user.hash === inputHash;
 }

@@ -1,7 +1,11 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": false,
@@ -19,7 +23,11 @@
     "**/*.ts",
     "**/*.tsx",
     "tests/infra/setEnvVars.js",
-    "babel.config.js"
-, "lib/main/middleware/withPassport.js", "pages/api/auth/github.ts"  ],
-  "exclude": ["node_modules"]
+    "babel.config.js",
+    "lib/main/middleware/withPassport.js",
+    "pages/api/auth/github.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

@@ -4,10 +4,11 @@
     "React": "readonly"
   },
   "rules": {
-    "no-unused-vars": [0, { "args": "after-used", "argsIgnorePattern": "^_" }]
+    "no-unused-vars": [0, { "args": "after-used", "argsIgnorePattern": "^_" }],
+    "@next/next/no-html-link-for-pages": "off"
   },
   "env": {
     "es6": true,
-    "jest" : true
+    "jest": true
   }
 }

@@ -1,0 +1,31 @@
+.navbar {
+  justify-content: space-between;
+  display: flex;
+  align-items: center;
+  color: #fff;
+}
+
+.navbar__brand {
+  letter-spacing: 0.25rem;
+  cursor: pointer;
+}
+
+.navbar__left {
+  display: flex;
+  gap: 2rem;
+  p {
+    cursor: pointer;
+    user-select: none;
+    transition: color 0.35s ease, background 0.5s ease;
+    background: transparent;
+    &:hover {
+      color: var(--color-primary-red);
+    }
+  }
+  :first-child {
+    color: var(--color-neutral-500);
+    &:hover {
+      color: var(--color-neutral-0);
+    }
+  }
+}

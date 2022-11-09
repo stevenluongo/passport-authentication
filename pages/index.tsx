@@ -1,49 +1,72 @@
-import GitHubIcon from '@mui/icons-material/GitHub';
-import { PrimaryButton, SecondaryButton } from "../components/index";
-import { useAuth } from "../context/AuthContext";
+import Head from 'next/head';
+import React, { FC } from 'react';
+import { CSSTransition } from 'react-transition-group';
+import Button from '../components/button';
+import { Body, Header, SubHeader } from '../components/headers';
+import { useGlobalContext } from '../context/globalContext';
 
-function Landing() {
-  const { user, setUser, setModalOpen, authService } = useAuth();
+const Landing: FC = () => {
+  const headerRef = React.useRef<HTMLHeadingElement>(null);
+  const subheaderRef = React.useRef<HTMLHeadingElement>(null);
+  const bodyRef = React.useRef<HTMLParagraphElement>(null);
+  const buttonRef = React.useRef<HTMLDivElement>(null);
 
-  const logoutHandler = async () => {
-    const { success, user, message } = await authService.logout();
-    if(!success) console.error(message);
-    setUser(user);
-  };
+  const { user } = useGlobalContext();
+
+  const [transition, setTransition] = React.useState<{
+    primary: boolean;
+    secondary?: boolean;
+  }>({ primary: false, secondary: false });
+
+  React.useEffect(() => {
+    setTimeout(() => {
+      setTransition({ primary: true });
+    }, 100);
+    setTimeout(() => {
+      setTransition({ primary: true, secondary: true });
+    }, 500);
+  }, [user]);
 
   return (
-    <div className="app_wrapper">
-      <div className="app_content">
-        {user ? (
-          <h1>Welcome back, {user.username} !</h1>
-        ) : (
-          <h1>
-            Next.js Authentication flow <br /> built with Passport.
-          </h1>
-        )}
-        <p>
-          Implement a secure authentication system for Next.js built with
-          <br />
-          Passport that supports custom credentials and third party logins.
-        </p>
-        <span>
-          {user ? (
-            <PrimaryButton onClick={logoutHandler}>Log out</PrimaryButton>
-          ) : (
-            <PrimaryButton onClick={() => setModalOpen(true)}>
-              Try it !
-            </PrimaryButton>
-          )}
-          <SecondaryButton
-            href="https://github.com/stevenluongo/next.js-passport-auth"
-            endIcon={<GitHubIcon />}
-          >
-            View Repository
-          </SecondaryButton>
-        </span>
-      </div>
+    <div className="landing">
+      <Head>
+        <title>Home | Passport Authentication</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
+      <CSSTransition
+        in={transition.primary}
+        nodeRef={headerRef}
+        timeout={3000}
+        classNames="header-transition"
+      >
+        <Header ref={headerRef} />
+      </CSSTransition>
+      <CSSTransition
+        in={transition.primary}
+        nodeRef={subheaderRef}
+        timeout={3000}
+        classNames="subheader-transition"
+      >
+        <SubHeader ref={subheaderRef} />
+      </CSSTransition>
+      <CSSTransition
+        in={transition.secondary}
+        nodeRef={bodyRef}
+        timeout={3000}
+        classNames="body-transition"
+      >
+        <Body ref={bodyRef} />
+      </CSSTransition>
+      <CSSTransition
+        in={transition.secondary}
+        nodeRef={buttonRef}
+        timeout={3000}
+        classNames="button-transition"
+      >
+        <Button ref={buttonRef} />
+      </CSSTransition>
     </div>
   );
-}
+};
 
 export default Landing;
