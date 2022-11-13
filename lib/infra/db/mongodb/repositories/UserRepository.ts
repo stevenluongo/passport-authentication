@@ -26,10 +26,10 @@ export class UserRepository implements CreateUserRepository {
   }
 
   async fetchUserById(
-    data: FetchUserByIdRepositoryNamespace.Request
+    id: FetchUserByIdRepositoryNamespace.Request
   ): Promise<FetchUserByIdRepositoryNamespace.Response> {
     const collection = await UserRepository.getCollection();
-    const query = { _id: new ObjectId(data.id) };
+    const query = { _id: new ObjectId(id) };
     return await collection.findOne(query, {
       projection: { salt: 0, hash: 0 },
     });
@@ -57,16 +57,15 @@ export class UserRepository implements CreateUserRepository {
     data: UpdateUserRepositoryNamespace.Request
   ): Promise<UpdateUserRepositoryNamespace.Response> {
     const collection = await UserRepository.getCollection();
-    const { id, ...body } = data;
-    const query = { _id: new ObjectId(id) };
-    return await collection.updateOne(query, { $set: { ...body } });
+    const query = { _id: new ObjectId(data.id) };
+    return await collection.updateOne(query, { $set: { ...data.body } });
   }
 
   public async deleteUser(
-    data: DeleteUserRepositoryNamespace.Request
+    id: DeleteUserRepositoryNamespace.Request
   ): Promise<DeleteUserRepositoryNamespace.Response> {
     const collection = await UserRepository.getCollection();
-    const query = { _id: new ObjectId(data.id) };
+    const query = { _id: new ObjectId(id) };
     return await collection.deleteOne(query);
   }
 }

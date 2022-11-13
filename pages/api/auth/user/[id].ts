@@ -7,7 +7,7 @@ import { makeUpdateUserController } from '../../../../lib/main/factories/control
 const handler = nextConnect();
 
 //fetch user by id
-handler.post(nextRouteAdapter(makeFetchUserByIdController()));
+handler.get(nextRouteAdapter(makeFetchUserByIdController()));
 
 //update user
 handler.put(nextRouteAdapter(makeUpdateUserController()));

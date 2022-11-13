@@ -3,7 +3,7 @@ import { BaseController } from '../../../controllers/baseController';
 import { HttpRequest } from '../../interfaces/httpRequest';
 import { HttpResponse } from '../../interfaces/httpResponse';
 import { Validation } from '../../interfaces/validation';
-import { accepted } from '../../responseCodes';
+import { accepted, badRequest, nothingModified } from '../../responseCodes';
 
 export class DeleteUserController extends BaseController {
   constructor(
@@ -16,12 +16,29 @@ export class DeleteUserController extends BaseController {
   async execute(
     httpRequest: DeleteUserControllerNamespace.Request
   ): Promise<DeleteUserControllerNamespace.Response> {
-    const response = await this.deleteUser.execute(httpRequest.body!);
-    return accepted({ statusCode: 202, success: true });
+    try {
+      //extract id and body from http request
+      const { id } = httpRequest!.params;
+
+      //delete user in database
+      const { acknowledged, deletedCount } = await this.deleteUser.execute(id);
+
+      //request was not acknowledged
+      if (!acknowledged) return badRequest(new Error('User not found.'));
+
+      //nothing was deleted
+      if (!deletedCount) return nothingModified({});
+
+      //success
+      return accepted({ statusCode: 202 });
+    } catch (e) {
+      //handle exceptions
+      return badRequest(e);
+    }
   }
 }
 
 export namespace DeleteUserControllerNamespace {
   export type Request = HttpRequest<any>;
-  export type Response = HttpResponse<{ statusCode: number }>;
+  export type Response = HttpResponse<any>;
 }

@@ -6,6 +6,11 @@ export const ok = <T = any>(body: T): HttpResponse<T> => ({
   body,
 });
 
+export const created = <T = any>(body: T): HttpResponse<T> => ({
+  statusCode: 201,
+  body,
+});
+
 export const accepted = <T = any>(body: T): HttpResponse<T> => ({
   statusCode: 202,
   body,

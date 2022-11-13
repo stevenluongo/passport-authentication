@@ -7,7 +7,8 @@
     "prepare": "husky install",
     "lint": "next lint",
     "dev": "cross-env NODE_OPTIONS='--inspect' next dev",
-    "test": "jest --passWithNoTests --runInBand --detectOpenHandles"
+    "test": "jest --passWithNoTests --runInBand --detectOpenHandles",
+    "user": "jest user.test.ts"
   },
   "dependencies": {
     "@babel/preset-typescript": "^7.18.6",

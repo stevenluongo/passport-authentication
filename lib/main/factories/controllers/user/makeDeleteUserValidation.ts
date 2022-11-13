@@ -2,4 +2,4 @@ import { RequiredFieldValidation } from '../../../../infra/http/validations/requ
 import { ValidationComposite } from '../../../../infra/http/validations/validationComposite';
 
 export const makeDeleteUserValidation = (): ValidationComposite =>
-  new ValidationComposite([new RequiredFieldValidation('id')], 'body');
+  new ValidationComposite([new RequiredFieldValidation('id')], 'params');
