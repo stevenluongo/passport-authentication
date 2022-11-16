@@ -59,7 +59,10 @@ export const Modal: FC = () => {
       if (!username || !password) throw new Error('Please fill in all fields');
 
       const response = await authService.login({ username, password });
-      if (!response.success) throw new Error(response.message);
+      console.log(response);
+
+      if (response.error) throw new Error(response.message);
+
       setTimeout(() => {
         setUser(response.user);
         setModalOpen(false);
