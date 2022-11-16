@@ -8,7 +8,9 @@
     "lint": "next lint",
     "dev": "cross-env NODE_OPTIONS='--inspect' next dev",
     "test": "jest --passWithNoTests --runInBand --detectOpenHandles",
-    "user": "jest user.test.ts"
+    "user": "jest user.test.ts",
+    "authentication": "jest authentication.test.ts",
+    "db-connection": "jest db-connection.test.ts"
   },
   "dependencies": {
     "@babel/preset-typescript": "^7.18.6",

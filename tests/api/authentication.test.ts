@@ -1,5 +1,8 @@
 import passport from 'passport';
-import { disconnectFromDatabase } from '../../lib/infra/db/mongodb/helpers/database.service';
+import {
+  connectToDatabase,
+  disconnectFromDatabase,
+} from '../../lib/infra/db/mongodb/helpers/database.service';
 import { localStrategy } from '../../lib/main/strategies/local';
 import loginHandler from '../../pages/api/auth/login';
 import logoutHandler from '../../pages/api/auth/logout';
@@ -9,7 +12,8 @@ const loginRequest = testClient(loginHandler);
 const logoutRequest = testClient(logoutHandler);
 
 describe('Test Authentication API', () => {
-  beforeEach(async () => {
+  beforeAll(async () => {
+    await connectToDatabase();
     passport.initialize();
     passport.use(localStrategy);
   });

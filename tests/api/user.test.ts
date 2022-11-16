@@ -1,4 +1,7 @@
-import { disconnectFromDatabase } from '../../lib/infra/db/mongodb/helpers/database.service';
+import {
+  connectToDatabase,
+  disconnectFromDatabase,
+} from '../../lib/infra/db/mongodb/helpers/database.service';
 import userHandler from '../../pages/api/auth/user';
 import getUserIdHandler from '../../pages/api/auth/user/[id]';
 import { queryClient, testClient } from '../mocks/testClient';
@@ -13,7 +16,12 @@ let user: {
 };
 
 describe('Testing /api/auth/user', () => {
-  //disconnect from the database after the test completes
+  //ensure database connection
+  beforeAll(async () => {
+    await connectToDatabase();
+  });
+
+  //disconnect from the database
   afterAll((done) => {
     disconnectFromDatabase();
     done();
