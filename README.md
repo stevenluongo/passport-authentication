@@ -1,20 +1,21 @@
 <br />
 <p align="center">
-  <h3 align="center">Passport Authentication</h3>
-
+  <h1 align="center">Next.js & Passport Authentication</h1>
   <p align="center">
-    Authentication system using <strong>Passport</strong> built with a clean architecture approach. Built for re-use over a multitude of projects, un-tied to a specific framework and database. 
-    <br/>
-    <br />
-    <div align="center">
-      <img width="60px" height="60px" src="https://res.cloudinary.com/dxqmbhsis/image/upload/v1631840281/passport-white_tb1epr.png"/>
-    </div>
-    <br />
-    <div align="center">
-      <a target="_blank" rel="noopener noreferrer" href="https://main.d8ottqgcqlwb0.amplifyapp.com/">Live Demo</a>
-    </div>
+    Authentication system using <a href="https://www.passportjs.org/">Passport.js</a> built with a clean architecture approach. <br/>Built for re-use over a multitude of projects, 
+un-tied to a specific framework and database.
   </p>
+  <br/>
 </p>
+
+
+
+
+![Untitled (1)](https://user-images.githubusercontent.com/53283472/202077470-32e7d631-b444-47c7-b822-ccf4bba6cb20.gif)
+
+
+<br/>
+
 
 ## About This Project
 
