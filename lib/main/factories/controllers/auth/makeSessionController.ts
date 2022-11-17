@@ -1,7 +1,7 @@
+import { connectToDatabase } from '@infra/db/mongodb/helpers/database.service';
+import { UserRepository } from '@infra/db/mongodb/repositories/UserRepository';
+import { getLoginSession } from '@main/helpers/session';
 import { NextApiRequest, NextApiResponse } from 'next';
-import { connectToDatabase } from '../../../../infra/db/mongodb/helpers/database.service';
-import { UserRepository } from '../../../../infra/db/mongodb/repositories/UserRepository';
-import { getLoginSession } from '../../../helpers/session';
 
 export const makeSessionController = async (
   req: NextApiRequest,
@@ -11,7 +11,9 @@ export const makeSessionController = async (
     await connectToDatabase();
     const session = await getLoginSession(req);
     const userRepo = new UserRepository();
-    const user = session ? await userRepo.fetchUserById({id: session._id}) : null;
+    const user = session
+      ? await userRepo.fetchUserById({ id: session._id })
+      : null;
     if (!user) {
       res.status(401).json({ user });
       return;

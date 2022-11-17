@@ -1,10 +1,10 @@
 export interface FetchUserByQueryRepository {
-    fetchUserByQuery(
-        data: FetchUserByQueryRepositoryNamespace.Request
-    ): Promise<FetchUserByQueryRepositoryNamespace.Response>;
+  fetchUserByQuery(
+    data: FetchUserByQueryRepositoryNamespace.Request
+  ): Promise<FetchUserByQueryRepositoryNamespace.Response>;
 }
 
 export namespace FetchUserByQueryRepositoryNamespace {
-    export type Request = any;
-    export type Response = any;
+  export type Request = any;
+  export type Response = any;
 }

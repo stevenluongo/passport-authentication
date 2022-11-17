@@ -1,6 +1,6 @@
+import { connectToDatabase } from '@infra/db/mongodb/helpers/database.service';
+import { UserRepository } from '@infra/db/mongodb/repositories/UserRepository';
 import { Strategy as GithubStrategy } from 'passport-github';
-import { connectToDatabase } from '../../infra/db/mongodb/helpers/database.service';
-import { UserRepository } from '../../infra/db/mongodb/repositories/UserRepository';
 
 export const githubStrategy = new GithubStrategy(
   {
@@ -15,7 +15,7 @@ export const githubStrategy = new GithubStrategy(
 
     const { username, id: githubId } = profile;
     const existingUser = await userRepo.fetchUserByQuery({ githubId });
-    if(existingUser[0]) return cb(null, existingUser[0]);
+    if (existingUser[0]) return cb(null, existingUser[0]);
     const user = await userRepo.createUser({ username, githubId });
     cb(null, user);
   }

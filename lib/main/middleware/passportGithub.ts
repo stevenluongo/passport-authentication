@@ -1,8 +1,8 @@
+import { UserRepository } from '@infra/db/mongodb/repositories/UserRepository';
+import { githubStrategy } from '@main/strategies/github';
 import passport from 'passport';
-import { UserRepository } from '../../infra/db/mongodb/repositories/UserRepository';
-import { githubStrategy } from '../strategies/github';
 
-export const githubMiddleware = async(req, res, next) => {
+export const githubMiddleware = async (req, res, next) => {
   //initialize passport session
   passport.initialize();
 

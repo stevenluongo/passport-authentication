@@ -1,8 +1,8 @@
+import { UpdateUserRepository } from '@application/interfaces/repositories/user/updateUserRepository';
 import {
   UpdateUserInterface,
   UpdateUserInterfaceNamespace,
-} from '../../interfaces/use-cases/user/updateUserInterface';
-import { UpdateUserRepository } from '../../interfaces/repositories/user/updateUserRepository';
+} from '@application/interfaces/use-cases/user/updateUserInterface';
 
 export class UpdateUser implements UpdateUserInterface {
   constructor(private readonly updateUserRepository: UpdateUserRepository) {}

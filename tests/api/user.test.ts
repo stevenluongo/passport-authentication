@@ -1,7 +1,7 @@
 import {
   connectToDatabase,
   disconnectFromDatabase,
-} from '../../lib/infra/db/mongodb/helpers/database.service';
+} from '@infra/db/mongodb/helpers/database.service';
 import userHandler from '../../pages/api/auth/user';
 import getUserIdHandler from '../../pages/api/auth/user/[id]';
 import { queryClient, testClient } from '../mocks/testClient';

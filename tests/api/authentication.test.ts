@@ -1,9 +1,9 @@
-import passport from 'passport';
 import {
   connectToDatabase,
   disconnectFromDatabase,
-} from '../../lib/infra/db/mongodb/helpers/database.service';
-import { localStrategy } from '../../lib/main/strategies/local';
+} from '@infra/db/mongodb/helpers/database.service';
+import { localStrategy } from '@main/strategies/local';
+import passport from 'passport';
 import loginHandler from '../../pages/api/auth/login';
 import logoutHandler from '../../pages/api/auth/logout';
 import { testClient } from '../mocks/testClient';

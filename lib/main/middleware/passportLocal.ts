@@ -1,5 +1,5 @@
+import { localStrategy } from '@main/strategies/local';
 import passport from 'passport';
-import { localStrategy } from '../strategies/local';
 
 export const localMiddleware = (req, res, next) => {
   if (!req.body.username) {

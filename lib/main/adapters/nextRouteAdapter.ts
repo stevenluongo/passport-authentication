@@ -1,7 +1,7 @@
+import { BaseController } from '@infra/controllers/baseController';
+import { connectToDatabase } from '@infra/db/mongodb/helpers/database.service';
+import { HttpRequest } from '@infra/http/interfaces/httpRequest';
 import { NextApiRequest, NextApiResponse } from 'next';
-import { BaseController } from '../../infra/controllers/baseController';
-import { connectToDatabase } from '../../infra/db/mongodb/helpers/database.service';
-import { HttpRequest } from '../../infra/http/interfaces/httpRequest';
 
 export const nextRouteAdapter =
   (controller: BaseController) =>

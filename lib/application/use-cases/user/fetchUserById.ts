@@ -1,8 +1,8 @@
-import { FetchUserByIdRepository } from '../../interfaces/repositories/user/fetchUserByIdRepository';
+import { FetchUserByIdRepository } from '@application/interfaces/repositories/user/fetchUserByIdRepository';
 import {
   FetchUserByIdInterface,
-  FetchUserByIdInterfaceNamespace
-} from '../../interfaces/use-cases/user/fetchUserByIdInterface';
+  FetchUserByIdInterfaceNamespace,
+} from '@application/interfaces/use-cases/user/fetchUserByIdInterface';
 
 export class FetchUserById implements FetchUserByIdInterface {
   constructor(

@@ -1,6 +1,6 @@
-import { BaseController } from '../../../../infra/controllers/baseController';
-import { DeleteUserController } from '../../../../infra/http/controllers/user/deleteUserController';
-import { makeDeleteUser } from '../../use-cases/user/makeDeleteUser';
+import { BaseController } from '@infra/controllers/baseController';
+import { DeleteUserController } from '@infra/http/controllers/user/deleteUserController';
+import { makeDeleteUser } from '@main/factories/use-cases/user/makeDeleteUser';
 import { makeDeleteUserValidation } from './makeDeleteUserValidation';
 
 export const makeDeleteUserController = (): BaseController => {

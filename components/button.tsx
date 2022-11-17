@@ -18,7 +18,7 @@ const Button = React.forwardRef<HTMLDivElement>((_props, ref) => {
 
   const logoutHandler = async () => {
     const response = await authService.logout();
-    if (response.success) setUser(null);
+    if (!response.error) setUser(null);
   };
 
   return (

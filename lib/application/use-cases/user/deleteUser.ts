@@ -1,8 +1,8 @@
-import { DeleteUserRepository } from '../../interfaces/repositories/user/deleteUserRepository';
+import { DeleteUserRepository } from '@application/interfaces/repositories/user/deleteUserRepository';
 import {
   DeleteUserInterface,
   DeleteUserInterfaceNamespace,
-} from '../../interfaces/use-cases/user/deleteUserInterface';
+} from '@application/interfaces/use-cases/user/deleteUserInterface';
 
 export class DeleteUser implements DeleteUserInterface {
   constructor(private readonly deleteUserRepository: DeleteUserRepository) {}

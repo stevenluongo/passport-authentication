@@ -1,12 +1,12 @@
-import { Collection, ObjectId } from 'mongodb';
 import {
   CreateUserRepository,
   CreateUserRepositoryNamespace,
-} from '../../../../application/interfaces/repositories/user/createUserRepository';
-import { DeleteUserRepositoryNamespace } from '../../../../application/interfaces/repositories/user/deleteUserRepository';
-import { FetchUserByIdRepositoryNamespace } from '../../../../application/interfaces/repositories/user/fetchUserByIdRepository';
-import { FetchUserByQueryRepositoryNamespace } from '../../../../application/interfaces/repositories/user/fetchUserByQueryRepository';
-import { UpdateUserRepositoryNamespace } from '../../../../application/interfaces/repositories/user/updateUserRepository';
+} from '@application/interfaces/repositories/user/createUserRepository';
+import { DeleteUserRepositoryNamespace } from '@application/interfaces/repositories/user/deleteUserRepository';
+import { FetchUserByIdRepositoryNamespace } from '@application/interfaces/repositories/user/fetchUserByIdRepository';
+import { FetchUserByQueryRepositoryNamespace } from '@application/interfaces/repositories/user/fetchUserByQueryRepository';
+import { UpdateUserRepositoryNamespace } from '@application/interfaces/repositories/user/updateUserRepository';
+import { Collection, ObjectId } from 'mongodb';
 import { collections } from '../helpers/database.service';
 
 export class UserRepository implements CreateUserRepository {

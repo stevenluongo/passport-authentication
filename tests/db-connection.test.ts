@@ -2,7 +2,7 @@ import {
   collections,
   connectToDatabase,
   disconnectFromDatabase,
-} from '../lib/infra/db/mongodb/helpers/database.service';
+} from '@infra/db/mongodb/helpers/database.service';
 
 describe('Database Connection', () => {
   beforeAll(async () => {
