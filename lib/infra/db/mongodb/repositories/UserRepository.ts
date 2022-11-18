@@ -2,14 +2,33 @@ import {
   CreateUserRepository,
   CreateUserRepositoryNamespace,
 } from '@application/interfaces/repositories/user/createUserRepository';
-import { DeleteUserRepositoryNamespace } from '@application/interfaces/repositories/user/deleteUserRepository';
-import { FetchUserByIdRepositoryNamespace } from '@application/interfaces/repositories/user/fetchUserByIdRepository';
-import { FetchUserByQueryRepositoryNamespace } from '@application/interfaces/repositories/user/fetchUserByQueryRepository';
-import { UpdateUserRepositoryNamespace } from '@application/interfaces/repositories/user/updateUserRepository';
+import {
+  DeleteUserRepository,
+  DeleteUserRepositoryNamespace,
+} from '@application/interfaces/repositories/user/deleteUserRepository';
+import {
+  FetchUserByIdRepository,
+  FetchUserByIdRepositoryNamespace,
+} from '@application/interfaces/repositories/user/fetchUserByIdRepository';
+import {
+  FetchUserByQueryRepository,
+  FetchUserByQueryRepositoryNamespace,
+} from '@application/interfaces/repositories/user/fetchUserByQueryRepository';
+import {
+  UpdateUserRepository,
+  UpdateUserRepositoryNamespace,
+} from '@application/interfaces/repositories/user/updateUserRepository';
 import { Collection, ObjectId } from 'mongodb';
 import { collections } from '../helpers/database.service';
 
-export class UserRepository implements CreateUserRepository {
+export class UserRepository
+  implements
+    CreateUserRepository,
+    FetchUserByIdRepository,
+    FetchUserByQueryRepository,
+    UpdateUserRepository,
+    DeleteUserRepository
+{
   static async getCollection(): Promise<Collection> {
     return collections.users;
   }

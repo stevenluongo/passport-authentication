@@ -6,8 +6,10 @@ on: [push]
 env:
   MONGODB_URI: ${{ secrets.MONGODB_URI }}
   TOKEN_SECRET: ${{ secrets.TOKEN_SECRET }}
+  SENDGRID_API_KEY: ${{ secrets.SENDGRID_API_KEY }}
   DB_NAME: base-cluster
   USERS_COLLECTION_NAME: users
+  VERIFICATION_COLLECTION_NAME: verification
 
 # list of actions to run
 jobs:

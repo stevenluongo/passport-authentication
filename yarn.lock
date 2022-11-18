@@ -2150,28 +2150,28 @@
   "resolved" "https://registry.npmjs.org/@rushstack/eslint-patch/-/eslint-patch-1.2.0.tgz"
   "version" "1.2.0"
 
-"@sendgrid/client@^7.4.7":
-  "integrity" "sha512-Zh3H/nCyI2+MaAZW9KJpyk6JXfxE27W+mR636Hju/GX95SR7+uymeuLLJ3GtLvtapLTl8l6/0YoHjzlg65xtqg=="
-  "resolved" "https://registry.npmjs.org/@sendgrid/client/-/client-7.4.7.tgz"
-  "version" "7.4.7"
+"@sendgrid/client@^7.7.0":
+  "integrity" "sha512-SxH+y8jeAQSnDavrTD0uGDXYIIkFylCo+eDofVmZLQ0f862nnqbC3Vd1ej6b7Le7lboyzQF6F7Fodv02rYspuA=="
+  "resolved" "https://registry.npmjs.org/@sendgrid/client/-/client-7.7.0.tgz"
+  "version" "7.7.0"
   dependencies:
-    "@sendgrid/helpers" "^7.4.6"
-    "axios" "^0.21.4"
+    "@sendgrid/helpers" "^7.7.0"
+    "axios" "^0.26.0"
 
-"@sendgrid/helpers@^7.4.6":
-  "integrity" "sha512-Vvt4d60fkU/DPSwMyxXtlnbw4/B+5Y9eeYnygTxhmw8TNzUhdPphr7SaRSperWJ8P1VeQZzobvQNyMj5E7A3UA=="
-  "resolved" "https://registry.npmjs.org/@sendgrid/helpers/-/helpers-7.4.6.tgz"
-  "version" "7.4.6"
+"@sendgrid/helpers@^7.7.0":
+  "integrity" "sha512-3AsAxfN3GDBcXoZ/y1mzAAbKzTtUZ5+ZrHOmWQ279AuaFXUNCh9bPnRpN504bgveTqoW+11IzPg3I0WVgDINpw=="
+  "resolved" "https://registry.npmjs.org/@sendgrid/helpers/-/helpers-7.7.0.tgz"
+  "version" "7.7.0"
   dependencies:
     "deepmerge" "^4.2.2"
 
-"@sendgrid/mail@^7.4.7":
-  "integrity" "sha512-lGfXJBEx7PMQje/NsVsebF6MdP2ptHWjmuI4YANjReAQlIGq3Cqm4JLP5Fb4n5Bbr1LXLCM7R0gJo+/PT6ENKw=="
-  "resolved" "https://registry.npmjs.org/@sendgrid/mail/-/mail-7.4.7.tgz"
-  "version" "7.4.7"
+"@sendgrid/mail@^7.7.0":
+  "integrity" "sha512-5+nApPE9wINBvHSUxwOxkkQqM/IAAaBYoP9hw7WwgDNQPxraruVqHizeTitVtKGiqWCKm2mnjh4XGN3fvFLqaw=="
+  "resolved" "https://registry.npmjs.org/@sendgrid/mail/-/mail-7.7.0.tgz"
+  "version" "7.7.0"
   dependencies:
-    "@sendgrid/client" "^7.4.7"
-    "@sendgrid/helpers" "^7.4.6"
+    "@sendgrid/client" "^7.7.0"
+    "@sendgrid/helpers" "^7.7.0"
 
 "@sinclair/typebox@^0.24.1":
   "integrity" "sha512-ng4ut1z2MCBhK/NwDVwIQp3pAUOCs/KNaW3cBxdFB2xTDrOuo1xuNmpr/9HHFhxqIvHrs1NTH3KJg6q+JSy1Kw=="
@@ -2662,12 +2662,12 @@
   "resolved" "https://registry.npmjs.org/axe-core/-/axe-core-4.5.0.tgz"
   "version" "4.5.0"
 
-"axios@^0.21.4":
-  "integrity" "sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg=="
-  "resolved" "https://registry.npmjs.org/axios/-/axios-0.21.4.tgz"
-  "version" "0.21.4"
+"axios@^0.26.0":
+  "integrity" "sha512-fPwcX4EvnSHuInCMItEhAGnaSEXRBjtzh9fOtsE6E1G6p7vl7edEeZe11QHf18+6+9gR5PbKV/sGKNaD8YaMeA=="
+  "resolved" "https://registry.npmjs.org/axios/-/axios-0.26.1.tgz"
+  "version" "0.26.1"
   dependencies:
-    "follow-redirects" "^1.14.0"
+    "follow-redirects" "^1.14.8"
 
 "axobject-query@^2.2.0":
   "integrity" "sha512-Td525n+iPOOyUQIeBfcASuG6uJsDOITl7Mds5gFyerkWiX7qhUTdYUBlSgNMyVqtSJqwpt1kXGLdUt6SykLMRA=="
@@ -4164,10 +4164,10 @@
   "resolved" "https://registry.npmjs.org/flatted/-/flatted-3.2.7.tgz"
   "version" "3.2.7"
 
-"follow-redirects@^1.14.0":
-  "integrity" "sha512-1x0S9UVJHsQprFcEC/qnNzBLcIxsjAV905f/UkQxbclCsoTWlacCNOpQa/anodLl2uaEKFhfWOvM2Qg77+15zA=="
-  "resolved" "https://registry.npmjs.org/follow-redirects/-/follow-redirects-1.14.8.tgz"
-  "version" "1.14.8"
+"follow-redirects@^1.14.8":
+  "integrity" "sha512-VQLG33o04KaQ8uYi2tVNbdrWp1QWxNNea+nmIB4EVM28v0hmP17z7aG1+wAkNzVq4KeXTq3221ye5qTJP91JwA=="
+  "resolved" "https://registry.npmjs.org/follow-redirects/-/follow-redirects-1.15.2.tgz"
+  "version" "1.15.2"
 
 "foreach@^2.0.5":
   "integrity" "sha1-C+4AUBiusmDQo6865ljdATbsG5k="

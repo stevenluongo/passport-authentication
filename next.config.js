@@ -8,6 +8,7 @@ module.exports = {
     GITHUB_CLIENT_SECRET: process.env.GITHUB_CLIENT_SECRET,
     GITHUB_CALLBACK_URL: process.env.GITHUB_CALLBACK_URL,
     PROD_URL: process.env.PROD_URL,
+    SENDGRID_API_KEY: process.env.SENDGRID_API_KEY,
   },
 };
 
@@ -21,6 +22,8 @@ GITHUB ENVIRONMENT VARIABLES ( REQUIRED )
 - DB_NAME :  *required* name of the database from mongodb
 - TOKEN_SECRET :  *required* key used to serialize & deserialize session cookies. Generate a 512-bit key - https://www.allkeysgenerator.com/Random/Security-Encryption-Key-Generator.aspx
 - USERS_COLLECTION_NAME : *required* name of the users collection. You can name it whatever you want.
+- VERIFICATION_COLLECTION_NAME : *required* name of the verification collection. You can name it whatever you want.
+- SENDGRID_API_KEY : *required* generate an api key on sendgrid for email verification
 
 GITHUB ENVIRONMENT VARIABLES ( OPTIONAL )
 READ THIS - https://docs.github.com/en/developers/apps/building-oauth-apps/authorizing-oauth-apps
@@ -30,7 +33,6 @@ READ THIS - https://docs.github.com/en/developers/apps/building-oauth-apps/autho
 
 PRODUCTION ENVIRONMENT VARIABLES ( OPTIONAL )
 - PROD_URL : This is only for hosting. You don't need to touch this unless you want to deploy the project somewhere. Example would be https://helloworld.com
-
 
 
 FOR TESTING

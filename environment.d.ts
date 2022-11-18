@@ -5,9 +5,13 @@ declare global {
       DB_NAME: string;
       TOKEN_SECRET: string;
       USERS_COLLECTION_NAME: string;
+      VERIFICATION_COLLECTION_NAME: string;
+      VERIFICATION_COLLECTION_NAME: string;
+      VERIFICATION_COLLECTION_NAME: string;
       GITHUB_CLIENT_ID: string;
       GITHUB_CLIENT_SECRET: string;
       GITHUB_CALLBACK_URL: string;
+      SENDGRID_API_KEY: string;
       NODE_ENV: 'development' | 'production';
       PORT?: string;
       PWD: string;

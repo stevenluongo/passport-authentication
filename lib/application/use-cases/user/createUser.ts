@@ -3,7 +3,7 @@ import {
   CreateUserInterface,
   CreateUserInterfaceNamespace,
 } from '@application/interfaces/use-cases/user/createUserInterface';
-import { generateHash } from '@main/helpers/generateHash';
+import { generateHash } from '@main/helpers/hash';
 
 export class CreateUser implements CreateUserInterface {
   constructor(private readonly createUserRepository: CreateUserRepository) {}
@@ -11,7 +11,7 @@ export class CreateUser implements CreateUserInterface {
   async execute(
     userData: CreateUserInterfaceNamespace.Request
   ): Promise<CreateUserInterfaceNamespace.Response> {
-    //our logic here to create a new user
+    //our logic here
     const { password, ...userBody } = userData;
 
     //generate salt and hash for the password
