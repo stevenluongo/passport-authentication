@@ -1,18 +1,20 @@
 import {
   CreateVerificationSessionRepository,
-  CreateVerificationSessionRepositoryNamespace,
+  CreateVerificationSessionRepositoryNamespace
 } from '@application/interfaces/repositories/verification/createVerificationSessionRepository';
 import {
   FetchVerificationSessionByIdRepository,
-  FetchVerificationSessionByIdRepositoryNamespace,
+  FetchVerificationSessionByIdRepositoryNamespace
 } from '@application/interfaces/repositories/verification/fetchVerificationSessionByIdRepository';
+import { FetchVerificationSessionByQueryRepository, FetchVerificationSessionByQueryRepositoryNamespace } from '@application/interfaces/repositories/verification/fetchVerificationSessionByQueryRepository';
 import { Collection, ObjectId } from 'mongodb';
 import { collections } from '../helpers/database.service';
 
 export class VerificationRepository
   implements
     CreateVerificationSessionRepository,
-    FetchVerificationSessionByIdRepository
+    FetchVerificationSessionByIdRepository,
+    FetchVerificationSessionByQueryRepository
 {
   static async getCollection(): Promise<Collection> {
     return collections.verification;
@@ -35,5 +37,14 @@ export class VerificationRepository
     const collection = await VerificationRepository.getCollection();
     const query = { _id: new ObjectId(id) };
     return await collection.findOne(query);
+  }
+
+  async fetchVerificationSessionByQuery(
+    query: FetchVerificationSessionByQueryRepositoryNamespace.Request
+  ): Promise<FetchVerificationSessionByQueryRepositoryNamespace.Response> {
+    const collection = await VerificationRepository.getCollection();
+    return await collection
+      .find(query)
+      .toArray();
   }
 }

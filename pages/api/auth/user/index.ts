@@ -1,9 +1,9 @@
 import nextConnect from 'next-connect';
-import { nextRouteAdapter } from '../../../../lib/main/adapters/nextRouteAdapter';
-import { makeCreateUserController } from '../../../../lib/main/factories/controllers/user/makeCreateUserController';
+import { nextRouteAdapter } from '@main/adapters/nextRouteAdapter';
+import { makeCreateUserController } from '@main/factories/controllers/user/makeCreateUserController';
 import {
     makeFetchUserByQueryController
-} from "../../../../lib/main/factories/controllers/user/makeFetchUserByQueryController";
+} from "@main/factories/controllers/user/makeFetchUserByQueryController";
 
 const handler = nextConnect();
 

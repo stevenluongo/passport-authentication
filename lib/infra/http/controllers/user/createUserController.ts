@@ -3,7 +3,7 @@ import { BaseController } from '@infra/controllers/baseController';
 import { HttpRequest } from '@infra/http/interfaces/httpRequest';
 import { HttpResponse } from '@infra/http/interfaces/httpResponse';
 import { Validation } from '@infra/http/interfaces/validation';
-import { makeCreateVerificationSessionController } from '@main/factories/controllers/verification/makeCreateVerificationSessionController';
+import { created } from '@infra/http/responseCodes';
 
 export class CreateUserController extends BaseController {
   constructor(
@@ -25,8 +25,8 @@ export class CreateUserController extends BaseController {
       salt,
       hash,
     });
-
-    return await makeCreateVerificationSessionController().handle({ user });
+    
+    return created({ statusCode: 201, user });
   }
 }
 
