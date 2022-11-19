@@ -15,14 +15,14 @@ export class FetchVerificationSessionByQueryController extends BaseController {
   async execute(
     payload: FetchVerificationSessionByQueryControllerNamespace.Request
   ): Promise<FetchVerificationSessionByQueryControllerNamespace.Response> {
-    const { user } = payload!;
+    const { hash } = payload.body!;
 
     //create a new verification session
     await this.fetchVerificationSessionByQuery.execute({
-      user,
+      hash,
     });
 
-    return created({ statusCode: 201, user });
+    return created({ statusCode: 200 });
   }
 }
 

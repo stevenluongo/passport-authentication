@@ -11,6 +11,6 @@ export interface CreateVerificationSessionInterface
 }
 
 export namespace CreateVerificationSessionInterfaceNamespace {
-  export type Request = any;
+  export type Request = { emailAddress: string; _id: string; username: string };
   export type Response = any;
 }

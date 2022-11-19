@@ -3,9 +3,8 @@ import { CreateVerificationSessionController } from '@infra/http/controllers/ver
 import { makeCreateVerificationSession } from '@main/factories/use-cases/verification/makeCreateVerificationSession';
 import { makeCreateVerificationSessionValidation } from './makeCreateVerificationSessionValidation';
 
-export const makeCreateVerificationSessionController =
-  (): BaseController => {
-    const validation = makeCreateVerificationSessionValidation();
-    const useCase = makeCreateVerificationSession();
-    return new CreateVerificationSessionController(useCase, validation);
-  };
+export const makeCreateVerificationSessionController = (): BaseController => {
+  const validation = makeCreateVerificationSessionValidation();
+  const useCase = makeCreateVerificationSession();
+  return new CreateVerificationSessionController(useCase, validation);
+};

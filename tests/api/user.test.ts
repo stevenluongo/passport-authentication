@@ -4,6 +4,7 @@ import {
 } from '@infra/db/mongodb/helpers/database.service';
 import userHandler from '../../pages/api/auth/user';
 import getUserIdHandler from '../../pages/api/auth/user/[id]';
+import verificationHandler from '../../pages/api/auth/verification';
 import { queryClient, testClient } from '../mocks/testClient';
 
 const handler = testClient(userHandler);
@@ -32,12 +33,22 @@ describe('Testing /api/auth/user', () => {
     const res = await handler.post('/api/auth/user').send({
       username: 'test',
       password: 'test',
-      emailAddress: 'test@test.com',
+      emailAddress: 'luongosteven@gmail.com',
     });
-    expect(res._body.user.emailAddress).toEqual('test@test.com');
+    expect(res._body.user.emailAddress).toEqual('luongosteven@gmail.com');
     expect(res._body.user.username).toEqual('test');
     expect(res.status).toEqual(201);
     user = res._body.user;
+  });
+
+  //create email verification
+  it('Should POST on /api/auth/verification and return a 200 status code | Create Email Verification', async () => {
+    const res = await testClient(verificationHandler).post('/').send({
+      emailAddress: user.emailAddress,
+      username: user.username,
+      _id: user._id,
+    });
+    expect(res.status).toEqual(201);
   });
 
   //fetch user by query

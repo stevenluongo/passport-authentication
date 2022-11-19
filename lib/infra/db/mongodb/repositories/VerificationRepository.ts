@@ -1,12 +1,15 @@
 import {
   CreateVerificationSessionRepository,
-  CreateVerificationSessionRepositoryNamespace
+  CreateVerificationSessionRepositoryNamespace,
 } from '@application/interfaces/repositories/verification/createVerificationSessionRepository';
 import {
   FetchVerificationSessionByIdRepository,
-  FetchVerificationSessionByIdRepositoryNamespace
+  FetchVerificationSessionByIdRepositoryNamespace,
 } from '@application/interfaces/repositories/verification/fetchVerificationSessionByIdRepository';
-import { FetchVerificationSessionByQueryRepository, FetchVerificationSessionByQueryRepositoryNamespace } from '@application/interfaces/repositories/verification/fetchVerificationSessionByQueryRepository';
+import {
+  FetchVerificationSessionByQueryRepository,
+  FetchVerificationSessionByQueryRepositoryNamespace,
+} from '@application/interfaces/repositories/verification/fetchVerificationSessionByQueryRepository';
 import { Collection, ObjectId } from 'mongodb';
 import { collections } from '../helpers/database.service';
 
@@ -43,8 +46,6 @@ export class VerificationRepository
     query: FetchVerificationSessionByQueryRepositoryNamespace.Request
   ): Promise<FetchVerificationSessionByQueryRepositoryNamespace.Response> {
     const collection = await VerificationRepository.getCollection();
-    return await collection
-      .find(query)
-      .toArray();
+    return await collection.find(query).toArray();
   }
 }

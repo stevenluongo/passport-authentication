@@ -19,13 +19,13 @@ export class CreateVerificationSession
   ): Promise<CreateVerificationSessionInterfaceNamespace.Response> {
     //our logic here
 
-    const { user } = payload;
+    const { _id: userId, emailAddress, username } = payload;
 
     //generate verification hash
     const hash = generateVerificationHash();
 
     //generate URL for email verification
-    const url = `${baseURL}/verify?uid=${user._id.toString()}&hash=${hash}`;
+    const url = `${baseURL}/verify?uid=${userId.toString()}&hash=${hash}`;
 
     //set api key
     mail.setApiKey(process.env.SENDGRID_API_KEY);
@@ -33,7 +33,7 @@ export class CreateVerificationSession
     //format email body
     const body = `
       <div>
-        <h1> Hi ${user.username}, </h1>
+        <h1> Hi ${username}, </h1>
         <p>Thank you for signing up with next.js ecommerce !</p>
         <p>To further enjoy your account, please verify your email <a href=${url}>here</a> or click the link below: <p>
         <a href=${url}>${url}</a>
@@ -42,7 +42,7 @@ export class CreateVerificationSession
 
     //format message
     const msg = {
-      to: user.emailAddress,
+      to: emailAddress,
       from: 'juxtadevelopment@gmail.com',
       subject: `Confirm your email address`,
       text: 'sending from sendgrid!!',
@@ -50,10 +50,14 @@ export class CreateVerificationSession
     };
 
     //send email
-    await mail.send(msg);
+    try {
+      await mail.send(msg);
+    } catch (e) {
+      console.error(e.message);
+    }
 
     return this.createVerificationSessionRepository.createVerificationSession({
-      userId: user._id,
+      userId,
       hash,
     });
   }

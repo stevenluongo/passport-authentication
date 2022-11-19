@@ -3,7 +3,7 @@
   <h1 align="center">Passport Authentication</h1>
   <p align="center">
     Authentication system using <a href="https://www.passportjs.org/">Passport.js</a> built with a clean architecture approach. <br/>Built for re-use over a multitude of projects, 
-un-tied to a specific framework and database.
+un-tied to a specific framework or database.
   </p>
   <br/>
 </p>
@@ -16,9 +16,10 @@ un-tied to a specific framework and database.
 
 ### Built With
 
+- [@hapi/iron](https://www.npmjs.com/package/@hapi/iron) | Session Serialization / Deserialization
 - [passport-local](https://www.npmjs.com/package/passport-local) | Local Autentication Provider
 - [passport-github](https://www.npmjs.com/package/passport-github) | GitHub Autentication Provider
-- [@hapi/iron](https://www.npmjs.com/package/@hapi/iron) | Session Serialization / Deserialization
+- [Sendgrid](https://sendgrid.com/) | Email Delivery Network
 - [Jest](https://jestjs.io/) | Testing Framework
 - [Next.js](https://nextjs.org/) | Front-end Framework
 - [MongoDB](https://www.mongodb.com/) | Database

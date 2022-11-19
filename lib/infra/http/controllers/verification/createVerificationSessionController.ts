@@ -15,14 +15,16 @@ export class CreateVerificationSessionController extends BaseController {
   async execute(
     payload: CreateVerificationSessionControllerNamespace.Request
   ): Promise<CreateVerificationSessionControllerNamespace.Response> {
-    const { user } = payload!;
+    const { _id, username, emailAddress } = payload.body!;
 
     //create a new verification session
     await this.createVerificationSession.execute({
-      user,
+      _id,
+      username,
+      emailAddress,
     });
 
-    return created({ statusCode: 201, user });
+    return created({ statusCode: 201 });
   }
 }
 

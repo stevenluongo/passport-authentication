@@ -1,8 +1,8 @@
 import { FetchVerificationSessionByQueryRepository } from '@application/interfaces/repositories/verification/fetchVerificationSessionByQueryRepository';
 import {
-  CreateVerificationSessionInterfaceNamespace
-} from '@application/interfaces/use-cases/verification/createVerificationSessionInterface';
-import { FetchVerificationSessionByQueryInterface } from '@application/interfaces/use-cases/verification/fetchVerificationSessionByQueryInterface';
+  FetchVerificationSessionByQueryInterface,
+  FetchVerificationSessionByQueryInterfaceNamespace,
+} from '@application/interfaces/use-cases/verification/fetchVerificationSessionByQueryInterface';
 
 export class FetchVerificationSessionByQuery
   implements FetchVerificationSessionByQueryInterface
@@ -12,14 +12,16 @@ export class FetchVerificationSessionByQuery
   ) {}
 
   async execute(
-    payload: CreateVerificationSessionInterfaceNamespace.Request
-  ): Promise<CreateVerificationSessionInterfaceNamespace.Response> {
+    payload: FetchVerificationSessionByQueryInterfaceNamespace.Request
+  ): Promise<FetchVerificationSessionByQueryInterfaceNamespace.Response> {
     //our logic here
 
     const { hash } = payload;
 
-    return this.createVerificationSessionRepository.fetchVerificationSessionByQuery({
-      hash,
-    });
+    return this.createVerificationSessionRepository.fetchVerificationSessionByQuery(
+      {
+        hash,
+      }
+    );
   }
 }
