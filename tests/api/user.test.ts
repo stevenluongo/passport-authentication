@@ -4,7 +4,6 @@ import {
 } from '@infra/db/mongodb/helpers/database.service';
 import userHandler from '../../pages/api/auth/user';
 import getUserIdHandler from '../../pages/api/auth/user/[id]';
-import verificationHandler from '../../pages/api/auth/verification';
 import { queryClient, testClient } from '../mocks/testClient';
 
 const handler = testClient(userHandler);
@@ -41,15 +40,15 @@ describe('Testing /api/auth/user', () => {
     user = res._body.user;
   });
 
-  //create email verification
-  it('Should POST on /api/auth/verification and return a 200 status code | Create Email Verification', async () => {
-    const res = await testClient(verificationHandler).post('/').send({
-      emailAddress: user.emailAddress,
-      username: user.username,
-      _id: user._id,
-    });
-    expect(res.status).toEqual(201);
-  });
+  // //create email verification
+  // it('Should POST on /api/auth/verification and return a 200 status code | Create Email Verification', async () => {
+  //   const res = await testClient(verificationHandler).post('/').send({
+  //     emailAddress: user.emailAddress,
+  //     username: user.username,
+  //     _id: user._id,
+  //   });
+  //   expect(res.status).toEqual(201);
+  // });
 
   //fetch user by query
   it('Should PUT on /api/auth/user and return a 200 status code | Fetch Users By Query', async () => {
@@ -64,7 +63,7 @@ describe('Testing /api/auth/user', () => {
   //fetch user by id
   it('Should GET on /api/auth/user/[id] and return a 200 status code | Fetch User By ID', async () => {
     const res = await queryClient(getUserIdHandler, {
-      id: user._id,
+      _id: user._id,
     }).get('/');
     expect(res._body.user.username).toEqual(user.username);
     expect(res.status).toEqual(200);
@@ -72,7 +71,7 @@ describe('Testing /api/auth/user', () => {
 
   //update user NOT MODIFIED
   it('Should PUT on /api/auth/user/[id] and return a 304 status code | Update User (Not modified)', async () => {
-    const res = await queryClient(getUserIdHandler, { id: user._id })
+    const res = await queryClient(getUserIdHandler, { _id: user._id })
       .put('/')
       .send({
         username: user.username,
@@ -82,7 +81,7 @@ describe('Testing /api/auth/user', () => {
 
   //update user
   it('Should PUT on /api/auth/user/[id] and return a 200 status code | Update User', async () => {
-    const res = await queryClient(getUserIdHandler, { id: user._id })
+    const res = await queryClient(getUserIdHandler, { _id: user._id })
       .put('/')
       .send({
         username: 'toor',
@@ -92,7 +91,7 @@ describe('Testing /api/auth/user', () => {
 
   //delete user
   it('Should DELETE /api/auth/user/[id] and return a 202 status code | Delete User', async () => {
-    const res = await queryClient(getUserIdHandler, { id: user._id }).delete(
+    const res = await queryClient(getUserIdHandler, { _id: user._id }).delete(
       '/'
     );
     expect(res.status).toEqual(202);

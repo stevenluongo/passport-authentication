@@ -12,7 +12,6 @@ export const githubStrategy = new GithubStrategy(
     // return cb(null, profile);
     await connectToDatabase();
     const userRepo = new UserRepository();
-
     const { username, id: githubId } = profile;
     const existingUser = await userRepo.fetchUserByQuery({ githubId });
     if (existingUser[0]) return cb(null, existingUser[0]);

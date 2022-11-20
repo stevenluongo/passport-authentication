@@ -7,9 +7,8 @@ import {
 export class UpdateUser implements UpdateUserInterface {
   constructor(private readonly updateUserRepository: UpdateUserRepository) {}
   async execute(
-    data: UpdateUserInterfaceNamespace.Request
+    payload: UpdateUserInterfaceNamespace.Request
   ): Promise<UpdateUserInterfaceNamespace.Response> {
-    //logic goes here
-    return this.updateUserRepository.updateUser(data);
+    return this.updateUserRepository.updateUser(payload);
   }
 }

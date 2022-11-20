@@ -9,23 +9,21 @@ export class CreateUser implements CreateUserInterface {
   constructor(private readonly createUserRepository: CreateUserRepository) {}
 
   async execute(
-    userData: CreateUserInterfaceNamespace.Request
+    payload: CreateUserInterfaceNamespace.Request
   ): Promise<CreateUserInterfaceNamespace.Response> {
-    //our logic here
-    const { password, ...userBody } = userData;
+    //extract password and user fields
+    const { password, ...userFields } = payload;
 
     //generate salt and hash for the password
     const { salt, hash } = generateHash(password);
 
     //include new fields in the payload
     const userPayload = {
-      ...userBody,
+      ...userFields,
       salt,
       hash,
     };
 
-    return this.createUserRepository.createUser({
-      ...userPayload,
-    });
+    return this.createUserRepository.createUser(userPayload);
   }
 }

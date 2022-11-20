@@ -11,9 +11,7 @@ export const makeSessionController = async (
     await connectToDatabase();
     const session = await getLoginSession(req);
     const userRepo = new UserRepository();
-    const user = session
-      ? await userRepo.fetchUserById({ id: session._id })
-      : null;
+    const user = session ? await userRepo.fetchUserById(session._id) : null;
     if (!user) {
       res.status(401).json({ user });
       return;

@@ -7,9 +7,8 @@ import {
 export class DeleteUser implements DeleteUserInterface {
   constructor(private readonly deleteUserRepository: DeleteUserRepository) {}
   async execute(
-    data: DeleteUserInterfaceNamespace.Request
+    _id: DeleteUserInterfaceNamespace.Request
   ): Promise<DeleteUserInterfaceNamespace.Response> {
-    //logic goes here
-    return this.deleteUserRepository.deleteUser(data);
+    return this.deleteUserRepository.deleteUser(_id);
   }
 }

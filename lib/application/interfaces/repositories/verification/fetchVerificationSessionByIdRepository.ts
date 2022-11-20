@@ -5,6 +5,6 @@ export interface FetchVerificationSessionByIdRepository {
 }
 
 export namespace FetchVerificationSessionByIdRepositoryNamespace {
-  export type Request = any;
+  export type Request = string;
   export type Response = any;
 }

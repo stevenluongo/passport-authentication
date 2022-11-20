@@ -1,4 +1,7 @@
-import { CreateUserInterface } from '@application/interfaces/use-cases/user/createUserInterface';
+import {
+  CreateUserInterface,
+  CreateUserInterfaceNamespace,
+} from '@application/interfaces/use-cases/user/createUserInterface';
 import { BaseController } from '@infra/controllers/baseController';
 import { HttpRequest } from '@infra/http/interfaces/httpRequest';
 import { HttpResponse } from '@infra/http/interfaces/httpResponse';
@@ -16,27 +19,17 @@ export class CreateUserController extends BaseController {
   async execute(
     httpRequest: CreateUserControllerNamespace.Request
   ): Promise<CreateUserControllerNamespace.Response> {
-    const { emailAddress, username, password, salt, hash } = httpRequest.body!;
-
+    const { emailAddress, username, password } = httpRequest.body!;
     const user = await this.createUser.execute({
       emailAddress,
       username,
       password,
-      salt,
-      hash,
     });
-    
     return created({ statusCode: 201, user });
   }
 }
 
 export namespace CreateUserControllerNamespace {
-  export type Request = HttpRequest<{
-    emailAddress;
-    username;
-    password;
-    salt;
-    hash;
-  }>;
+  export type Request = HttpRequest<CreateUserInterfaceNamespace.Request>;
   export type Response = HttpResponse<{ statusCode: number }>;
 }

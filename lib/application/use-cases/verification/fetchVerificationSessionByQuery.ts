@@ -8,20 +8,14 @@ export class FetchVerificationSessionByQuery
   implements FetchVerificationSessionByQueryInterface
 {
   constructor(
-    private readonly createVerificationSessionRepository: FetchVerificationSessionByQueryRepository
+    private readonly fetchVerificationSessionByQueryRepository: FetchVerificationSessionByQueryRepository
   ) {}
 
   async execute(
     payload: FetchVerificationSessionByQueryInterfaceNamespace.Request
   ): Promise<FetchVerificationSessionByQueryInterfaceNamespace.Response> {
-    //our logic here
-
-    const { hash } = payload;
-
-    return this.createVerificationSessionRepository.fetchVerificationSessionByQuery(
-      {
-        hash,
-      }
+    return this.fetchVerificationSessionByQueryRepository.fetchVerificationSessionByQuery(
+      payload
     );
   }
 }

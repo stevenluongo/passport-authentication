@@ -5,6 +5,6 @@ export interface FetchUserByIdRepository {
 }
 
 export namespace FetchUserByIdRepositoryNamespace {
-  export type Request = any;
+  export type Request = string;
   export type Response = any;
 }

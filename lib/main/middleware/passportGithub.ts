@@ -15,7 +15,7 @@ export const githubMiddleware = async (req, res, next) => {
   //add deserialize method
   passport.deserializeUser(async (id, done) => {
     const userRepo = new UserRepository();
-    const user = await userRepo.fetchUserById({ id });
+    const user = await userRepo.fetchUserById(id);
     done(null, user);
   });
 

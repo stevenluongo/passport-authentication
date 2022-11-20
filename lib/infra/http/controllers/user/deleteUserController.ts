@@ -20,29 +20,22 @@ export class DeleteUserController extends BaseController {
   async execute(
     httpRequest: DeleteUserControllerNamespace.Request
   ): Promise<DeleteUserControllerNamespace.Response> {
-    try {
-      //extract id and body from http request
-      const { id } = httpRequest!.params;
+    const { _id } = httpRequest!.params;
 
-      //delete user in database
-      const { acknowledged, deletedCount } = await this.deleteUser.execute(id);
+    const { acknowledged, deletedCount } = await this.deleteUser.execute(_id);
 
-      //request was not acknowledged
-      if (!acknowledged) return badRequest(new Error('User not found.'));
+    //request was not acknowledged
+    if (!acknowledged) return badRequest(new Error('User not found.'));
 
-      //nothing was deleted
-      if (!deletedCount) return nothingModified({});
+    //nothing was deleted
+    if (!deletedCount) return nothingModified({});
 
-      //success
-      return accepted({ statusCode: 202 });
-    } catch (e) {
-      //handle exceptions
-      return badRequest(e);
-    }
+    //success
+    return accepted({ statusCode: 202 });
   }
 }
 
 export namespace DeleteUserControllerNamespace {
-  export type Request = HttpRequest<any>;
+  export type Request = HttpRequest<{ _id: string }>;
   export type Response = HttpResponse<any>;
 }

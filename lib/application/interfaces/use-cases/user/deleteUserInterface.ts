@@ -11,6 +11,6 @@ export interface DeleteUserInterface
 }
 
 export namespace DeleteUserInterfaceNamespace {
-  export type Request = any;
-  export type Response = any;
+  export type Request = { _id: string };
+  export type Response = { acknowledged: boolean; deletedCount: number };
 }

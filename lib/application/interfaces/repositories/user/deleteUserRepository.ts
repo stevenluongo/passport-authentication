@@ -6,5 +6,5 @@ export interface DeleteUserRepository {
 
 export namespace DeleteUserRepositoryNamespace {
   export type Request = any;
-  export type Response = any;
+  export type Response = { acknowledged: boolean; deletedCount: number };
 }

@@ -11,6 +11,6 @@ export interface FetchUserByIdInterface
 }
 
 export namespace FetchUserByIdInterfaceNamespace {
-  export type Request = any;
+  export type Request = string;
   export type Response = any;
 }

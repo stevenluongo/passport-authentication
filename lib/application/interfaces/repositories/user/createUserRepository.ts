@@ -7,6 +7,6 @@ export interface CreateUserRepository {
 }
 
 export namespace CreateUserRepositoryNamespace {
-  export type Request = any;
+  export type Request = Omit<UserProps, 'password'>;
   export type Response = Omit<UserProps, 'password' | 'salt' | 'hash'>;
 }

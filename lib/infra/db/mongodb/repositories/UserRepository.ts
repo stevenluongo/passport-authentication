@@ -41,7 +41,7 @@ export class UserRepository
       ...postData,
       createdAt: new Date(),
     });
-    return await this.fetchUserById(insertedId);
+    return await this.fetchUserById(insertedId.toString());
   }
 
   async fetchUserById(
@@ -73,11 +73,12 @@ export class UserRepository
   }
 
   public async updateUser(
-    data: UpdateUserRepositoryNamespace.Request
+    payload: UpdateUserRepositoryNamespace.Request
   ): Promise<UpdateUserRepositoryNamespace.Response> {
+    const { _id, filter } = payload;
     const collection = await UserRepository.getCollection();
-    const query = { _id: new ObjectId(data.id) };
-    return await collection.updateOne(query, { $set: { ...data.body } });
+    const query = { _id: new ObjectId(_id) };
+    return await collection.updateOne(query, { $set: { ...filter } });
   }
 
   public async deleteUser(

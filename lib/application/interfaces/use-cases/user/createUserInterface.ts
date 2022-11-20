@@ -12,6 +12,6 @@ export interface CreateUserInterface
 }
 
 export namespace CreateUserInterfaceNamespace {
-  export type Request = Omit<UserProps, 'id' | 'createdAt'>;
+  export type Request = Omit<UserProps, 'salt' | 'hash' | 'createdAt'>;
   export type Response = Omit<UserProps, 'password' | 'salt' | 'hash'>;
 }

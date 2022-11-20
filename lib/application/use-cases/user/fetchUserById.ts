@@ -9,8 +9,8 @@ export class FetchUserById implements FetchUserByIdInterface {
     private readonly fetchUserByIdRepository: FetchUserByIdRepository
   ) {}
   async execute(
-    data: FetchUserByIdInterfaceNamespace.Request
+    _id: FetchUserByIdInterfaceNamespace.Request
   ): Promise<FetchUserByIdInterfaceNamespace.Response> {
-    return this.fetchUserByIdRepository.fetchUserById(data);
+    return this.fetchUserByIdRepository.fetchUserById(_id);
   }
 }

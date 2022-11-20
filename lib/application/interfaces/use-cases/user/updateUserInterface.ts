@@ -6,11 +6,15 @@ export interface UpdateUserInterface
     UpdateUserInterfaceNamespace.Response
   > {
   execute(
-    data: UpdateUserInterfaceNamespace.Request
+    payload: UpdateUserInterfaceNamespace.Request
   ): Promise<UpdateUserInterfaceNamespace.Response>;
 }
 
 export namespace UpdateUserInterfaceNamespace {
-  export type Request = any;
-  export type Response = any;
+  export type Request = { _id: string; filter: any };
+  export type Response = {
+    acknowledged: boolean;
+    modifiedCount: number;
+    matchedCount: number;
+  };
 }

@@ -1,10 +1,14 @@
 export interface UpdateUserRepository {
   updateUser(
-    data: UpdateUserRepositoryNamespace.Request
+    payload: UpdateUserRepositoryNamespace.Request
   ): Promise<UpdateUserRepositoryNamespace.Response>;
 }
 
 export namespace UpdateUserRepositoryNamespace {
-  export type Request = any;
-  export type Response = any;
+  export type Request = { _id: string; filter: any };
+  export type Response = {
+    acknowledged: boolean;
+    modifiedCount: number;
+    matchedCount: number;
+  };
 }
