@@ -1,6 +1,6 @@
 import React, { createContext, useContext } from 'react';
-import { AuthService } from '../services/authService';
-import { UserService } from '../services/userService';
+import { AuthService } from '../services/AuthService';
+import { UserService } from '../services/UserService';
 
 const authService = new AuthService();
 const userService = new UserService();
@@ -33,8 +33,8 @@ export function GlobalContext({ children }) {
   }, []);
 
   const loadContext = async () => {
-    const { user } = await authService.fetchSession();
-    setUser(user);
+    const res = await authService.fetchSession();
+    setUser(res.user);
     setLoaded(true);
   };
 

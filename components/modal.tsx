@@ -5,7 +5,7 @@ import React, { FC } from 'react';
 import { default as ReactModal } from 'react-modal';
 import { CssTextField, GithubLoadingButton, LoadingBtn } from '.';
 import { useGlobalContext } from '../context/globalContext';
-import { AuthService } from '../services/authService';
+import { AuthService } from '../services/AuthService';
 
 ReactModal.setAppElement('#__next');
 

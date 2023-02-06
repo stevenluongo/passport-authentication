@@ -4,4 +4,5 @@ export type HttpResponse<T = any> = {
   user?: T;
   message?: string;
   error?: string;
+  notModified?: boolean;
 };

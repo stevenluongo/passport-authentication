@@ -1,6 +1,6 @@
 import React from 'react';
 import { useGlobalContext } from '../context/globalContext';
-import { AuthService } from '../services/authService';
+import { AuthService } from '../services/AuthService';
 
 const authService = new AuthService();
 
