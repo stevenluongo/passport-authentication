@@ -18,17 +18,17 @@ export class CreateVerificationSessionController extends BaseController {
     const { _id, username, emailAddress } = payload.body!;
 
     //create a new verification session
-    await this.createVerificationSession.execute({
+    const session = await this.createVerificationSession.execute({
       _id,
       username,
       emailAddress,
     });
 
-    return created({ statusCode: 201 });
+    return created({ session });
   }
 }
 
 export namespace CreateVerificationSessionControllerNamespace {
   export type Request = any;
-  export type Response = HttpResponse<{ statusCode: number }>;
+  export type Response = HttpResponse<{ session: { username: string } }>;
 }

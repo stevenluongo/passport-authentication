@@ -30,11 +30,11 @@ export class UpdateUserController extends BaseController {
     if (acknowledged && !modifiedCount) return nothingModified({});
 
     //success
-    return ok({ statusCode: 200, message: 'User successfully updated.' });
+    return ok({ message: 'User successfully updated.' });
   }
 }
 
 export namespace UpdateUserControllerNamespace {
   export type Request = HttpRequest<{ _id: string }>;
-  export type Response = HttpResponse<any>;
+  export type Response = HttpResponse;
 }

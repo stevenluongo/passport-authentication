@@ -4,8 +4,8 @@ import { HttpRequest } from '@infra/http/interfaces/httpRequest';
 import { HttpResponse } from '@infra/http/interfaces/httpResponse';
 import { Validation } from '@infra/http/interfaces/validation';
 import {
-  accepted,
   badRequest,
+  noContent,
   nothingModified,
 } from '@infra/http/responseCodes';
 
@@ -31,11 +31,11 @@ export class DeleteUserController extends BaseController {
     if (!deletedCount) return nothingModified({});
 
     //success
-    return accepted({ statusCode: 202 });
+    return noContent();
   }
 }
 
 export namespace DeleteUserControllerNamespace {
   export type Request = HttpRequest<{ _id: string }>;
-  export type Response = HttpResponse<any>;
+  export type Response = HttpResponse;
 }

@@ -1,5 +1,5 @@
 export type UserProps = {
-  id?: string;
+  _id?: any;
   emailAddress?: string;
   username?: string;
   createdAt?: Date;

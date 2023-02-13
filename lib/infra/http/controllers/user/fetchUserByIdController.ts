@@ -1,4 +1,5 @@
 import { FetchUserByIdInterface } from '@application/interfaces/use-cases/user/fetchUserByIdInterface';
+import { UserProps } from '@domain/entities/user';
 import { BaseController } from '@infra/controllers/baseController';
 import { HttpRequest } from '@infra/http/interfaces/httpRequest';
 import { HttpResponse } from '@infra/http/interfaces/httpResponse';
@@ -20,11 +21,11 @@ export class FetchUserByIdController extends BaseController {
     //fetch user from database
     const user = await this.fetchUserById.execute(_id);
     //return user
-    return ok({ statusCode: 200, user });
+    return ok({ user });
   }
 }
 
 export namespace FetchUserByIdControllerNamespace {
   export type Request = HttpRequest<{ _id: string }>;
-  export type Response = HttpResponse;
+  export type Response = HttpResponse<{ user: UserProps }>;
 }

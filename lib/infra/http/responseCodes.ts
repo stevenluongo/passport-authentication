@@ -11,9 +11,8 @@ export const created = <T = any>(body: T): HttpResponse<T> => ({
   body,
 });
 
-export const accepted = <T = any>(body: T): HttpResponse<T> => ({
+export const accepted = (): HttpResponse => ({
   statusCode: 202,
-  body,
 });
 
 export const nothingModified = <T = any>(body: T): HttpResponse<T> => ({

@@ -1,7 +1,8 @@
 import {
   CreateUserInterface,
-  CreateUserInterfaceNamespace,
+  CreateUserInterfaceNamespace
 } from '@application/interfaces/use-cases/user/createUserInterface';
+import { UserProps } from '@domain/entities/user';
 import { BaseController } from '@infra/controllers/baseController';
 import { HttpRequest } from '@infra/http/interfaces/httpRequest';
 import { HttpResponse } from '@infra/http/interfaces/httpResponse';
@@ -11,9 +12,9 @@ import { created } from '@infra/http/responseCodes';
 export class CreateUserController extends BaseController {
   constructor(
     private readonly createUser: CreateUserInterface,
-    private readonly createPostValidation?: Validation
+    private readonly createUserValidation?: Validation
   ) {
-    super(createPostValidation);
+    super(createUserValidation);
   }
 
   async execute(
@@ -25,11 +26,11 @@ export class CreateUserController extends BaseController {
       username,
       password,
     });
-    return created({ statusCode: 201, user });
+    return created({ user });
   }
 }
 
 export namespace CreateUserControllerNamespace {
   export type Request = HttpRequest<CreateUserInterfaceNamespace.Request>;
-  export type Response = HttpResponse<{ statusCode: number }>;
+  export type Response = HttpResponse<{ user: UserProps }>;
 }
